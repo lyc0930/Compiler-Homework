@@ -8,48 +8,143 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{listings}
+\usepackage{xcolor}
+
 
 \title{Homework 1}
 \author{PB17000297 罗晏宸}
-\date{September 1 2019}
+\date{September 2 2019}
 
 \begin{document}
 \maketitle
 
 \section{Exercise 1}
-观察讲义lec1中P4和P11上的函数fact的C代码及其汇编代码，初步了解编译器的作用。你可以：\par
+观察讲义lec1中P4和P11上的函数\texttt{fact}的C代码及其汇编代码，初步了解编译器的作用。你可以：\par
 （a）简要注释每条汇编代码；\par
 （b）尝试指出C程序与汇编代码间的联系，\par
-比如，C程序中的参数n在汇编中是如何表示的；if语句对应哪几条汇编代码......
+比如，C程序中的参数\texttt{n}在汇编中是如何表示的；\texttt{if}语句对应哪几条汇编代码......
 \\
 
 \paragraph{解}
-fact是一个递归调用自身的函数，对应到汇编代码中的栈。汇编代码注释如下
-\begin{lstlisting}[language={[x86masm]Assembler},numbers=left, 
-         numberstyle=\tiny,keywordstyle=\color{blue!70},escapeinside=··,frame=shadowbox,
-         rulesepcolor=\color{red!20!green!20!blue!20},basicstyle=\ttfamily]
+\texttt{fact}是一个递归调用自身的函数，对应到汇编代码中的栈。汇编代码注释如下
+\begin{lstlisting}[language={[X86masm]Assembler}, 
+         numbers=left, 
+         numberstyle=\tiny,
+         keywordstyle=\bfseries\color{blue!70},
+         commentstyle=\small\color{red!40!green!60!blue},
+         basicstyle=\small\ttfamily,
+         escapeinside=``,
+         breaklines=false,
+         frame=lines]
 fact:
-	pushl	%ebp ·//将基址指针寄存器压栈，即保存$n$值·
-	movl	%esp, %ebp
-	subl	$4, %esp
-	cmpl	$0, 8(%ebp)
-	jg	.L2
-	movl	$1, -4(%ebp)
-	jmp	.L1
+	pushl	%ebp           ;将基址指针寄存器压栈，即保存n值
+	movl	%esp, %ebp     ;将堆栈指针寄存器传送给基址指针寄存器，作为函数帧
+	subl	$4, %esp       ;将栈指针下移4
+	cmpl	$0, 8(%ebp)    ;从地址%ebp+8中取数与0比较：n-0（if语句条件）
+	jg	.L2            ;大于（即n-0>0）则跳转至.L2标记
+	movl	$1, -4(%ebp)   ;向地址%ebp-4中传入1（未跳转则n<=0，返回1）
+	jmp	.L1            ;无条件跳转至.L1标记（以上实现if语句）
 .L2:
-	subl	$12, %esp
-	movl	8(%ebp), %eax
-	decl	%eax
-	pushl	%eax
-	call	fact
-	addl	$16, %esp
-	imull	8(%ebp), %eax
-	movl	%eax, -4(%ebp)
+	subl	$12, %esp      ;将栈指针下移12
+	movl	8(%ebp), %eax  ;向%eax中传入地址%ebp+8中的数据，即返回值为n
+	decl	%eax           ;%eax中的值自减1，即n-1
+	pushl	%eax           ;将%ebx压栈，作为递归调用的参数
+	call	fact           ;调用fact(n-1)
+	addl	$16, %esp      ;将栈指针上移16（即回到基址）
+	imull	8(%ebp), %eax  ;将%eax与地址%ebp+8中的数据相乘，即n*fact(n-1)
+	movl	%eax, -4(%ebp) ;向地址%ebp-4中传入%eax
 .L1:
-	movl	-4(%ebp), %eax
+	movl	-4(%ebp), %eax ;向%eax中传入地址%ebp-4中的数据，对应返回值
 	leave
-	ret
-
+	ret                    ;函数返回值
 \end{lstlisting}
+
+\section{Exercise 2}
+针对以下C程序，给出标号\texttt{L}处变量\texttt{j}可能的值集合。
+\begin{lstlisting}[language = C++, 
+         numbers=left, 
+         numberstyle=\tiny,
+         keywordstyle=\bfseries\color{blue!70},
+         commentstyle=\color{red!40!green!60!blue},
+         frame=shadowbox,
+         rulesepcolor=\color{red!20!green!30!blue!20},
+         basicstyle=\ttfamily]
+int main()
+{
+    int i,j = 0;
+    for(i = 0; i < 10; i++)
+    {
+        switch(i)
+        {
+            case 0:case 2: break;
+            case 3:case 5: continue;
+            default: j = i;  
+        }
+     L: j += i * 2;
+    }
+}
+\end{lstlisting}
+
+\paragraph{解}
+对每一次循环迭代进行分析：\par
+$\texttt{i}=0$时：\texttt{break}退出\texttt{switch}语句，执行\texttt{L: j += i * 2}，$\texttt{j}=0$； \par
+$\texttt{i}=1$时：执行\texttt{default: j = i}，再执行\texttt{L: j += i * 2}，$\texttt{j}=3$； \par
+$\texttt{i}=2$时：\texttt{break}退出\texttt{switch}语句，执行\texttt{L: j += i * 2}，$\texttt{j}=7$； \par
+$\texttt{i}=3$时：\texttt{continue}进入下一次循环； \par
+$\texttt{i}=4$时：执行\texttt{default: j = i}，再执行\texttt{L: j += i * 2}，$\texttt{j}=12$； \par
+$\texttt{i}=5$时：\texttt{continue}进入下一次循环； \par
+$\texttt{i} \geq 6$时：执行\texttt{default: j = i}，再执行\texttt{L: j += i * 2}，$\texttt{j}=3\texttt{i}=18,\,21,\,24,\,27$； \par
+$\texttt{i} \geq 10$时：循环结束。 \par
+综上，\text{j}可能的值集合为$\{0,3,7,12,18,21,24,27\}$。
+\\
+
+\section{Exercise 3}
+针对以下C/C++程序：\par
+（1）补全相关代码\par
+（2）用文字简要描述变量b和p的类型信息。\par
+如变量\texttt{a}的类型信息描述如下：变量\text{a}是一个含10个元素的数组，每个元素是指向一个整型变量的指针。
+\begin{lstlisting}[language = C++, 
+         numbers=left, 
+         numberstyle=\tiny,
+         keywordstyle=\bfseries\color{blue!70},
+         commentstyle=\color{red!40!green!60!blue},
+         frame=shadowbox,
+         rulesepcolor=\color{red!20!green!30!blue!20},
+         basicstyle=\ttfamily,
+         escapeinside=``]
+int main()
+{
+    int  i;
+    int* q;
+    int* a[10];
+    int* (*b[10])[10];
+    int* (*(*p)[10])[10];
+      
+    i = 100; q = &i; a[1] = q; b[1] = &a; p = &b;
+
+    cout <<`\underline{~~~~~\texttt{p[0]}~~~~~}`<< endl; //输出100，待补全
+
+    cout <<`\underline{~~~~~~\texttt{*p}~~~~~~}`<< endl; //输出100，待补全
+
+}
+\end{lstlisting}
+
+\paragraph{解}
+\subparagraph{（1）}
+补全如下：
+\begin{lstlisting}[language = C++, 
+         keywordstyle=\bfseries\color{blue!70},
+         commentstyle=\color{red!40!green!60!blue},
+         frame=shadowbox,
+         rulesepcolor=\color{red!20!green!30!blue!20},
+         basicstyle=\ttfamily,
+         escapeinside=``]
+    cout <<`\underline{\texttt{{\color{red!20!green!60!blue}{*(*}}p[0]{\color{red!20!green!60!blue}{[1])[1]}}}}`<< endl; //输出100
+
+    cout <<`\underline{\texttt{{\color{red!20!green!60!blue}{**(*(}}*p{\color{red!20!green!60!blue}{+1)+1)}}}}`<< endl; //输出100
+\end{lstlisting}
+\subparagraph{（2）}
+变量\texttt{b}是一个含10个元素的数组，每个元素是一个指针，指向一个含10个元素的数组，被指向数组的每个元素是一个指向整型变量的指针；或者可以说变量\texttt{b}是一个$10\times10$的二维数组，每个元素是一个指向整型变量的指针。\par
+变量\texttt{p}是一个指针，指向一个含10个元素的数组，数组的每个元素是一个指向含10个元素数组的指针，被指向数组的每个元素是一个指向整型变量的指针；或者可以说变量\texttt{p}是一个指向$10\times10$二维数组的指针，数组的每个元素是一个指向整型变量的指针。
 
 \end{document}
