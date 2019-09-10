@@ -87,9 +87,10 @@
 \end{figure}
 为了给出使得$L(R) = L(M)$的正规式$R$，向DFA $M$中引入新的开始状态$X$和新的接受状态$Y$，再逐个删除DFA中的原有状态，得到
 \begin{align*}
-    R=&\bigg(0^*|\Big(0^*10\big(10^*10\big)^*10^*\Big)\bigg)\Bigg|\\
-    &\Bigg(0^*10\big(10^*10\big)^*10^*11\bigg(01|\Big(\big(1|00\big)\big(10^*10\big)^*10^*11\Big)\bigg)^*\big(1|00\big)\big(10^*10\big)^*10^*\Bigg)|\\
-    &\Bigg((0^*10(10^*10)^*10^*11(01|((1|00)(10^*10)^*10^*11))^*(1|00)(10^*10)^*0)|(0^*10(10^*10)^*0)(1|((1|00)(10^*10)^*0(01|((1|00)(10^*10)^*10^811))^*(1|00)(10^*10)^*0))^*0(01|((1|00)(10^*10)^*10^*11))^*(1|00)(10^*10)^*10^*\Bigg)
+    R=&\bigg(0^*|\Big(0^*10\big(10^*10\big)^*10^*\Big)\bigg)\Bigg| \\
+    &\Bigg(0^*10\big(10^*10\big)^*10^*11\bigg(01\bigg| \Big(\big(1|00\big)\big(10^*10\big)^*10^*11\Big)\bigg)^*\big(1|00\big)\big(10^*10\big)^*10^*\Bigg)\Bigg| \\
+    &\Bigg(\bigg(0^*10\big(10^*10\big)^*10^*11\bigg(01|\Big(\big(1|00\big)\big(10^*10\big)^*10^*11\Big)\bigg)^*\big(1|00\big)\big(10^*10\big)^*0\bigg)\bigg| \\ &\Big(0^*10\big(10^*10\big)^*0\Big)\bigg(1\Big|\Big(\big(1|00\big)\big(10^*10\big)^*0\bigg(01\Big|\Big(\big(1|00\big)\big(10^*10\big)^*10^811\Big)\bigg)^* \\
+    &\big(1|00\big)\big(10^*10\big)^*0\Big)\bigg)^*0\bigg(01\Big|\Big(\big(1|00\big)\big(10^*10\big)^*10^*11\Big)\bigg)^*\big(1|00\big)\big(10^*10\big)^*10^*\Bigg)
 \end{align*}
 \\
 
