@@ -1,0 +1,85 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{xcolor}
+
+
+\title{Homework 3}
+\author{PB17000297 罗晏宸}
+\date{September 16 2019}
+
+\begin{document}
+\maketitle
+
+\section{Exercise 3.1}
+考虑文法
+\begin{align*}
+    & S \rightarrow (L)\ |\ a \\
+    & L \rightarrow L, \, S\ |\ S
+\end{align*}
+\subparagraph{(a)} 
+建立句子$(a,\,(a,\,a))$和$(a,\,((a,\,a),\,(a,\,a)))$的分析树。
+\subparagraph{(b)}
+为(a)的两个句子构造最左推导。
+\subparagraph{(c)}
+为(a)的两个句子构造最右推导。
+\subparagraph{(d)}
+这个文法产生的语言是什么？
+\\
+
+\paragraph{解}
+\subparagraph{(a)}
+\subparagraph{(b)}
+\subparagraph{(c)}
+\subparagraph{(d)}
+\\
+
+\section{Exercise 3.2}
+考虑文法
+\begin{align*}
+    S \rightarrow aSbS\ |\ bSaS\ |\ \varepsilon
+\end{align*}
+\subparagraph{(a)}
+为句子$abab$构造两个不同的最左推导，以此说明该文法是二义的。
+\subparagraph{(b)}
+为$abab$构造对应的最右推导。
+\subparagraph{(c)}
+为$abab$构造对应的分析树。
+\subparagraph{(d)}
+这个文法产生的语言是什么？
+\\
+
+\paragraph{解}
+\subparagraph{(a)}
+\subparagraph{(b)}
+\subparagraph{(c)}
+\subparagraph{(d)}
+\\
+
+\section{Exercise 3}
+阅读ANSI C 语法中从primary\_expression到 expression的产生式，了解C语言表达式的语法定义，并设计如下表格给出其中C算符的优先级和结合性。
+\\
+\paragraph{解}
+\\
+
+\section{Exercise 4}
+阅读ANSI C 语法中declaration相关产生式，给出如下声明的分析树：
+\begin{lstlisting}[language = C++, 
+         keywordstyle=\bfseries\color{blue!70},
+         commentstyle=\color{red!40!green!60!blue},
+         frame=shadowbox,
+         rulesepcolor=\color{red!20!green!30!blue!20},
+         basicstyle=\ttfamily]
+  void (*(*paa)[10])(int a);
+\end{lstlisting}
+\\
+\paragraph{解}
+\\
+\end{document}
