@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{longtable}
+
+\begin{document}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[
+        scale = 1, 
+        transform shape]
+        \node {declaration}
+            child {node {declaration\_specifiers}
+                child{node {type\_specifier}
+                    child {node {VOID}
+                        child {node {$\texttt{void}$}}
+                    }        
+                }
+            }
+            child{node {;}}
+    \end{tikzpicture}
+    \caption{句子$(a,\,((a,\,a),\,(a,\,a)))$的分析树}
+    \label{fig:3}
+\end{figure}
+
+\end{document}

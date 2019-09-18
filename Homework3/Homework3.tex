@@ -10,6 +10,9 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{tikz}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{longtable}
 
 \title{Homework 3}
 \author{PB17000297 罗晏宸}
@@ -36,7 +39,7 @@
 
 \paragraph{解}
 \subparagraph{(a)}
-
+两个分析树分别如图\ref{fig:1}和图\ref{fig:2}所示。
 \begin{figure}
     \centering
     \begin{tikzpicture}[
@@ -71,6 +74,7 @@
             child {node (b3) {$)$}}
     \end{tikzpicture}
     \caption{句子$(a,\,(a,\,a))$的分析树}
+    \label{fig:1}
 \end{figure}
 
 \begin{figure}
@@ -139,43 +143,222 @@
             child {node (b3) {$)$}}
     \end{tikzpicture}
     \caption{句子$(a,\,((a,\,a),\,(a,\,a)))$的分析树}
+    \label{fig:2}
 \end{figure}
 
 \subparagraph{(b)}
+由分析树，句子$(a,\,(a,\,a))$的最左推导为
+
+\begin{align*}
+    S &\Rightarrow_{\text{lm}} (L) \Rightarrow_{\text{lm}} (L,\,S) \Rightarrow_{\text{lm}} (S,\,S) \Rightarrow_{\text{lm}} (a,\,S) \Rightarrow_{\text{lm}} (a,\,(L)) \\ 
+    &\Rightarrow_{\text{lm}} (a,\,(L,\,S))
+    \Rightarrow_{\text{lm}} (a,\,(S,\,S)) \Rightarrow_{\text{lm}} (a,\,(a,\,S)) \\
+    &\Rightarrow_{\text{lm}} (a,\,(a,\,a))
+\end{align*}
+
+句子$(a,\,((a,\,a),\,(a,\,a)))$的最左推导为
+
+\begin{align*}
+    S &\Rightarrow_{\text{lm}} (L) \Rightarrow_{\text{lm}} (L,\,S) \Rightarrow_{\text{lm}} (S,\,S) \Rightarrow_{\text{lm}} (a,\,S) \Rightarrow_{\text{lm}} (a,\,(L)) \Rightarrow_{\text{lm}} (a,\,(L,\,S)) \\
+    &\Rightarrow_{\text{lm}} (a,\,(S,\,S)) \Rightarrow_{\text{lm}} (a,\,((L),\,S)) \Rightarrow_{\text{lm}} (a,\,((L,\,S),\,S)) \Rightarrow_{\text{lm}} (a,\,((S,\,S),\,S)) \\
+    &\Rightarrow_{\text{lm}} (a,\,((a,\,S),\,S))
+    \Rightarrow_{\text{lm}} (a,\,((a,\,a),\,S)) \Rightarrow_{\text{lm}} (a,\,((a,\,a),\,(L))) \\
+    &\Rightarrow_{\text{lm}} (a,\,((a,\,a),\,(L,\,S)))
+    \Rightarrow_{\text{lm}} (a,\,((a,\,a),\,(S,\,S))) \Rightarrow_{\text{lm}} (a,\,((a.\,a),\,(a,\,S))) \\
+    &\Rightarrow_{\text{lm}} (a,\,((a,\,a),\,(a,\,a)))
+\end{align*}
+
 \subparagraph{(c)}
+由分析树，句子$(a,\,(a,\,a))$的最右推导为
+
+\begin{align*}
+    S &\Rightarrow_{\text{lm}} (L) \Rightarrow_{\text{lm}} (L,\,S) \Rightarrow_{\text{lm}} (L,\,(L)) \Rightarrow_{\text{lm}} (L,\,(L,\,S)) \Rightarrow_{\text{lm}} (L,\,(L,\,a)) \\ 
+    &\Rightarrow_{\text{lm}} (L,\,(S,\,a))
+    \Rightarrow_{\text{lm}} (L,\,(a,\,a)) \Rightarrow_{\text{lm}} (S,\,(a,\,a)) \\
+    &\Rightarrow_{\text{lm}} (a,\,(a,\,a))
+\end{align*}
+
+句子$(a,\,((a,\,a),\,(a,\,a)))$的最右推导为
+
+\begin{align*}
+    S &\Rightarrow_{\text{lm}} (L) \Rightarrow_{\text{lm}} (L,\,S) \Rightarrow_{\text{lm}} (L,\,(L)) \Rightarrow_{\text{lm}} (L,\,(L,\,S)) \Rightarrow_{\text{lm}} (L,\,(L,\,(L))) \\ &\Rightarrow_{\text{lm}} (L,\,(L,\,(L,\,S)))
+    \Rightarrow_{\text{lm}} (L,\,(L,\,(L,\,a))) \Rightarrow_{\text{lm}} (L,\,(L,\,(S,\,a)) \\ &\Rightarrow_{\text{lm}} (L,\,(L,\,(a,\,a)) \Rightarrow_{\text{lm}} (L,\,(S,\,(a,\,a))
+     \Rightarrow_{\text{lm}} (L,\,((L),\,(a,\,a))) \\
+    &\Rightarrow_{\text{lm}} (L,\,((L,\,S),\,(a,\,a)))
+    \Rightarrow_{\text{lm}} (L,\,((L,\,a),\,(a,\,a))) \Rightarrow_{\text{lm}} (L,\,((S.\,a),\,(a,\,a))) \\
+    &\Rightarrow_{\text{lm}} (L,\,((a,\,a),\,(a,\,a)))
+    \Rightarrow_{\text{lm}} (S,\,((a,\,a),\,(a,\,a))) \\
+    &\Rightarrow_{\text{lm}} (a,\,((a,\,a),\,(a,\,a)))
+\end{align*}
+
 \subparagraph{(d)}
+这个文法描述的语言是“在配对括号内由逗号分割的二元组字符串，其中组的元素是$a$或一个由此语言描述的串”。
 \\
 
 \section{Exercise 3.2}
 考虑文法
+
 \begin{align*}
     S \rightarrow aSbS\ |\ bSaS\ |\ \varepsilon
 \end{align*}
+
 \subparagraph{(a)}
 为句子$abab$构造两个不同的最左推导，以此说明该文法是二义的。
-\subparagraph{(b)}
-为$abab$构造对应的最右推导。
-\subparagraph{(c)}
-为$abab$构造对应的分析树。
-\subparagraph{(d)}
-这个文法产生的语言是什么？
+% \subparagraph{(b)}
+% 为$abab$构造对应的最右推导。
+% \subparagraph{(c)}
+% 为$abab$构造对应的分析树。
+% \subparagraph{(d)}
+% 这个文法产生的语言是什么？
 \\
 
 \paragraph{解}
 \subparagraph{(a)}
-\subparagraph{(b)}
-\subparagraph{(c)}
-\subparagraph{(d)}
+句子$abab$的两个不同的最左推导如下：
+
+\begin{align*}
+    S &\Rightarrow_{\text{lm}} aSbS \Rightarrow_{\text{lm}} abS \Rightarrow_{\text{lm}} abaSbS \Rightarrow_{\text{lm}} ababS \Rightarrow_{\text{lm}} abab \\
+    S &\Rightarrow_{\text{lm}} aSbS \Rightarrow_{\text{lm}} abSaSbS \Rightarrow_{\text{lm}} abaSbS \Rightarrow_{\text{lm}} ababS \Rightarrow_{\text{lm}} abab
+\end{align*}
+
+因此这个文法是二义的。
+% \subparagraph{(b)}
+% 句子$abab$的一个最右推导为
+% \begin{align*}
+%     S \Rightarrow_{\text{lm}} aSbS \Rightarrow_{\text{lm}} aSbaSbS \Rightarrow_{\text{lm}} aSbaSb \Rightarrow_{\text{lm}} aSbab \Rightarrow_{\text{lm}} abab
+% \end{align*}
+% \subparagraph{(c)}
+% 句子$abab$的一个分析树如图\ref{fig:3}所示。
+% \begin{figure}
+%     \centering
+%     \begin{tikzpicture}[
+%         level/.style={sibling distance=20mm},
+%         scale = 1.0, 
+%         transform shape]
+%         \node (a) {$S$}
+%             child {node (b1) {$a$}}
+%             child {node (b2) {$S$}
+%                 child {node (c1) {$\varepsilon$}}
+%             }
+%             child {node (b3) {$b$}}
+%             child {node (b4) {$S$}
+%                 child {node (c2) {$a$}}
+%                 child {node (c3) {$S$}
+%                     child {node (d1) {$\varepsilon$}}
+%                 }
+%                 child {node (c4) {$b$}}
+%                 child {node (c5) {$S$}
+%                     child {node (d2) {$\varepsilon$}}
+%                 }
+%             }
+%     \end{tikzpicture}
+%     \caption{句子$abab$的一个分析树}
+%     \label{fig:3}
+% \end{figure}
+% \subparagraph{(d)}
+% 这个文法产生的语言是“$a$和$b$个数相等的串的集合”
 \\
 
 \section{Exercise 3}
-阅读ANSI C 语法中从primary\_expression到 expression的产生式，了解C语言表达式的语法定义，并设计如下表格给出其中C算符的优先级和结合性。
+阅读ANSI C语法中从primary\_expression到expression的产生式，了解C语言表达式的语法定义，并设计如下表格给出其中C算符的优先级和结合性。
+\FloatBarrier
+
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{cll}
+        \hline
+        \textbf{优先级} & \multicolumn{1}{c}{\textbf{算符（组）}} & \multicolumn{1}{c}{\textbf{结合性}} \\ \hline
+1 &  & 
+    \end{tabular}
+\end{figure}
+
+\FloatBarrier
 \\
 \paragraph{解}
+如表\ref{table:1}所示。
+
+\begin{longtable}{|c|c|c|}
+        
+    \caption{C语言算符的优先级与结合性（部分）}
+    \label{table:1} \\
+    
+    \hline
+    \textbf{优先级} & \textbf{算符（组）} & \textbf{结合性} \\ 
+    \hline 
+    \endfirsthead
+    
+    \multicolumn{3}{r}{{\kaishu 续表}} \\ 
+    \hline
+    \textbf{优先级} & \textbf{算符（组）} & \textbf{结合性} \\ 
+    \hline 
+    \endhead
+    
+    \hline
+    \endfoot
+    
+    \hline
+    \endlastfoot
+    
+    {\multirow{4}{*}{1}} 
+     & \texttt{{[}{]}} & \multirow{4}{*}{左结合} \\ \cline{2-2}
+     & \texttt{()} &  \\ \cline{2-2}
+     & \texttt{.} &  \\ \cline{2-2}
+     & \texttt{->} &  \\ \hline
+    \multirow{9}{*}{2}
+     & \texttt{-}（负号） & \multirow{9}{*}{右结合} \\ \cline{2-2}
+     & (\texttt{type name}) &  \\ \cline{2-2}
+     & \texttt{++} &  \\ \cline{2-2}
+     & \texttt{--} &  \\ \cline{2-2}
+     & \texttt{*}（取值） &  \\ \cline{2-2}
+     & \texttt{\&}（取地址） &  \\ \cline{2-2}
+     & \texttt{!} &  \\ \cline{2-2}
+     & \texttt{$\sim$} &  \\ \cline{2-2}
+     & \texttt{sizeof} &  \\ \hline
+    \multirow{3}{*}{3} 
+     & \texttt{/} & \multirow{18}{*}{左结合} \\ \cline{2-2}
+     & \texttt{*} &  \\ \cline{2-2}
+     & \texttt{\%} &  \\ \cline{1-2}
+    \multirow{2}{*}{4}
+     & \texttt{+} &  \\ \cline{2-2}
+     & \texttt{-} &  \\ \cline{1-2}
+    \multirow{2}{*}{5} 
+     & \texttt{{<}{<}} &  \\ \cline{2-2}
+     & \texttt{{>}{>}} &  \\ \cline{1-2}
+    \multirow{4}{*}{6} 
+     & \texttt{<} &  \\ \cline{2-2}
+     & \texttt{<=} &  \\ \cline{2-2}
+     & \texttt{>} &  \\ \cline{2-2}
+     & \texttt{>=} &  \\ \cline{1-2}
+    \multirow{2}{*}{7} 
+     & \texttt{==} &  \\ \cline{2-2}
+     & \texttt{!=} &  \\ \cline{1-2}
+    8 & \texttt{\&} &  \\ \cline{1-2}
+    9 & \texttt{!} &  \\ \cline{1-2}
+    10 & \texttt{|} &  \\ \cline{1-2}
+    11 & \texttt{\&\&} &  \\ \cline{1-2}
+    12 & \texttt{||} &  \\ \hline
+    13 & \texttt{?:} & \multirow{4}{*}{右结合} \\ \cline{1-2}
+    \multirow{3}{*}{14} 
+     & \texttt{=} &  \\ \cline{2-2}
+     & \texttt{*=} &  \\ \cline{2-2}
+     & \texttt{/=} &  \\ \cline{2-2}
+    \multirow{9}{*}{14}
+     & \texttt{\%=} & \multirow{9}{*}{右结合} \\ \cline{2-2}
+     & \texttt{+=} &  \\ \cline{2-2}
+     & \texttt{-=} &  \\ \cline{2-2}
+     & \texttt{{<}<=} & \\ \cline{2-2}
+     & \texttt{{>}>=} &\\ \cline{2-2}
+     & \texttt{=} &  \\ \cline{2-2}
+     & \texttt{\&=} &  \\ \cline{2-2}
+     & \texttt{!=} &  \\ \cline{2-2}
+     & \texttt{|=} &  \\ \hline
+    15 & \texttt{,} & 左结合 \\ \hline
+\end{longtable}
+
 \\
 
 \section{Exercise 4}
-阅读ANSI C 语法中declaration相关产生式，给出如下声明的分析树：
+阅读ANSI C语法中declaration相关产生式，给出如下声明的分析树：
 \begin{lstlisting}[language = C++, 
          keywordstyle=\bfseries\color{blue!70},
          commentstyle=\color{red!40!green!60!blue},
@@ -185,6 +368,116 @@
   void (*(*paa)[10])(int a);
 \end{lstlisting}
 \\
+
 \paragraph{解}
+声明的分析树如图所示
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[
+        scale = 1, 
+        transform shape]
+        \node {declaration}
+            child {node {declaration\_specifiers}
+                child{node {type\_specifier}
+                    child {node {VOID}
+                        child {node {$\texttt{void}$}}
+                    }        
+                }
+            }
+            % child{node {init\_declarator\_list}
+                % child{node {init\_declarator}
+                %     child{node {declarator}
+                %         child{node {direct\_declarator}
+                %             child{node {direct\_declarator}
+                %                 child{node {(}}
+                %                 child{node {declarator}
+                %                     child{node {pointer}}
+                %                     child{node {direct\_declarator}
+                %                         child{node {direct\_declarator}
+                %                             child{node {(}}
+                %                             child{node {declarator}
+                %                                 child{node {pointer}}
+                %                                 child{node {direct\_declarator}
+                %                                     child{node {IDENTIFIER}
+                %                                         child{node {\texttt{paa}}}
+                %                                     }
+                %                                 }
+                %                             }
+                %                             child{node {)}}
+                %                         }
+                %                         child{node {[}}
+                %                         child{node {constant\_expression}
+                %                             child{node {conditional\_expression}
+                %                                 child{node {logical\_or\_expression}
+                %                                     child{node {logical\_and\_expression}
+                %                                         child{node {inclusive\_or\_expression}
+                %                                             child{node {exclusive\_or\_expression}
+                %                                                 child{node {and\_expression}
+                %                                                     child{node {equality\_expression}
+                %                                                         child{node {relational\_expression}
+                %                                                             child{node {shift\_expression}
+                                                                            
+                %                         child{node {additive\_expression}
+                %                             child{node {multiplicative\_expression}
+                %                                 child{node {cast\_expression}
+                %                                     child{node {unary\_expression}
+                %                                         child{node {postfix\_expression}
+                %                                             child{node {primary\_expression}
+                %                                                 child{node {CONSTANT}
+                %                                                     child{node {\texttt{10}}}
+                %                                                 }
+                %                                             }
+                %                                         }
+                %                                     }
+                %                                 }
+                %                             }
+                %                         }                                      }
+                %                                                         }
+                %                                                     }
+                %                                                 }
+                %                                             }
+                %                                         }
+                %                                     }
+                %                                 }
+                %                             }
+                %                         }
+                %                         child{node {]}}
+                %                     }
+                %                 }
+                %                 child{node {)}}
+                %             }
+                %             child{node {(}}
+                %             child{node {parameter\_type\_list}
+                %                 child{node {parameter\_list}
+                %                     child{node {parameter\_declaration}
+                %                         child{node {declaration\_specifiers}
+                %                             child{node {type\_specifier}
+                %                                 child{node {INT}
+                %                                     child{node {\texttt{int}}}
+                %                                 }
+                %                             }
+                %                         }
+                %                         child{node {declarator}
+                %                             child{node {direct\_declarator}
+                %                                 child{node {IDENTIFIER}
+                %                                     child{node {\texttt{a}}}
+                %                                 }
+                %                             }
+                %                         }
+                %                     }
+                %                 }
+                %             }
+                %             child{node {)}}
+                %         }
+                %     }
+                % }
+            % }
+            child{node {;}}
+    \end{tikzpicture}
+    \caption{句子$(a,\,((a,\,a),\,(a,\,a)))$的分析树}
+    \label{fig:3}
+\end{figure}
+
 \\
 \end{document}
