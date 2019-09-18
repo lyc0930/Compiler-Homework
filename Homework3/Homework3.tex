@@ -370,113 +370,124 @@
 \\
 
 \paragraph{解}
-声明的分析树如图所示
+声明的分析树如图\ref{fig:4}所示
 
 \begin{figure}
     \centering
     \begin{tikzpicture}[
-        scale = 1, 
+        level 1/.style ={sibling distance = 4cm},
+        level 5/.style ={sibling distance = 5cm, scale = 0.9},
+        level 6/.style ={sibling distance = 2cm},
+        level 7/.style ={sibling distance = 5cm},
+        level 8/.style ={sibling distance = 2.5cm, scale = 0.8},
+        level 9/.style ={sibling distance = 1cm},
+        level 10/.style ={sibling distance = 2.2cm},
+        scale = 0.6, 
         transform shape]
         \node {declaration}
             child {node {declaration\_specifiers}
                 child{node {type\_specifier}
                     child {node {VOID}
-                        child {node {$\texttt{void}$}}
+                        child {node [scale = 2.0] {\texttt{void}}}
                     }        
                 }
             }
-            % child{node {init\_declarator\_list}
-                % child{node {init\_declarator}
-                %     child{node {declarator}
-                %         child{node {direct\_declarator}
-                %             child{node {direct\_declarator}
-                %                 child{node {(}}
-                %                 child{node {declarator}
-                %                     child{node {pointer}}
-                %                     child{node {direct\_declarator}
-                %                         child{node {direct\_declarator}
-                %                             child{node {(}}
-                %                             child{node {declarator}
-                %                                 child{node {pointer}}
-                %                                 child{node {direct\_declarator}
-                %                                     child{node {IDENTIFIER}
-                %                                         child{node {\texttt{paa}}}
-                %                                     }
-                %                                 }
-                %                             }
-                %                             child{node {)}}
-                %                         }
-                %                         child{node {[}}
-                %                         child{node {constant\_expression}
-                %                             child{node {conditional\_expression}
-                %                                 child{node {logical\_or\_expression}
-                %                                     child{node {logical\_and\_expression}
-                %                                         child{node {inclusive\_or\_expression}
-                %                                             child{node {exclusive\_or\_expression}
-                %                                                 child{node {and\_expression}
-                %                                                     child{node {equality\_expression}
-                %                                                         child{node {relational\_expression}
-                %                                                             child{node {shift\_expression}
-                                                                            
-                %                         child{node {additive\_expression}
-                %                             child{node {multiplicative\_expression}
-                %                                 child{node {cast\_expression}
-                %                                     child{node {unary\_expression}
-                %                                         child{node {postfix\_expression}
-                %                                             child{node {primary\_expression}
-                %                                                 child{node {CONSTANT}
-                %                                                     child{node {\texttt{10}}}
-                %                                                 }
-                %                                             }
-                %                                         }
-                %                                     }
-                %                                 }
-                %                             }
-                %                         }                                      }
-                %                                                         }
-                %                                                     }
-                %                                                 }
-                %                                             }
-                %                                         }
-                %                                     }
-                %                                 }
-                %                             }
-                %                         }
-                %                         child{node {]}}
-                %                     }
-                %                 }
-                %                 child{node {)}}
-                %             }
-                %             child{node {(}}
-                %             child{node {parameter\_type\_list}
-                %                 child{node {parameter\_list}
-                %                     child{node {parameter\_declaration}
-                %                         child{node {declaration\_specifiers}
-                %                             child{node {type\_specifier}
-                %                                 child{node {INT}
-                %                                     child{node {\texttt{int}}}
-                %                                 }
-                %                             }
-                %                         }
-                %                         child{node {declarator}
-                %                             child{node {direct\_declarator}
-                %                                 child{node {IDENTIFIER}
-                %                                     child{node {\texttt{a}}}
-                %                                 }
-                %                             }
-                %                         }
-                %                     }
-                %                 }
-                %             }
-                %             child{node {)}}
-                %         }
-                %     }
-                % }
-            % }
-            child{node {;}}
+            child{node {init\_declarator\_list}
+                child{node {init\_declarator}
+                    child{node {declarator}
+                        child{node {direct\_declarator}
+                            child{node {direct\_declarator}
+                                child{node [scale = 2.5] {\texttt{(}}}
+                                child{node {declarator}
+                                    child{node {pointer}
+                                        child{node [scale = 2.5] {\texttt{*}}}
+                                    }
+                                    child{node {direct\_declarator}
+                                        child{node {direct\_declarator}
+                                            child{node [scale = 2.5] {\texttt{(}}}
+                                            child{node {declarator}
+                                                child{node {pointer}
+                                                    child{node  [scale = 2.5]  {\texttt{*}}}
+                                                }
+                                                child{node {direct\_declarator}
+                                                    child{node {IDENTIFIER}
+                                                        child{node [scale = 2.5] {\texttt{paa}}}
+                                                    }
+                                                }
+                                            }
+                                            child{node [scale = 2.5] {\texttt{)}}}
+                                        }
+                                        child{node [scale = 2.5] {\texttt{[}}}
+                                        child{node {constant\_expression}
+                                            child{node {conditional\_expression}
+                                                child{node {logical\_or\_expression}
+                                                    child{node {logical\_and\_expression}
+                                                        child{node {inclusive\_or\_expression}
+                                                            child{node {exclusive\_or\_expression}
+                                                                child{node {and\_expression}
+                                                                    child{node {equality\_expression}
+                                                                        child{node {relational\_expression}
+                                                                            child{node {shift\_expression}
+                                                                                child{node {additive\_expression}
+                                                                                    child{node {multiplicative\_expression}
+                                                                                        child{node {cast\_expression}
+                                                                                            child{node {unary\_expression}
+                                                                                                child{node {postfix\_expression}
+                                                                                                    child{node {primary\_expression}
+                                                                                                        child{node {CONSTANT}
+                                                                                                            child{node [scale = 2.5] {\texttt{10}}}
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        child{node [scale = 2.5] {\texttt{]}}}
+                                    }
+                                }
+                                child{node [scale = 2.5] {\texttt{)}}}
+                            }
+                            child{node [scale = 2.5] {\texttt{(}}}
+                            child{node {parameter\_type\_list}
+                                child{node {parameter\_list}
+                                    child {node {parameter\_declaration}
+                                        child [sibling distance =3.5cm] {node {declaration\_specifiers}
+                                            child{node {type\_specifier}
+                                                child{node {INT}
+                                                    child{node [scale = 2.5] {\texttt{int}}}
+                                                }
+                                            }
+                                        }
+                                        child [sibling distance =3.5cm] {node {declarator}
+                                            child{node {direct\_declarator}
+                                                child{node {IDENTIFIER}
+                                                    child{node [scale = 2.5] {\texttt{a}}}
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            child{node [scale = 2.5] {\texttt{)}}}
+                        }
+                    }
+                }
+            }
+            child{node  [scale = 2.5] {\texttt{;}}}
     \end{tikzpicture}
-    \caption{句子$(a,\,((a,\,a),\,(a,\,a)))$的分析树}
-    \label{fig:3}
+    \caption{声明\texttt{void (*(*paa)[10])(int a);}的分析树}
+    \label{fig:4}
 \end{figure}
 
 \\
