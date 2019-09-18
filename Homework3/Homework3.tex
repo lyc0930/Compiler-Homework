@@ -9,7 +9,7 @@
 \usepackage{amsthm}
 \usepackage{listings}
 \usepackage{xcolor}
-
+\usepackage{tikz}
 
 \title{Homework 3}
 \author{PB17000297 罗晏宸}
@@ -36,6 +36,111 @@
 
 \paragraph{解}
 \subparagraph{(a)}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[
+        level/.style={sibling distance=20mm},
+        scale = 1.0, 
+        transform shape]
+        \node (a) {$S$}
+            child {node (b1) {$($}}
+            child {node (b2) {$L$}
+                child {node (c1) {$L$}
+                    child {node (d1) {$S$}
+                        child {node (e1) {$a$}}
+                    }
+                }
+                child {node (c2) {$,$}}
+                child {node (c3) {$S$}
+                    child {node (d2) {$($}}
+                    child {node (d3) {$L$}
+                        child {node (e2) {$L$}
+                            child {node (f1) {$S$}
+                                child {node (g1) {$a$}}
+                            }
+                        }
+                        child {node (e3) {$,$}}
+                        child {node (e4) {$S$}
+                            child {node (f2) {$a$}}
+                        }
+                    }
+                    child {node (d4) {$)$}}
+                }
+            }
+            child {node (b3) {$)$}}
+    \end{tikzpicture}
+    \caption{句子$(a,\,(a,\,a))$的分析树}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[
+        level 1/.style={sibling distance=25mm},
+        level 2/.style={sibling distance=25mm},
+        level 3/.style={sibling distance=25mm},
+        level 4/.style={sibling distance=25mm},
+        level 5/.style={sibling distance=20mm},
+        level 6/.style={sibling distance=20mm},
+        level 7/.style={sibling distance=20mm},
+        level 8/.style={sibling distance=20mm},
+        level 9/.style={sibling distance=20mm},
+        scale = 1.0, 
+        transform shape]
+        \node (a) {$S$}
+            child {node (b1) {$($}}
+            child {node (b2) {$L$}
+                child {node (c1) {$L$}
+                    child {node (d1) {$S$}
+                        child {node (e1) {$a$}}
+                    }
+                }
+                child {node (c2) {$,$}}
+                child {node (c3) {$S$}
+                    child {node (d2) {$($}}
+                    child {node (d3) {$L$}
+                        child {node (e2) {$L$}
+                            child {node (f1) {$S$}
+                                child {node (g1) {$($}}
+                                child {node (g2) {$L$}
+                                    child {node (h1) {$L$}
+                                        child {node (i1) {$S$}
+                                            child {node (j1) {$a$}}
+                                        }
+                                    }
+                                    child {node (h2) {$,$}}
+                                    child {node (h3) {$S$}
+                                        child {node (i2) {$a$}}
+                                    }
+                                }
+                                child {node (g3) {$)$}}
+                            }
+                        }
+                        child {node (e3) {$,$}}
+                        child {node (e4) {$S$}
+                             child {node (f2) {$($}}
+                                child {node (g4) {$L$}
+                                    child {node (h4) {$L$}
+                                        child {node (i3) {$S$}
+                                            child {node (j2) {$a$}}
+                                        }
+                                    }
+                                    child {node (h5) {$,$}}
+                                    child {node (h6) {$S$}
+                                        child {node (i4) {$a$}}
+                                    }
+                                }
+                                child {node (g5) {$)$}}
+                        }
+                    }
+                    child {node (d4) {$)$}}
+                }
+            }
+            child {node (b3) {$)$}}
+    \end{tikzpicture}
+    \caption{句子$(a,\,((a,\,a),\,(a,\,a)))$的分析树}
+\end{figure}
+
 \subparagraph{(b)}
 \subparagraph{(c)}
 \subparagraph{(d)}
