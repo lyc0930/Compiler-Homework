@@ -380,15 +380,16 @@
         level 6/.style ={sibling distance = 2cm},
         level 7/.style ={sibling distance = 5cm},
         level 8/.style ={sibling distance = 2.5cm, scale = 0.8},
-        level 9/.style ={sibling distance = 1cm},
+        level 9/.style ={sibling distance = 1.5cm},
         level 10/.style ={sibling distance = 2.2cm},
-        scale = 0.6, 
+        level distance = 1cm,
+        scale = 0.9, 
         transform shape]
         \node {declaration}
             child {node {declaration\_specifiers}
                 child{node {type\_specifier}
                     child {node {VOID}
-                        child {node [scale = 2.0] {\texttt{void}}}
+                        child {node [scale = 1.78] {\texttt{void}}}
                     }        
                 }
             }
@@ -400,14 +401,14 @@
                                 child{node [scale = 2.5] {\texttt{(}}}
                                 child{node {declarator}
                                     child{node {pointer}
-                                        child{node [scale = 2.5] {\texttt{*}}}
+                                        child{node [scale = 3.0] {\texttt{*}}}
                                     }
                                     child{node {direct\_declarator}
                                         child{node {direct\_declarator}
                                             child{node [scale = 2.5] {\texttt{(}}}
                                             child{node {declarator}
                                                 child{node {pointer}
-                                                    child{node  [scale = 2.5]  {\texttt{*}}}
+                                                    child{node  [scale = 3.0]  {\texttt{*}}}
                                                 }
                                                 child{node {direct\_declarator}
                                                     child{node {IDENTIFIER}
