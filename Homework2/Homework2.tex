@@ -9,11 +9,18 @@
 \usepackage{amsthm}
 \usepackage{listings}
 \usepackage{xcolor}
-
+\usepackage{graphicx}
+\usepackage{hyperref}
 
 \title{Homework 2}
 \author{PB17000297 罗晏宸}
 \date{September 9 2019}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor = black,
+    urlcolor=blue!30!green,
+}
 
 \begin{document}
 \maketitle
@@ -34,8 +41,8 @@
 \begin{figure}
 \centering
 \includegraphics[scale=1]{DFA1.png}
-\caption{接受0和1的数量均为偶数串的DFA}
-\label{fig:1}
+\caption{\label{fig:1}接受0和1的数量均为偶数串的DFA}
+
 \end{figure}
 其中：\par
 状态0表示串中0和1的个数都为偶数；\par
@@ -54,8 +61,8 @@
 \begin{figure}
 \centering
 \includegraphics[scale=0.6]{DFA2.png}
-\caption{接受倒数第3个字符是a的串的DFA}
-\label{fig:2}
+\caption{\label{fig:2}接受倒数第3个字符是a的串的DFA}
+
 \end{figure}
 下面进行简化。
 \subparagraph{1}
@@ -82,8 +89,8 @@
 \begin{figure}
 \centering
 \includegraphics[scale=0.4]{DFA3.png}
-\caption{接受能被5整除的二进制数的DFA}
-\label{fig:3}
+\caption{\label{fig:3}接受能被5整除的二进制数的DFA}
+
 \end{figure}
 为了给出使得$L(R) = L(M)$的正规式$R$，向DFA $M$中引入新的开始状态$X$和新的接受状态$Y$，再逐个删除DFA中的原有状态，得到
 \begin{align*}

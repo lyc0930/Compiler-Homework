@@ -13,10 +13,17 @@
 \usepackage{tabularx}
 \usepackage{multirow}
 \usepackage{longtable}
+\usepackage{hyperref}
 
 \title{Homework 3}
 \author{PB17000297 罗晏宸}
 \date{September 16 2019}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor = black,
+    urlcolor=blue!30!green,
+}
 
 \begin{document}
 \maketitle
@@ -27,7 +34,7 @@
     & S \rightarrow (L)\ |\ a \\
     & L \rightarrow L, \, S\ |\ S
 \end{align*}
-\subparagraph{(a)} 
+\subparagraph{(a)}
 建立句子$(a,\,(a,\,a))$和$(a,\,((a,\,a),\,(a,\,a)))$的分析树。
 \subparagraph{(b)}
 为(a)的两个句子构造最左推导。
@@ -44,7 +51,7 @@
     \centering
     \begin{tikzpicture}[
         level/.style={sibling distance=20mm},
-        scale = 1.0, 
+        scale = 1.0,
         transform shape]
         \node (a) {$S$}
             child {node (b1) {$($}}
@@ -71,7 +78,7 @@
                     child {node (d4) {$)$}}
                 }
             }
-            child {node (b3) {$)$}}
+            child {node (b3) {$)$}};
     \end{tikzpicture}
     \caption{句子$(a,\,(a,\,a))$的分析树}
     \label{fig:1}
@@ -89,7 +96,7 @@
         level 7/.style={sibling distance=20mm},
         level 8/.style={sibling distance=20mm},
         level 9/.style={sibling distance=20mm},
-        scale = 1.0, 
+        scale = 1.0,
         transform shape]
         \node (a) {$S$}
             child {node (b1) {$($}}
@@ -140,7 +147,7 @@
                     child {node (d4) {$)$}}
                 }
             }
-            child {node (b3) {$)$}}
+            child {node (b3) {$)$}};
     \end{tikzpicture}
     \caption{句子$(a,\,((a,\,a),\,(a,\,a)))$的分析树}
     \label{fig:2}
@@ -150,7 +157,7 @@
 由分析树，句子$(a,\,(a,\,a))$的最左推导为
 
 \begin{align*}
-    S &\Rightarrow_{\text{lm}} (L) \Rightarrow_{\text{lm}} (L,\,S) \Rightarrow_{\text{lm}} (S,\,S) \Rightarrow_{\text{lm}} (a,\,S) \Rightarrow_{\text{lm}} (a,\,(L)) \\ 
+    S &\Rightarrow_{\text{lm}} (L) \Rightarrow_{\text{lm}} (L,\,S) \Rightarrow_{\text{lm}} (S,\,S) \Rightarrow_{\text{lm}} (a,\,S) \Rightarrow_{\text{lm}} (a,\,(L)) \\
     &\Rightarrow_{\text{lm}} (a,\,(L,\,S))
     \Rightarrow_{\text{lm}} (a,\,(S,\,S)) \Rightarrow_{\text{lm}} (a,\,(a,\,S)) \\
     &\Rightarrow_{\text{lm}} (a,\,(a,\,a))
@@ -172,7 +179,7 @@
 由分析树，句子$(a,\,(a,\,a))$的最右推导为
 
 \begin{align*}
-    S &\Rightarrow_{\text{lm}} (L) \Rightarrow_{\text{lm}} (L,\,S) \Rightarrow_{\text{lm}} (L,\,(L)) \Rightarrow_{\text{lm}} (L,\,(L,\,S)) \Rightarrow_{\text{lm}} (L,\,(L,\,a)) \\ 
+    S &\Rightarrow_{\text{lm}} (L) \Rightarrow_{\text{lm}} (L,\,S) \Rightarrow_{\text{lm}} (L,\,(L)) \Rightarrow_{\text{lm}} (L,\,(L,\,S)) \Rightarrow_{\text{lm}} (L,\,(L,\,a)) \\
     &\Rightarrow_{\text{lm}} (L,\,(S,\,a))
     \Rightarrow_{\text{lm}} (L,\,(a,\,a)) \Rightarrow_{\text{lm}} (S,\,(a,\,a)) \\
     &\Rightarrow_{\text{lm}} (a,\,(a,\,a))
@@ -233,7 +240,7 @@
 %     \centering
 %     \begin{tikzpicture}[
 %         level/.style={sibling distance=20mm},
-%         scale = 1.0, 
+%         scale = 1.0,
 %         transform shape]
 %         \node (a) {$S$}
 %             child {node (b1) {$a$}}
@@ -268,38 +275,37 @@
     \begin{tabular}{cll}
         \hline
         \textbf{优先级} & \multicolumn{1}{c}{\textbf{算符（组）}} & \multicolumn{1}{c}{\textbf{结合性}} \\ \hline
-1 &  & 
+1 &  &
     \end{tabular}
 \end{figure}
 
 \FloatBarrier
-\\
 \paragraph{解}
 如表\ref{table:1}所示。
 
 \begin{longtable}{|c|c|c|}
-        
+
     \caption{C语言算符的优先级与结合性（部分）}
     \label{table:1} \\
-    
+
     \hline
-    \textbf{优先级} & \textbf{算符（组）} & \textbf{结合性} \\ 
-    \hline 
+    \textbf{优先级} & \textbf{算符（组）} & \textbf{结合性} \\
+    \hline
     \endfirsthead
-    
-    \multicolumn{3}{r}{{\kaishu 续表}} \\ 
+
+    \multicolumn{3}{r}{{\kaishu 续表}} \\
     \hline
-    \textbf{优先级} & \textbf{算符（组）} & \textbf{结合性} \\ 
-    \hline 
+    \textbf{优先级} & \textbf{算符（组）} & \textbf{结合性} \\
+    \hline
     \endhead
-    
+
     \hline
     \endfoot
-    
+
     \hline
     \endlastfoot
-    
-    {\multirow{4}{*}{1}} 
+
+    {\multirow{4}{*}{1}}
      & \texttt{{[}{]}} & \multirow{4}{*}{左结合} \\ \cline{2-2}
      & \texttt{()} &  \\ \cline{2-2}
      & \texttt{.} &  \\ \cline{2-2}
@@ -314,22 +320,22 @@
      & \texttt{!} &  \\ \cline{2-2}
      & \texttt{$\sim$} &  \\ \cline{2-2}
      & \texttt{sizeof} &  \\ \hline
-    \multirow{3}{*}{3} 
+    \multirow{3}{*}{3}
      & \texttt{/} & \multirow{18}{*}{左结合} \\ \cline{2-2}
      & \texttt{*} &  \\ \cline{2-2}
      & \texttt{\%} &  \\ \cline{1-2}
     \multirow{2}{*}{4}
      & \texttt{+} &  \\ \cline{2-2}
      & \texttt{-} &  \\ \cline{1-2}
-    \multirow{2}{*}{5} 
+    \multirow{2}{*}{5}
      & \texttt{{<}{<}} &  \\ \cline{2-2}
      & \texttt{{>}{>}} &  \\ \cline{1-2}
-    \multirow{4}{*}{6} 
+    \multirow{4}{*}{6}
      & \texttt{<} &  \\ \cline{2-2}
      & \texttt{<=} &  \\ \cline{2-2}
      & \texttt{>} &  \\ \cline{2-2}
      & \texttt{>=} &  \\ \cline{1-2}
-    \multirow{2}{*}{7} 
+    \multirow{2}{*}{7}
      & \texttt{==} &  \\ \cline{2-2}
      & \texttt{!=} &  \\ \cline{1-2}
     8 & \texttt{\&} &  \\ \cline{1-2}
@@ -338,7 +344,7 @@
     11 & \texttt{\&\&} &  \\ \cline{1-2}
     12 & \texttt{||} &  \\ \hline
     13 & \texttt{?:} & \multirow{4}{*}{右结合} \\ \cline{1-2}
-    \multirow{3}{*}{14} 
+    \multirow{3}{*}{14}
      & \texttt{=} &  \\ \cline{2-2}
      & \texttt{*=} &  \\ \cline{2-2}
      & \texttt{/=} &  \\ \cline{2-2}
@@ -355,11 +361,10 @@
     15 & \texttt{,} & 左结合 \\ \hline
 \end{longtable}
 
-\\
 
 \section{Exercise 4}
 阅读ANSI C语法中declaration相关产生式，给出如下声明的分析树：
-\begin{lstlisting}[language = C++, 
+\begin{lstlisting}[language = C++,
          keywordstyle=\bfseries\color{blue!70},
          commentstyle=\color{red!40!green!60!blue},
          frame=shadowbox,
@@ -367,7 +372,7 @@
          basicstyle=\ttfamily]
   void (*(*paa)[10])(int a);
 \end{lstlisting}
-\\
+
 
 \paragraph{解}
 声明的分析树如图\ref{fig:4}所示
@@ -383,14 +388,14 @@
         level 9/.style ={sibling distance = 1.5cm},
         level 10/.style ={sibling distance = 2.2cm},
         level distance = 1cm,
-        scale = 0.9, 
+        scale = 0.9,
         transform shape]
         \node {declaration}
             child {node {declaration\_specifiers}
                 child{node {type\_specifier}
                     child {node {VOID}
                         child {node [scale = 1.78] {\texttt{void}}}
-                    }        
+                    }
                 }
             }
             child{node {init\_declarator\_list}
@@ -485,11 +490,9 @@
                     }
                 }
             }
-            child{node  [scale = 2.5] {\texttt{;}}}
+            child{node  [scale = 2.5] {\texttt{;}}};
     \end{tikzpicture}
     \caption{声明\texttt{void (*(*paa)[10])(int a);}的分析树}
     \label{fig:4}
 \end{figure}
-
-\\
 \end{document}
