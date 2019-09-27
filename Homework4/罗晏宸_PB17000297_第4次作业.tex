@@ -122,6 +122,7 @@
             match(lookahead);
         else
             error();
+        return;
     }
 
     void `$T$`()
@@ -176,6 +177,7 @@
             match(`\textbf{false}`);
         else
             error();
+        return;
     }
 \end{lstlisting}
 
