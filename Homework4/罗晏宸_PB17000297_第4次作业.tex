@@ -1,0 +1,343 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{hyperref}
+
+\title{Homework 4}
+\author{PB17000297 罗晏宸}
+\date{September 26 2019}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor = black,
+    urlcolor=blue!30!green,
+}
+
+\begin{document}
+\maketitle
+
+\section{Exercise 3.9}
+为习题3.3的文法构造预测分析器（递归下降分析程序）。
+\begin{equation*}
+    S \rightarrow S\ \textbf{and}\ S\ |\ S\ \textbf{or}\ S\ |\ \textbf{not}\ S\ |\ \textbf{true}\ |\ \textbf{false}\ |\ \texttt{(}S\texttt{)}
+\end{equation*}
+\\
+
+\paragraph{解}
+该文法是二义的，等价的非二义文法为
+\begin{align*}
+    E &\rightarrow E\ \textbf{or}\ T\ |\ T \\
+    T &\rightarrow T\ \textbf{and}\ F\ |\ F \\
+    F &\rightarrow \textbf{not}\ F\ |\ \texttt{(}E\texttt{)}\ |\ \textbf{true}\ |\ \textbf{false}
+\end{align*}
+消除其中的左递归，得到
+\begin{align*}
+    E &\rightarrow TE' \\
+    E' &\rightarrow \textbf{or}\ TE'\ |\ \varepsilon \\
+    T &\rightarrow FT' \\
+    T' &\rightarrow \textbf{and}\ FT'\ |\ \varepsilon \\
+    F &\rightarrow \textbf{not}\ F\ |\ \texttt{(}E\texttt{)}\ |\ \textbf{true}\ |\ \textbf{false}
+\end{align*}
+列出文法中各非终结符的开始符号和后继符号集合
+\begin{align*}
+    &FIRST\texttt{(}E\texttt{)} = \big\{\ \textbf{not},\,\texttt{(},\,\textbf{true},\,\textbf{false}\ \big\} &&FOLLOW\texttt{(}E\texttt{)} = \big\{\ \texttt{)},\,\texttt{\$} \ \big\} \\
+    &FIRST(E') = \big\{\ \textbf{or},\,\varepsilon \ \big\} &&FOLLOW(E') = \big\{\ \texttt{)},\,\texttt{\$}\ \big\} \\
+    &FIRST(T) = \big\{\ \textbf{not},\,\texttt{(},\,\textbf{true},\,\textbf{false}\ \big\} &&FOLLOW(T) = \big\{\ \textbf{or},\,\texttt{)},\,\texttt{\$}\ \big\} \\
+    &FIRST(T') = \big\{\ \textbf{and},\,\varepsilon \ \big\} &&FOLLOW(T') = \big\{\ \textbf{or},\,\texttt{)},\,\texttt{\$}\ \big\} \\
+    &FIRST(F) = \big\{\ \textbf{not},\,\texttt{(},\,\textbf{true},\,\textbf{false} \ \big\} &&FOLLOW(F) = \big\{\ \textbf{and},\,\textbf{or},\,\texttt{)},\,\texttt{\$} \ \big\}
+\end{align*}
+对于产生式$E' \rightarrow \textbf{or}\ TE'\ |\ \varepsilon$
+\begin{align*}
+    &FIRST(\textbf{or}\ TE') \ \cap \  FIRST(\varepsilon) \\ =& \big\{\ \textbf{or}\ \big\} \ \cap \  \big\{\ \varepsilon\ \big\} \\
+    =& \emptyset \\
+    \\
+    &FIRST(\textbf{or}\ TE') \ \cap \  FOLLOW(E') \\ =& \big\{\ \textbf{or}\ \big\} \ \cap \  \big\{\ \texttt{)},\,\texttt{\$}\ \big\} \\
+    =& \emptyset \\
+\end{align*}
+对于产生式$T' \rightarrow \textbf{and}\ FT'\ |\ \varepsilon$
+\begin{align*}
+    &FIRST(\textbf{and}\ FT') \ \cap \  FIRST(\varepsilon) \\ =& \big\{\ \textbf{and}\ \big\} \ \cap \  \big\{\ \varepsilon\ \big\} \\
+    =& \emptyset \\
+    \\
+    &FIRST(\textbf{and}\ FT') \ \cap \  FOLLOW(T') \\ =& \big\{\ \textbf{and}\ \big\} \ \cap \  \big\{\ \textbf{or},\,\texttt{)},\,\texttt{\$}\ \big\} \\
+    =& \emptyset \\
+\end{align*}
+对于产生式$F \rightarrow \textbf{not}\ F\ |\ \texttt{(}E\texttt{)}\ |\ \textbf{true}\ |\ \textbf{false}$
+\begin{align*}
+    &FIRST(\textbf{not}\ F) \ \cap \  FIRST(\texttt{(}E\texttt{)}) \ \cap \  FIRST(\textbf{true}) \ \cap \  FIRST(\textbf{false}) \\ = &\big\{\ \textbf{not}\ \big\} \ \cap \  \big\{\ \texttt{)}\ \big\} \ \cap \  \textbf{true} \ \cap \  \textbf{false}\\
+    =& \emptyset
+\end{align*}
+因此该文法是LL(1)文法。为其构造递归下降预测分析器如下
+\begin{lstlisting}[language = C,
+    numbers=left,
+    numberstyle=\small,
+    keywordstyle=\bfseries\color{blue!70},
+    commentstyle=\color{red!40!green!60!blue},
+    frame=shadowbox,
+    rulesepcolor=\color{red!20!green!30!blue!20},
+    basicstyle=\ttfamily,
+    breaklines,
+    escapeinside=``]
+    void match (terminal t)
+    {
+        if (lookahead == t)
+            lookahead = nextToken();
+        else
+            error();
+        return;
+    }
+
+    void `$E$`()
+    {
+        if ((lookahead == `$\textbf{not}$`) || (lookahead == '(') || (lookahead == `$\textbf{true}$`) || (lookahead == `$\textbf{false}$`))
+        {
+            `$T$`();
+            `$E'$`();
+        }
+        else
+            error();
+        return;
+    }
+
+    void `$E'$`()
+    {
+        if (lookahead == `$\textbf{or}$`)
+        {
+            match(`\textbf{or}`);
+            `$T$`();
+            `$E'$`();
+        }
+        else if ((lookahead == ')') || (lookahead == '$'))
+            match(lookahead);
+        else
+            error();
+    }
+
+    void `$T$`()
+    {
+        if ((lookahead == `$\textbf{not}$`) || (lookahead == '(') || (lookahead == `$\textbf{true}$`) || (lookahead == `$\textbf{false}$`))
+        {
+            `$F$`();
+            `$T'$`();
+        }
+        else
+            error();
+        return;
+    }
+
+    void `$T'$`()
+    {
+        if (lookahead == `$\textbf{and}$`)
+        {
+            match(`\textbf{and}`);
+            `$F$`();
+            `$T'$`();
+        }
+        else if (lookahead == `$\textbf{or}$`)
+        {
+            match(`\textbf{or}`);
+            `$T$`();
+            `$E'$`();
+        }
+        else if ((lookahead == ')') || (lookahead == '$'))
+            match(lookahead);
+        else
+            error();
+        return;
+    }
+
+    void `$F$`()
+    {
+        if (lookahead == `\textbf{{not}}`)
+        {
+            match(`\textbf{{not}}`);
+            `$F$`();
+        }
+        else if (lookahead == '(')
+        {
+            match('(');
+            `$E$`();
+            match(')');
+        }
+        else if (lookahead == `\textbf{true}`)
+            match(`\textbf{true}`);
+        else if (lookahead == `\textbf{false}`)
+            match(`\textbf{false}`);
+        else
+            error();
+    }
+\end{lstlisting}
+
+\section{Exercise 3.11}
+构造下面文法的LL(1)分析表。
+\begin{align*}
+    S &\rightarrow aBS\ |\ bAS\ |\ \varepsilon \\
+    A &\rightarrow bAA\ |\ a \\
+    B &\rightarrow aBB\ |\ b
+\end{align*}
+\\
+
+\paragraph{解}
+列出文法中各非终结符的开始符号和后继符号集合
+\begin{align*}
+    &FIRST(S) = \big\{\  a,\,b,\,\varepsilon \ \big\} &&FOLLOW(S) = \big\{\  \texttt{\$} \ \big\} \\
+    &FIRST(A) = \big\{\  a,\,b \ \big\} &&FOLLOW(A) = \big\{\  a,\,b,\,\texttt{\$} \ \big\} \\
+    &FIRST(B) = \big\{\  a,\,b \ \big\} &&FOLLOW(B) = \big\{\  a,\,b,\,\texttt{\$} \ \big\}
+\end{align*}
+填写分析表如下
+\begin{table}[H]
+    \centering
+    \caption{LL(1)分析表}
+    \label{table:1}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+         & $a$ & $b$ & $\texttt{\$}$ \\ \hline
+        $S$ & $S \rightarrow aBS$ & $S \rightarrow bSS$ & $S \rightarrow \varepsilon$ \\ \hline
+        $A$ & $A \rightarrow a$ & $A \rightarrow bAA$ &  \\ \hline
+        $B$ & $B \rightarrow aBB$ & $B \rightarrow b$ &  \\ \hline
+    \end{tabular}
+\end{table}
+
+\section{Exercise 3.16}
+\subparagraph{(a)}
+用习题3.1的文法构造$(a,\,(a,\,a)))$的最右推导，说出每个右句型的句柄。
+\begin{align*}
+    S &\rightarrow (L)\ |\ a \\
+    L &\rightarrow L, \, S\ |\ S
+\end{align*}
+\\
+
+\paragraph{解}
+由此前构造分析树，可以得到句子$(a,\,(a,\,a))$的最右推导
+\begin{align*}
+    S &\Rightarrow_{\text{lm}} (L) \Rightarrow_{\text{lm}} (L,\,S) \Rightarrow_{\text{lm}} (L,\,(L)) \Rightarrow_{\text{lm}} (L,\,(L,\,S)) \Rightarrow_{\text{lm}} (L,\,(L,\,a)) \\
+    &\Rightarrow_{\text{lm}} (L,\,(S,\,a))
+    \Rightarrow_{\text{lm}} (L,\,(a,\,a)) \Rightarrow_{\text{lm}} (S,\,(a,\,a)) \\
+    &\Rightarrow_{\text{lm}} (a,\,(a,\,a))
+\end{align*}
+给其中的$a$以下标，并给每个右句型的句柄添加下划线
+\begin{align*}
+    S &\Rightarrow_{\text{lm}} (\underline{L}) \\
+    &\Rightarrow_{\text{lm}} \underline{(L,\,S)} \\
+    &\Rightarrow_{\text{lm}} (L,\,\underline{(L)}) \\
+    &\Rightarrow_{\text{lm}} (L,\,(\underline{L,\,S})) \\
+    &\Rightarrow_{\text{lm}} (L,\,(L,\,\underline{a_3})) \\
+    &\Rightarrow_{\text{lm}} (L,\,(\underline{S},\,a_3)) \\
+    &\Rightarrow_{\text{lm}} (L,\,(\underline{a_2},\,a_3)) \\
+    &\Rightarrow_{\text{lm}} (\underline{S},\,(a_2,\,a_3)) \\
+    &\Rightarrow_{\text{lm}} (\underline{a_1},\,(a_2,\,a_3)) \\
+\end{align*}
+
+\section{Non-textbook Exercise}
+\subparagraph{(1)}
+删除以下文法G中的左递归，并由此得到文法G1。
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        & 文法G：$A$是开始符号 \\ \hline
+        1 & $A \rightarrow Ba$ \\ \hline
+        2 & $B \rightarrow dab$ \\ \hline
+        3 & $B \rightarrow Cb$ \\ \hline
+        4 & $C \rightarrow cB$ \\ \hline
+        5 & $C \rightarrow Ac$ \\ \hline
+    \end{tabular}
+\end{table}
+\subparagraph{(2)}
+G1是否为LL（1）的文法？如不是，适当修改该文法G1，使之成为LL(1)的。
+
+\paragraph{解}
+\subparagraph{(1)}
+用$A$的产生式$A \rightarrow Ba$代换$C \rightarrow Ac$中的$A$，再用产生式$B \rightarrow Cb$代换其中的$B$，用$B$的产生式$B \rightarrow Cb$代换$A \rightarrow Ba$中的$B$，再用产生式$C \rightarrow Ac$代换其中的$C$得到如下文法
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        & 文法G：$A$是开始符号 \\ \hline
+        1 & $A \rightarrow Ba$ \\ \hline
+        2 & $B \rightarrow dab$ \\ \hline
+        3 & $B \rightarrow Cb$ \\ \hline
+        4 & $C \rightarrow Cbac\ |\ dabac\ |\ cB$ \\ \hline
+    \end{tabular}
+\end{table}
+删除其中的直接左递归，得到如下的文法
+\begin{table}[H]
+    \centering
+    \caption{消除左递归的文法G1}
+    \label{table:2}
+    \begin{tabular}{|c|c|}
+        \hline
+        & 文法G：$A$是开始符号 \\ \hline
+        1 & $A \rightarrow Ba$ \\ \hline
+        2 & $B \rightarrow dab$ \\ \hline
+        3 & $B \rightarrow Cb$ \\ \hline
+        4 & $C \rightarrow dabacC'$ \\ \hline
+        5 & $C \rightarrow cBC'$ \\ \hline
+        6 & $C' \rightarrow bacC'$ \\ \hline
+        7 & $C' \rightarrow \varepsilon$ \\ \hline
+    \end{tabular}
+\end{table}
+
+\subparagraph{(2)}
+列出文法中各非终结符的开始符号和后继符号集合
+\begin{align*}
+    &FIRST(A) = \big\{\  c,\,d \ \big\} &&FOLLOW(A) = \big\{\  \texttt{\$} \ \big\} \\
+    &FIRST(B) = \big\{\  c,\,d \ \big\} &&FOLLOW(B) = \big\{\  a,\,b \ \big\} \\
+    &FIRST(C) = \big\{\  c,\,d \ \big\} &&FOLLOW(C) = \big\{\  b \ \big\} \\
+    &FIRST(C') = \big\{\  b,\,\varepsilon \ \big\} &&FOLLOW(C') = \big\{\  b,\,\texttt{\$} \ \big\}
+\end{align*}
+对于产生式$B \rightarrow dab\ |\ Cb$
+\begin{align*}
+    &FIRST(dab) \ \cap \  FIRST(Cb) \\
+    =& \big\{\ d\ \big\} \ \cap \  FIRST(C) \\
+    =& \big\{\ d\ \big\} \ \cap \  \big\{\ c,\,d\ \big\} \\
+    =& \big\{\ d\ \big\}
+\end{align*}
+因此G1不是LL(1)文法。将$C$的产生式$C \rightarrow dabacC'\ |\ C \rightarrow cBC'$代入$B$的产生式$B \rightarrow dab\ |\ Cb$，提左因子得到文法G2
+\begin{table}[H]
+    \centering
+    \caption{消除左递归并提左因子的LL(1)文法G2}
+    \label{table:3}
+    \begin{tabular}{|c|c|}
+        \hline
+        & 文法G：$A$是开始符号 \\ \hline
+        1 & $A \rightarrow Ba$ \\ \hline
+        2 & $B \rightarrow cBC'b$ \\ \hline
+        3 & $B \rightarrow dabB'$ \\ \hline
+        4 & $B' \rightarrow acC'b$ \\ \hline
+        5 & $B' \rightarrow \varepsilon$ \\ \hline
+        6 & $C \rightarrow dabacC'$ \\ \hline
+        7 & $C \rightarrow cBC'$ \\ \hline
+        8 & $C' \rightarrow bacC'$ \\ \hline
+        9 & $C' \rightarrow \varepsilon$ \\ \hline
+    \end{tabular}
+\end{table}
+% 对于产生式$C \rightarrow dabaC'\ |\ cBC'$
+% \begin{align*}
+%     &FIRST(dabaC') \ \cap \  FIRST(cBC') \\
+%     =& \big\{\ d\ \big\} \ \cap \  FIRST(c) \\
+%     =& \big\{\ d\ \big\} \ \cap \  \big\{\ c\ \big\} \\
+%     =& \emptyset
+% \end{align*}
+% 对于产生式$C' \rightarrow bacC'\ |\ \varepsilon$
+% \begin{align*}
+%     &FIRST(bacC') \ \cap \  FIRST(\varepsilon) \\
+%     =& \big\{\ b\ \big\} \ \cap \  \big\{\ \varepsilon\ \big\} \\
+%     =& \emptyset \\
+%     \\
+%     &FIRST(bacC') \ \cap \  FOLLOW(C') \\
+%     =& \big\{\ b\ \big\} \ \cap \  \big\{\ \texttt{\$}\ \big\} \\
+%     =& \emptyset \\
+% \end{align*}
+\end{document}
