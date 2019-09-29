@@ -7,6 +7,7 @@
 \usepackage{latexsym}
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{amssymb}
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{tikz}
@@ -60,23 +61,24 @@
 对于产生式$E' \rightarrow \textbf{or}\ TE'\ |\ \varepsilon$
 \begin{align*}
     &FIRST(\textbf{or}\ TE') \ \cap \  FIRST(\varepsilon) \\ =& \big\{\ \textbf{or}\ \big\} \ \cap \  \big\{\ \varepsilon\ \big\} \\
-    =& \emptyset \\
+    =& \varnothing
     \\
-    &FIRST(\textbf{or}\ TE') \ \cap \  FOLLOW(E') \\ =& \big\{\ \textbf{or}\ \big\} \ \cap \  \big\{\ \texttt{)},\,\texttt{\$}\ \big\} \\
-    =& \emptyset \\
+    &FIRST(\textbf{or}\ TE') \ \cap \  FOLLOW(E') \\
+    =& \big\{\ \textbf{or}\ \big\} \ \cap \  \big\{\ \texttt{)},\,\texttt{\$}\ \big\} \\
+    =& \varnothing
 \end{align*}
 对于产生式$T' \rightarrow \textbf{and}\ FT'\ |\ \varepsilon$
 \begin{align*}
     &FIRST(\textbf{and}\ FT') \ \cap \  FIRST(\varepsilon) \\ =& \big\{\ \textbf{and}\ \big\} \ \cap \  \big\{\ \varepsilon\ \big\} \\
-    =& \emptyset \\
+    =& \varnothing
     \\
     &FIRST(\textbf{and}\ FT') \ \cap \  FOLLOW(T') \\ =& \big\{\ \textbf{and}\ \big\} \ \cap \  \big\{\ \textbf{or},\,\texttt{)},\,\texttt{\$}\ \big\} \\
-    =& \emptyset \\
+    =& \varnothing
 \end{align*}
 对于产生式$F \rightarrow \textbf{not}\ F\ |\ \texttt{(}E\texttt{)}\ |\ \textbf{true}\ |\ \textbf{false}$
 \begin{align*}
     &FIRST(\textbf{not}\ F) \ \cap \  FIRST(\texttt{(}E\texttt{)}) \ \cap \  FIRST(\textbf{true}) \ \cap \  FIRST(\textbf{false}) \\ = &\big\{\ \textbf{not}\ \big\} \ \cap \  \big\{\ \texttt{)}\ \big\} \ \cap \  \textbf{true} \ \cap \  \textbf{false}\\
-    =& \emptyset
+    =& \varnothing
 \end{align*}
 因此该文法是LL(1)文法。为其构造递归下降预测分析器如下
 \begin{lstlisting}[language = C,
@@ -119,7 +121,7 @@
             `$E'$`();
         }
         else if ((lookahead == ')') || (lookahead == '$'))
-            match(lookahead);
+            return;
         else
             error();
         return;
@@ -152,7 +154,7 @@
             `$E'$`();
         }
         else if ((lookahead == ')') || (lookahead == '$'))
-            match(lookahead);
+            return;
         else
             error();
         return;
@@ -330,16 +332,16 @@ G1是否为LL（1）的文法？如不是，适当修改该文法G1，使之成�
 %     &FIRST(dabaC') \ \cap \  FIRST(cBC') \\
 %     =& \big\{\ d\ \big\} \ \cap \  FIRST(c) \\
 %     =& \big\{\ d\ \big\} \ \cap \  \big\{\ c\ \big\} \\
-%     =& \emptyset
+%     =& \varnothing
 % \end{align*}
 % 对于产生式$C' \rightarrow bacC'\ |\ \varepsilon$
 % \begin{align*}
 %     &FIRST(bacC') \ \cap \  FIRST(\varepsilon) \\
 %     =& \big\{\ b\ \big\} \ \cap \  \big\{\ \varepsilon\ \big\} \\
-%     =& \emptyset \\
+%     =& \varnothing
 %     \\
 %     &FIRST(bacC') \ \cap \  FOLLOW(C') \\
 %     =& \big\{\ b\ \big\} \ \cap \  \big\{\ \texttt{\$}\ \big\} \\
-%     =& \emptyset \\
+%     =& \varnothing
 % \end{align*}
 \end{document}
