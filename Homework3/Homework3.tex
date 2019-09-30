@@ -179,23 +179,23 @@
 由分析树，句子$(a,\,(a,\,a))$的最右推导为
 
 \begin{align*}
-    S &\Rightarrow_{\text{lm}} (L) \Rightarrow_{\text{lm}} (L,\,S) \Rightarrow_{\text{lm}} (L,\,(L)) \Rightarrow_{\text{lm}} (L,\,(L,\,S)) \Rightarrow_{\text{lm}} (L,\,(L,\,a)) \\
-    &\Rightarrow_{\text{lm}} (L,\,(S,\,a))
-    \Rightarrow_{\text{lm}} (L,\,(a,\,a)) \Rightarrow_{\text{lm}} (S,\,(a,\,a)) \\
-    &\Rightarrow_{\text{lm}} (a,\,(a,\,a))
+    S &\Rightarrow_{\text{rm}} (L) \Rightarrow_{\text{rm}} (L,\,S) \Rightarrow_{\text{rm}} (L,\,(L)) \Rightarrow_{\text{rm}} (L,\,(L,\,S)) \Rightarrow_{\text{rm}} (L,\,(L,\,a)) \\
+    &\Rightarrow_{\text{rm}} (L,\,(S,\,a))
+    \Rightarrow_{\text{rm}} (L,\,(a,\,a)) \Rightarrow_{\text{rm}} (S,\,(a,\,a)) \\
+    &\Rightarrow_{\text{rm}} (a,\,(a,\,a))
 \end{align*}
 
 句子$(a,\,((a,\,a),\,(a,\,a)))$的最右推导为
 
 \begin{align*}
-    S &\Rightarrow_{\text{lm}} (L) \Rightarrow_{\text{lm}} (L,\,S) \Rightarrow_{\text{lm}} (L,\,(L)) \Rightarrow_{\text{lm}} (L,\,(L,\,S)) \Rightarrow_{\text{lm}} (L,\,(L,\,(L))) \\ &\Rightarrow_{\text{lm}} (L,\,(L,\,(L,\,S)))
-    \Rightarrow_{\text{lm}} (L,\,(L,\,(L,\,a))) \Rightarrow_{\text{lm}} (L,\,(L,\,(S,\,a)) \\ &\Rightarrow_{\text{lm}} (L,\,(L,\,(a,\,a)) \Rightarrow_{\text{lm}} (L,\,(S,\,(a,\,a))
-     \Rightarrow_{\text{lm}} (L,\,((L),\,(a,\,a))) \\
-    &\Rightarrow_{\text{lm}} (L,\,((L,\,S),\,(a,\,a)))
-    \Rightarrow_{\text{lm}} (L,\,((L,\,a),\,(a,\,a))) \Rightarrow_{\text{lm}} (L,\,((S.\,a),\,(a,\,a))) \\
-    &\Rightarrow_{\text{lm}} (L,\,((a,\,a),\,(a,\,a)))
-    \Rightarrow_{\text{lm}} (S,\,((a,\,a),\,(a,\,a))) \\
-    &\Rightarrow_{\text{lm}} (a,\,((a,\,a),\,(a,\,a)))
+    S &\Rightarrow_{\text{rm}} (L) \Rightarrow_{\text{rm}} (L,\,S) \Rightarrow_{\text{rm}} (L,\,(L)) \Rightarrow_{\text{rm}} (L,\,(L,\,S)) \Rightarrow_{\text{rm}} (L,\,(L,\,(L))) \\ &\Rightarrow_{\text{rm}} (L,\,(L,\,(L,\,S)))
+    \Rightarrow_{\text{rm}} (L,\,(L,\,(L,\,a))) \Rightarrow_{\text{rm}} (L,\,(L,\,(S,\,a)) \\ &\Rightarrow_{\text{rm}} (L,\,(L,\,(a,\,a)) \Rightarrow_{\text{rm}} (L,\,(S,\,(a,\,a))
+     \Rightarrow_{\text{rm}} (L,\,((L),\,(a,\,a))) \\
+    &\Rightarrow_{\text{rm}} (L,\,((L,\,S),\,(a,\,a)))
+    \Rightarrow_{\text{rm}} (L,\,((L,\,a),\,(a,\,a))) \Rightarrow_{\text{rm}} (L,\,((S.\,a),\,(a,\,a))) \\
+    &\Rightarrow_{\text{rm}} (L,\,((a,\,a),\,(a,\,a)))
+    \Rightarrow_{\text{rm}} (S,\,((a,\,a),\,(a,\,a))) \\
+    &\Rightarrow_{\text{rm}} (a,\,((a,\,a),\,(a,\,a)))
 \end{align*}
 
 \subparagraph{(d)}

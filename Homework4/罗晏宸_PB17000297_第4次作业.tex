@@ -225,22 +225,22 @@
 \paragraph{解}
 由此前构造分析树，可以得到句子$(a,\,(a,\,a))$的最右推导
 \begin{align*}
-    S &\Rightarrow_{\text{lm}} (L) \Rightarrow_{\text{lm}} (L,\,S) \Rightarrow_{\text{lm}} (L,\,(L)) \Rightarrow_{\text{lm}} (L,\,(L,\,S)) \Rightarrow_{\text{lm}} (L,\,(L,\,a)) \\
-    &\Rightarrow_{\text{lm}} (L,\,(S,\,a))
-    \Rightarrow_{\text{lm}} (L,\,(a,\,a)) \Rightarrow_{\text{lm}} (S,\,(a,\,a)) \\
-    &\Rightarrow_{\text{lm}} (a,\,(a,\,a))
+    S &\Rightarrow_{\text{rm}} (L) \Rightarrow_{\text{rm}} (L,\,S) \Rightarrow_{\text{rm}} (L,\,(L)) \Rightarrow_{\text{rm}} (L,\,(L,\,S)) \Rightarrow_{\text{rm}} (L,\,(L,\,a)) \\
+    &\Rightarrow_{\text{rm}} (L,\,(S,\,a))
+    \Rightarrow_{\text{rm}} (L,\,(a,\,a)) \Rightarrow_{\text{rm}} (S,\,(a,\,a)) \\
+    &\Rightarrow_{\text{rm}} (a,\,(a,\,a))
 \end{align*}
 给其中的$a$以下标，并给每个右句型的句柄添加下划线
 \begin{align*}
-    S &\Rightarrow_{\text{lm}} (\underline{L}) \\
-    &\Rightarrow_{\text{lm}} \underline{(L,\,S)} \\
-    &\Rightarrow_{\text{lm}} (L,\,\underline{(L)}) \\
-    &\Rightarrow_{\text{lm}} (L,\,(\underline{L,\,S})) \\
-    &\Rightarrow_{\text{lm}} (L,\,(L,\,\underline{a_3})) \\
-    &\Rightarrow_{\text{lm}} (L,\,(\underline{S},\,a_3)) \\
-    &\Rightarrow_{\text{lm}} (L,\,(\underline{a_2},\,a_3)) \\
-    &\Rightarrow_{\text{lm}} (\underline{S},\,(a_2,\,a_3)) \\
-    &\Rightarrow_{\text{lm}} (\underline{a_1},\,(a_2,\,a_3)) \\
+    S &\Rightarrow_{\text{rm}} \underline{(L)} \\
+    &\Rightarrow_{\text{rm}} (\underline{L,\,S}) \\
+    &\Rightarrow_{\text{rm}} (L,\,\underline{(L)}) \\
+    &\Rightarrow_{\text{rm}} (L,\,(\underline{L,\,S})) \\
+    &\Rightarrow_{\text{rm}} (L,\,(L,\,\underline{a_3})) \\
+    &\Rightarrow_{\text{rm}} (L,\,(\underline{S},\,a_3)) \\
+    &\Rightarrow_{\text{rm}} (L,\,(\underline{a_2},\,a_3)) \\
+    &\Rightarrow_{\text{rm}} (\underline{S},\,(a_2,\,a_3)) \\
+    &\Rightarrow_{\text{rm}} (\underline{a_1},\,(a_2,\,a_3)) \\
 \end{align*}
 
 \section{Non-textbook Exercise}
@@ -308,7 +308,7 @@ G1是否为LL（1）的文法？如不是，适当修改该文法G1，使之成�
     =& \big\{\ d\ \big\} \ \cap \  \big\{\ c,\,d\ \big\} \\
     =& \big\{\ d\ \big\}
 \end{align*}
-因此G1不是LL(1)文法。将$C$的产生式$C \rightarrow dabacC'\ |\ C \rightarrow cBC'$代入$B$的产生式$B \rightarrow dab\ |\ Cb$，提左因子得到文法G2
+因此G1不是LL(1)文法。将$C$的产生式$C \rightarrow dabacC'\ |\ C \rightarrow cBC'$代入$B$的产生式$B \rightarrow dab\ |\ Cb$，将$B$的产生式$B \rightarrow dab\ |\ Cb$代入$A$的产生式$A \rightarrow Ba$，提左因子得到文法G2
 \begin{table}[H]
     \centering
     \caption{消除左递归并提左因子的LL(1)文法G2}
@@ -316,15 +316,18 @@ G1是否为LL（1）的文法？如不是，适当修改该文法G1，使之成�
     \begin{tabular}{|c|c|}
         \hline
         & 文法G：$A$是开始符号 \\ \hline
-        1 & $A \rightarrow Ba$ \\ \hline
-        2 & $B \rightarrow cBC'b$ \\ \hline
-        3 & $B \rightarrow dabB'$ \\ \hline
-        4 & $B' \rightarrow acC'b$ \\ \hline
-        5 & $B' \rightarrow \varepsilon$ \\ \hline
-        6 & $C \rightarrow dabacC'$ \\ \hline
-        7 & $C \rightarrow cBC'$ \\ \hline
-        8 & $C' \rightarrow bacC'$ \\ \hline
-        9 & $C' \rightarrow \varepsilon$ \\ \hline
+        1 & $A \rightarrow dabaA'$ \\ \hline
+        2 & $A \rightarrow cBbaA'$ \\ \hline
+        3 & $A' \rightarrow cbaA'$ \\ \hline
+        4 & $A' \rightarrow \varepsilon$ \\ \hline
+        5 & $B \rightarrow cBC'b$ \\ \hline
+        6 & $B \rightarrow dabB'$ \\ \hline
+        7 & $B' \rightarrow acC'b$ \\ \hline
+        8 & $B' \rightarrow \varepsilon$ \\ \hline
+        9 & $C \rightarrow dabacC'$ \\ \hline
+        10 & $C \rightarrow cBC'$ \\ \hline
+        11 & $C' \rightarrow bacC'$ \\ \hline
+        12 & $C' \rightarrow \varepsilon$ \\ \hline
     \end{tabular}
 \end{table}
 % 对于产生式$C \rightarrow dabaC'\ |\ cBC'$
