@@ -34,3 +34,10 @@ Homework assignments of **Compiler Principles and Technology**
     - 消除回溯
     - 分析表
 - 句型与句柄
+
+## [Homework 5](https://github.com/lyc0930/Compiler-Homework/tree/master/Homework5)
+10.15
+- 翻译方案
+    - 属性栈代码
+    - Yacc语义代码
+- 语法指导定义

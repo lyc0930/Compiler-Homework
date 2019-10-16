@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{hyperref}
+
+\title{Homework 5}
+\author{PB17000297 罗晏宸}
+\date{October 15 2019}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor = black,
+    urlcolor=blue!30!green,
+}
+
+\begin{document}
+\maketitle
+
+\section{Exercise 4.12}
+文法如下：
+\begin{align*}
+    S &\rightarrow (L)\ |\ a \\
+    L &\rightarrow L,\,S\ |\ S
+\end{align*}
+\subparagraph{(a)}
+写一个翻译方案，它输出每个$a$的嵌套深度。例如，对于句子$(a,\,(a,\,a))$，输出的结果是$1\quad2\quad2$。
+\subparagraph{(b)}
+写一个翻译方案，它打印出每个$a$在句子中是第几个字符。例如，当句子是$(a,\,(a,\,(a,\,a),(a)))$时，打印的结果是$2\quad5\quad8\quad10\quad14$。
+\\
+\section{Non-textbook Exercise}
+\paragraph{(1)}
+给出习题4.12(a)和(b)的翻译方案所对应的属性栈代码。
+\\
+\paragraph{解}
+
+
+\paragraph{(2)}
+给出习题4.12(a)和(b)的翻译方案所对应的YACC语义代码。
+\\
+\paragraph{解}
+
+\paragraph{(3)}
+针对以下文法
+\begin{align*}
+    E \rightarrow &\ E\ \texttt{'>'}\ E \\
+    |&\  E\ \texttt{'<'}\ E \\
+    |&\  \textbf{number}
+\end{align*}
+设计语法制导定义，使之能计算诸如\texttt{1 < 2 < 3}的表达式值为True；而计算表达式\texttt{1 < 5 > 3}的值也为True。
+\\
+\paragraph{解}
+
+\end{document}
