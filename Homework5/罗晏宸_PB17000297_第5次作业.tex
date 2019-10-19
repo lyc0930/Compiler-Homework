@@ -14,7 +14,8 @@
 \usepackage{tabularx}
 \usepackage{multirow}
 \usepackage{hyperref}
-
+\usepackage{multicol}
+\usepackage{geometry}
 \title{Homework 5}
 \author{PB17000297 罗晏宸}
 \date{October 15 2019}
@@ -38,20 +39,188 @@
 写一个翻译方案，它输出每个$a$的嵌套深度。例如，对于句子$(a,\,(a,\,a))$，输出的结果是$1\quad2\quad2$。
 \subparagraph{(b)}
 写一个翻译方案，它打印出每个$a$在句子中是第几个字符。例如，当句子是$(a,\,(a,\,(a,\,a),(a)))$时，打印的结果是$2\quad5\quad8\quad10\quad14$。
+
+\paragraph{解}
+\subparagraph{(a)}
+用继承属性\texttt{depth}表示嵌套深度，则翻译方案如下：
+\begin{align*}
+    S' \rightarrow\ & &&\texttt{\{ }S\texttt{.depth = 0; \}}\\
+                     &S&& \\
+    S \rightarrow\ & &&\texttt{\{ }L\texttt{.depth = }S\texttt{.depth + 1; \}}\\
+                    &(L)&& \\
+    S \rightarrow\  &a&& \texttt{\{ print(}S\texttt{.depth); \}}\\
+    L \rightarrow\ & &&\texttt{\{ }L_1\texttt{.depth = }L\texttt{.depth; \}}\\
+                    &L_1,&& \texttt{\{ }S\texttt{.depth = }L\texttt{.depth; \}}\\
+                    &S&& \\
+    L \rightarrow\ & &&\texttt{\{ }S\texttt{.depth = }L\texttt{.depth; \}}\\
+                    &S&&
+\end{align*}
+\subparagraph{(b)}
+用继承属性\texttt{before}表示句子中在文法符号前的字符，用综合属性\texttt{out}表示文法符号推出的字符总数，则翻译方案如下：
+\begin{align*}
+    S' \rightarrow\ & && \texttt{\{ }S\texttt{.before = 0; \}}\\
+                    &S&& \\
+    S \rightarrow\ & &&\texttt{\{ }L\texttt{.before = }S\texttt{.before + 1; \}}\\
+                    &(L)&& \texttt{\{ }S\texttt{.out = }L\texttt{.out + 2; \}} \\
+    S \rightarrow\ &a&& \texttt{\{ }S\texttt{.out = 1; print(}S\texttt{.before + 1); \}}\\
+    L \rightarrow\ & && \texttt{\{ }L_1\texttt{.before = }L\texttt{.before; \}}\\
+                    &L_1,&& \texttt{\{ }S\texttt{.before = }L\texttt{.before + }L_1\texttt{.out + 1; \}}\\
+                    &S&& \texttt{\{ }L\texttt{.out = }L_1\texttt{.out + }S\texttt{.out + 1; \}} \\
+    L \rightarrow\ & &&\texttt{\{ }S\texttt{.before = }L\texttt{.before; \}}\\
+                    &S&& \texttt{\{ }L\texttt{.out = }S\texttt{.out; \}}
+\end{align*}
 \\
+
 \section{Non-textbook Exercise}
-\paragraph{(1)}
+\subsection*{(1)}
 给出习题4.12(a)和(b)的翻译方案所对应的属性栈代码。
-\\
+
 \paragraph{解}
+对应的属性栈代码如下：
+\newgeometry{left = 0.7cm, right = 0.7cm}
+\columnseprule = 1pt
+\begin{multicols}{2}
+    \begin{align*}
+        S' \rightarrow\ & &&\texttt{\{ }S\texttt{.depth = 0; \}}\\
+                         &S&& \\
+        S \rightarrow\ & &&\texttt{\{ }L\texttt{.depth = }S\texttt{.depth + 1; \}}\\
+                        &(L)&& \\
+        S \rightarrow\  &a&& \texttt{\{ print(}S\texttt{.depth); \}}\\
+        L \rightarrow\ & &&\texttt{\{ }L_1\texttt{.depth = }L\texttt{.depth; \}}\\
+                        &L_1,&& \texttt{\{ }S\texttt{.depth = }L\texttt{.depth; \}}\\
+                        &S&& \\
+        L \rightarrow\ & &&\texttt{\{ }S\texttt{.depth = }L\texttt{.depth; \}}\\
+                        &S&&
+    \end{align*}
+    \\
+    \begin{lstlisting}[language = C,
+        keywordstyle=\bfseries\color{blue!70},
+        commentstyle=\color{white!80!black},
+        frame=shadowbox,
+        framerule = 3pt,
+        rulesepcolor = \color{white},
+        xleftmargin = 2mm,
+        rulecolor = \color{white},
+        basicstyle=\ttfamily\small,
+        lineskip = 11.5pt,
+        escapeinside=``]
+stack[top].depth = 0;
 
+stack[top - 1].depth = stack[top - 2].depth + 1;
 
-\paragraph{(2)}
+print(stack[top].depth);
+// stack[top - 2].depth = stack[top - 2].depth;
+stack[top].depth = stack[top - 2].depth;
+
+// stack[top].depth = stack[top].depth;
+
+    \end{lstlisting}
+\end{multicols}
+\begin{multicols}{2}
+    \begin{align*}
+        S' \rightarrow\ & && \texttt{\{ }S\texttt{.before = 0; \}}\\
+                        &S&& \\
+        S \rightarrow\ & &&\texttt{\{ }L\texttt{.before = }S\texttt{.before + 1; \}}\\
+                        &(L)&& \texttt{\{ }S\texttt{.out = }L\texttt{.out + 2; \}} \\
+        S \rightarrow\ &a&& \texttt{\{ }S\texttt{.out = 1; print(}S\texttt{.before + 1); \}}\\
+        L \rightarrow\ & && \texttt{\{ }L_1\texttt{.before = }L\texttt{.before; \}}\\
+                        &L_1,&& \texttt{\{ }S\texttt{.before = }L\texttt{.before + }L_1\texttt{.out + 1; \}}\\
+                        &S&& \texttt{\{ }L\texttt{.out = }L_1\texttt{.out + }S\texttt{.out + 1; \}} \\
+        L \rightarrow\ & &&\texttt{\{ }S\texttt{.before = }L\texttt{.before; \}}\\
+                        &S&& \texttt{\{ }L\texttt{.out = }S\texttt{.out; \}}
+    \end{align*}
+    \\
+    \begin{lstlisting}[language = C,
+        keywordstyle=\bfseries\color{blue!70},
+        commentstyle=\color{white!80!black},
+        frame=shadowbox,
+        framerule = 1pt,
+        xleftmargin = 2mm,
+        rulesepcolor = \color{white},
+        rulecolor = \color{white},
+        basicstyle=\ttfamily\scriptsize,
+        lineskip = 16.5pt,
+        escapeinside=``]
+stack[top].depth = 0;
+
+stack[top - 1].before = stack[top - 2].before + 1;
+stack[top - 2].out = stack[top - 1].out + 2;
+stack[top].out = 1; print(stack[top].before + 1);
+// stack[top - 2].before = stack[top - 2].before;
+stack[top].before = stack[top - 2].before + stack[top - 2].out + 1;
+stack[top - 2].out = stack[top - 2].out + stack[top].out + 1;
+// stack[top].before = stack[top].before;
+// stack[top].out = stack[top].out;
+    \end{lstlisting}
+\end{multicols}
+\restoregeometry
+
+\subsection*{(2)}
 给出习题4.12(a)和(b)的翻译方案所对应的YACC语义代码。
-\\
-\paragraph{解}
 
-\paragraph{(3)}
+\paragraph{解}
+\subparagraph{(a)}
+翻译方案对应的语义代码如下：
+\begin{lstlisting}[language = C,
+    numbers=left,
+    numberstyle=\small,
+    keywordstyle=\bfseries\color{blue!70},
+    commentstyle=\color{red!40!green!60!blue},
+    frame=shadowbox,
+    rulesepcolor=\color{red!20!green!30!blue!20},
+    basicstyle=\ttfamily,
+    breaklines,
+    columns = fixed,
+    escapeinside=``]
+Start   :           { $1.depth = 0; }
+         S
+        ;
+S       :           { $2.depth = $$.depth + 1; }
+         '('L')'
+        ;
+S       :a          { printf("%d\n", $$.depth); }
+        ;
+L       :           { $1.depth = $$.depth; }
+         L_1','     { $3.depth = $$.depth; }
+         S
+        ;
+L_1     :           { $1.depth = $$.depth; }
+         S
+        ;
+\end{lstlisting}
+\subparagraph{(b)}
+翻译方案对应的语义代码如下：
+\begin{lstlisting}[language = C,
+    numbers=left,
+    numberstyle=\small,
+    keywordstyle=\bfseries\color{blue!70},
+    commentstyle=\color{red!40!green!60!blue},
+    frame=shadowbox,
+    rulesepcolor=\color{red!20!green!30!blue!20},
+    basicstyle=\ttfamily,
+    breaklines,
+    columns = fixed,
+    escapeinside=``]
+Start   :           { $1.before = 0; }
+         S
+        ;
+S       :           { $2.before = $$.before + 1; }
+         '('L')'    { $$.out = $2.out + 2; }
+        ;
+S       :a          {
+                        $$.out = 1;
+                        printf("%d\n", $$.before + 1);
+                    }
+        ;
+L       :           { $1.before = $$.before; }
+         L_1','     { $3.before = $$.before + $1.out + 1; }
+         S          { $$.out = $1.out + $3.out + 1; }
+        ;
+L_1     :           { $1.before = $$.before; }
+         S          { $$.out = $1.out; }
+        ;
+\end{lstlisting}
+\subsection*{(3)}
 针对以下文法
 \begin{align*}
     E \rightarrow &\ E\ \texttt{'>'}\ E \\
@@ -59,7 +228,19 @@
     |&\  \textbf{number}
 \end{align*}
 设计语法制导定义，使之能计算诸如\texttt{1 < 2 < 3}的表达式值为True；而计算表达式\texttt{1 < 5 > 3}的值也为True。
-\\
-\paragraph{解}
 
+\paragraph{解}
+用综合属性$left$和$right$表示$E$推出的字符序列中最左和最右的数字，综合属性$bool$表示$E$推出的表达式的布尔值，语法制导的定义如下：
+\begin{table}[H]
+    \begin{tabular}{|l|l|}
+    \hline
+    \multicolumn{1}{|c|}{产生式} & 语义规则 \\ \hline
+    $E'\rightarrow \ E$ & $print(E.bool);$ \\ \hline
+    \multirow{2}{*}{$E \rightarrow \ E_1\ \texttt{'>'}\ E_2$} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}$E.left = E_1.left;\quad E.right = E_2.right;$\\ $E_1.bool = (E_1.right > E_2.left)\ ?\ \texttt{true}\ :\ \texttt{false}$\end{tabular}} \\
+     &  \\ \hline
+    \multirow{2}{*}{$E \rightarrow \ E_1\ \texttt{'<'}\ E_2$} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}$E.left = E_1.left;\quad E.right = E_2.right;$ \\ $E_1.bool = (E_1.right < E_2.left)\ ?\ \texttt{true}\ :\ \texttt{false}$\end{tabular}} \\
+     &  \\ \hline
+    $E \rightarrow \ \textbf{number}$ & $E.left = \textbf{number}.val;\quad E.right = \textbf{number}.val;\quad E.bool = \texttt{true};$ \\ \hline
+    \end{tabular}
+\end{table}
 \end{document}

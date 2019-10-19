@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.9.21)  16 OCT 2019 10:52
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.9.21)  19 OCT 2019 22:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -862,131 +862,218 @@ Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 282.
 )
 \Hy@SectionHShift=\skip71
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2018/12/27 v1.8v multicolumn formatting (FMi)
+\c@tracingmulticols=\count330
+\mult@box=\box76
+\multicol@leftmargin=\dimen309
+\c@unbalance=\count331
+\c@collectmore=\count332
+\doublecol@number=\count333
+\multicoltolerance=\count334
+\multicolpretolerance=\count335
+\full@width=\dimen310
+\page@free=\dimen311
+\premulticols=\dimen312
+\postmulticols=\dimen313
+\multicolsep=\skip72
+\multicolbaselineskip=\skip73
+\partial@page=\box77
+\last@line=\box78
+\maxbalancingoverflow=\dimen314
+\mult@rightbox=\box79
+\mult@grightbox=\box80
+\mult@gfirstbox=\box81
+\mult@firstbox=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\@tempa=\box95
+\@tempa=\box96
+\@tempa=\box97
+\@tempa=\box98
+\@tempa=\box99
+\c@columnbadness=\count336
+\c@finalcolumnbadness=\count337
+\last@try=\dimen315
+\multicolovershoot=\dimen316
+\multicolundershoot=\dimen317
+\mult@nat@firstbox=\box100
+\colbreak@box=\box101
+\mc@col@check@num=\count338
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2018/04/16 v5.8 Page Geometry
+\Gm@cnth=\count339
+\Gm@cntv=\count340
+\c@Gm@tempcnt=\count341
+\Gm@bindingoffset=\dimen318
+\Gm@wd@mp=\dimen319
+\Gm@odd@mp=\dimen320
+\Gm@even@mp=\dimen321
+\Gm@layoutwidth=\dimen322
+\Gm@layoutheight=\dimen323
+\Gm@layouthoffset=\dimen324
+\Gm@layoutvoffset=\dimen325
+\Gm@dimlist=\toks46
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 26.
+Package hyperref Info: Option `colorlinks' set `true' on input line 27.
  (d:/Applications/TeXLive/2019/texmf-dist/tex/xelatex/xecjk/xeCJK-listings.sty
 Package: xeCJK-listings 2019/06/02 v3.7.4 xeCJK patch file for listings
-\l__xeCJK_listings_max_char_int=\count330
-\l__xeCJK_listings_flag_int=\count331
+\l__xeCJK_listings_max_char_int=\count342
+\l__xeCJK_listings_flag_int=\count343
 ) (./罗晏宸_PB17000297_第5次作业.aux)
 \openout1 = `罗晏宸_PB17000297_第5次作业.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
  ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 28.
+LaTeX Info: Redefining \selectfont on input line 29.
 
 Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
 (fontspec)             this).
 
 \symlegacymaths=\mathgroup7
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 28.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 28.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 28.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 28.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 28.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 28.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 28.
-LaTeX Font Info:    Redeclaring math accent \check on input line 28.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 28.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 28.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 28.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 28.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 28.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 28.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 28.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 28.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 28.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 28.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 28.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 28.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 28.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 28.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 28.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 28.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 29.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 29.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 29.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 29.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 29.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 29.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 29.
+LaTeX Font Info:    Redeclaring math accent \check on input line 29.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 29.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 29.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 29.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 29.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 28.
+(Font)              `operators' in the math version `normal' on input line 29.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 28.
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 29.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 28.
+(Font)              `operators' in the math version `bold' on input line 29.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 28.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 29.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 28.
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 29.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 28.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 29.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/bx/n on input line 28.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/bx/n on input line 29.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 28.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 29.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 28.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 29.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/bx/n on input line 28.
+(Font)                  TU/lmr/m/n --> TU/lmr/bx/n on input line 29.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/bx/it on input line 28.
+(Font)                  OT1/cmr/bx/it --> TU/lmr/bx/it on input line 29.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 28.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 29.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 28.
-\c@lstlisting=\count332
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 29.
+\c@lstlisting=\count344
  ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box76
-Package hyperref Info: Link coloring ON on input line 28.
+\AtBeginShipoutBox=\box102
+Package hyperref Info: Link coloring ON on input line 29.
  (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/12 v2.45 Cross-referencing by name of section
  (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count333
+\c@section@level=\count345
 )
-LaTeX Info: Redefining \ref on input line 28.
-LaTeX Info: Redefining \pageref on input line 28.
-LaTeX Info: Redefining \nameref on input line 28.
+LaTeX Info: Redefining \ref on input line 29.
+LaTeX Info: Redefining \pageref on input line 29.
+LaTeX Info: Redefining \nameref on input line 29.
  (./罗晏宸_PB17000297_第5次作业.out) (./罗晏宸_PB17000297_第5次作业.out)
 \@outlinefile=\write4
 \openout4 = `罗晏宸_PB17000297_第5次作业.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 30.
- (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+*geometry* verbose mode - [ preamble ] result:
+* driver: xetex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(92.14519pt, 430.00462pt, 92.14519pt)
+* v-part:(T,H,B)=(95.39737pt, 556.47656pt, 143.09605pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=430.00462pt
+* \textheight=556.47656pt
+* \oddsidemargin=19.8752pt
+* \evensidemargin=19.8752pt
+* \topmargin=-13.87262pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 31.
+(d:/Applications/TeXLive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 30.
+LaTeX Font Info:    Try loading font information for U+msb on input line 31.
  (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 40--42
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 44--46
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 50--52
-
+Overfull \hbox (34.24854pt too wide) in paragraph at lines 41--42
+ []\T1/lmr/bx/n/10.53937 (b)[] \TU/SimSun(0)/m/n/10.53937 写 一 个 翻 译 方 案，|  它 打 印 出 每 个 $\OML/cmm/m/it/10.53937 a$ \TU/SimSun(0)/m/n/10.53937 在 句 子 中 是 第 几 个 字 符。|  例 如，|  当 句 子 是 $\OT1/cmr/m/n/10.53937 (\OML/cmm/m/it/10.53937 a;  \OT1/cmr/m/n/10.53937 (\OML/cmm/m/it/10.53937 a;  \OT1/cmr/m/n/10.53937 (\OML/cmm/m/it/10.53937 a;  a\OT1/cmr/m/n/10.53937 )\OML/cmm/m/it/10.53937 ; \OT1/cmr/m/n/10.53937 (\OML/cmm/m/it/10.53937 a\OT1/cmr/m/n/10.53937 )))$
  []
 
 
@@ -1001,7 +1088,7 @@ Package fontspec Info: Could not resolve font "FangSong/B" (it probably
 Package fontspec Info: Could not resolve font "FangSong/I" (it probably
 (fontspec)             doesn't exist).
 
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 60.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 45.
 (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -1019,27 +1106,83 @@ Package fontspec Info: Font family 'FangSong(0)' created for font 'FangSong'
  [1
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 60--63
+Underfull \hbox (badness 10000) in paragraph at lines 71--73
 
  []
 
-[2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 65.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 65.
+[2] [3]
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: xetex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(19.91684pt, 574.46132pt, 19.91684pt)
+* v-part:(T,H,B)=(95.39737pt, 556.47656pt, 143.09605pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=574.46132pt
+* \textheight=556.47656pt
+* \oddsidemargin=-52.35315pt
+* \evensidemargin=-52.35315pt
+* \topmargin=-13.87262pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2019/09/10 1.8c listings language file
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
+)
+Underfull \hbox (badness 10000) in paragraph at lines 94--106
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--143
+
+ []
+
+
+Overfull \hbox (2.13412pt too wide) in paragraph at lines 150--151
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[4
+
+] [5
+
+] [6]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 246.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 246.
  (./罗晏宸_PB17000297_第5次作业.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 65.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 65.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 246.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 246.
 Package rerunfilecheck Info: File `罗晏宸_PB17000297_第5次作业.out' has not changed.
 (rerunfilecheck)             Checksum: 131C2519A8F08E6C43BC9398662F83AB.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 246.
  ) 
 Here is how much of TeX's memory you used:
- 36010 strings out of 492909
- 734764 string characters out of 6130813
- 783656 words of memory out of 5000000
- 39586 multiletter control sequences out of 15000+600000
- 571927 words of font info for 97 fonts, out of 8000000 for 9000
+ 36707 strings out of 492909
+ 744814 string characters out of 6130813
+ 1061092 words of memory out of 5000000
+ 40269 multiletter control sequences out of 15000+600000
+ 578562 words of font info for 101 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 55i,11n,71p,429b,431s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,21n,68p,429b,1786s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 罗晏宸_PB17000297_第5次作业.pdf (2 pages).
+Output written on 罗晏宸_PB17000297_第5次作业.pdf (6 pages).
