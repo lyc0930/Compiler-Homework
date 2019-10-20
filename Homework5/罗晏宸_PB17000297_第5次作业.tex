@@ -76,23 +76,30 @@
 给出习题4.12(a)和(b)的翻译方案所对应的属性栈代码。
 
 \paragraph{解}
-对应的属性栈代码如下：
-\newgeometry{left = 0.7cm, right = 0.7cm}
-\columnseprule = 1pt
-\begin{multicols}{2}
+为了自底向上计算，必须确定继承属性在属性栈里的位置，为此引入标记非终结符$P$、$Q$和$R$及其继承属性$i$与综合属性$s$。更改后的翻译方案对应的属性栈代码如下：
+
+\begin{figure}[H]
+    \centering
+    \columnseprule = 1pt
+    \begin{multicols}{2}
     \begin{align*}
-        S' \rightarrow\ & &&\texttt{\{ }S\texttt{.depth = 0; \}}\\
-                         &S&& \\
-        S \rightarrow\ & &&\texttt{\{ }L\texttt{.depth = }S\texttt{.depth + 1; \}}\\
-                        &(L)&& \\
-        S \rightarrow\  &a&& \texttt{\{ print(}S\texttt{.depth); \}}\\
-        L \rightarrow\ & &&\texttt{\{ }L_1\texttt{.depth = }L\texttt{.depth; \}}\\
-                        &L_1,&& \texttt{\{ }S\texttt{.depth = }L\texttt{.depth; \}}\\
+        S' \rightarrow\ &P&& \texttt{\{ }S\texttt{.depth = }P\texttt{.s; \}} \\
                         &S&& \\
-        L \rightarrow\ & &&\texttt{\{ }S\texttt{.depth = }L\texttt{.depth; \}}\\
+        P \rightarrow\  &\varepsilon&& \texttt{\{ }P\texttt{.s = 0; \}} \\
+        S \rightarrow\  & && \texttt{\{ }Q\texttt{.i = }S\texttt{.depth; \}} \\
+                        &(&& \\
+                        &Q&& \texttt{\{ }L\texttt{.depth = }Q\texttt{.s; \}} \\
+                        &L)&& \\
+        Q \rightarrow\  &\varepsilon&& \texttt{\{ }Q\texttt{.s = }Q\texttt{.i + 1; \}} \\
+        S \rightarrow\  &a&& \texttt{\{ print(}S\texttt{.depth); \}}\\
+        L \rightarrow\ & &&\texttt{\{ }L_1\texttt{.depth = }L\texttt{.depth; \}} \\
+                        &L_1,&& \texttt{\{ }R\texttt{.i = }L\texttt{.depth; \}} \\
+                        &R&& \texttt{\{ }S\texttt{.depth = }R\texttt{.s;\} } \\
+                        &S&& \\
+        R \rightarrow\  &\varepsilon&& \texttt{\{ }R\texttt{.s = }R\texttt{.i; \}} \\
+        L \rightarrow\  & &&\texttt{\{ }S\texttt{.depth = }L\texttt{.depth; \}}\\
                         &S&&
     \end{align*}
-    \\
     \begin{lstlisting}[language = C,
         keywordstyle=\bfseries\color{blue!70},
         commentstyle=\color{white!80!black},
@@ -104,32 +111,53 @@
         basicstyle=\ttfamily\small,
         lineskip = 11.5pt,
         escapeinside=``]
-stack[top].depth = 0;
+`\\[5pt]`
 
-stack[top - 1].depth = stack[top - 2].depth + 1;
+stack[ntop].val = 0;
 
-print(stack[top].depth);
-// stack[top - 2].depth = stack[top - 2].depth;
-stack[top].depth = stack[top - 2].depth;
 
-// stack[top].depth = stack[top].depth;
+
+
+stack[ntop].val = stack[top - 1].val + 1;
+print(stack[top].val);
+
+
+
+
+stack[ntop].val = stack[top - 2].val;
+
 
     \end{lstlisting}
-\end{multicols}
-\begin{multicols}{2}
+    \end{multicols}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \columnseprule = 1pt
+    \begin{multicols}{2}
     \begin{align*}
-        S' \rightarrow\ & && \texttt{\{ }S\texttt{.before = 0; \}}\\
+        S' \rightarrow\ &P&& \texttt{\{ }S\texttt{.before = }P\texttt{.s; \}}\\
                         &S&& \\
-        S \rightarrow\ & &&\texttt{\{ }L\texttt{.before = }S\texttt{.before + 1; \}}\\
-                        &(L)&& \texttt{\{ }S\texttt{.out = }L\texttt{.out + 2; \}} \\
-        S \rightarrow\ &a&& \texttt{\{ }S\texttt{.out = 1; print(}S\texttt{.before + 1); \}}\\
-        L \rightarrow\ & && \texttt{\{ }L_1\texttt{.before = }L\texttt{.before; \}}\\
-                        &L_1,&& \texttt{\{ }S\texttt{.before = }L\texttt{.before + }L_1\texttt{.out + 1; \}}\\
-                        &S&& \texttt{\{ }L\texttt{.out = }L_1\texttt{.out + }S\texttt{.out + 1; \}} \\
-        L \rightarrow\ & &&\texttt{\{ }S\texttt{.before = }L\texttt{.before; \}}\\
+        P \rightarrow\  &\varepsilon&& \texttt{\{ }P\texttt{.s = 0; \}} \\
+        S \rightarrow\  & && \texttt{\{ }Q\texttt{.i = }S\texttt{.before; \}} \\
+                        &(&& \\
+                        &Q&&\texttt{\{ }L\texttt{.before = }Q\texttt{.s; \}} \\
+                        &L)&& \texttt{\{ }S\texttt{.out = }L\texttt{.out + 2; \}} \\
+        Q \rightarrow\  &\varepsilon&& \texttt{\{ }Q\texttt{.s = }Q\texttt{.i + 1; \}} \\
+        S \rightarrow\  &a&& \texttt{\{} \\
+                        & && \qquad S\texttt{.out = 1;} \\
+                        & && \qquad \texttt{print(}S\texttt{.before + 1);} \\
+                        & && \texttt{\}}\\
+        L \rightarrow\  & && \texttt{\{ }L_1\texttt{.before = }L\texttt{.before; \}}\\
+                        &L_1,&& \texttt{\{ }R\texttt{.i = }L\texttt{.before + }L_1\texttt{.out; \}}\\
+                        &R&& \texttt{\{ }S\texttt{.before = }R\texttt{.s; \}}\\
+                        &S&& \texttt{\{ }L\texttt{.out} \\
+                        & && \qquad \texttt{ = }L_1\texttt{.out + }S\texttt{.out + 1; \}} \\
+        R \rightarrow\  &\varepsilon&& \texttt{\{ }R\texttt{.s = }R\texttt{.i + 1; \}} \\
+        L \rightarrow\  & && \texttt{\{ }S\texttt{.before = }L\texttt{.before; \}} \\
                         &S&& \texttt{\{ }L\texttt{.out = }S\texttt{.out; \}}
     \end{align*}
-    \\
+    \\[7pt]
     \begin{lstlisting}[language = C,
         keywordstyle=\bfseries\color{blue!70},
         commentstyle=\color{white!80!black},
@@ -139,21 +167,32 @@ stack[top].depth = stack[top - 2].depth;
         rulesepcolor = \color{white},
         rulecolor = \color{white},
         basicstyle=\ttfamily\scriptsize,
-        lineskip = 16.5pt,
+        lineskip = 15pt,
         escapeinside=``]
-stack[top].depth = 0;
+`\\[10pt]`
 
-stack[top - 1].before = stack[top - 2].before + 1;
-stack[top - 2].out = stack[top - 1].out + 2;
-stack[top].out = 1; print(stack[top].before + 1);
-// stack[top - 2].before = stack[top - 2].before;
-stack[top].before = stack[top - 2].before + stack[top - 2].out + 1;
-stack[top - 2].out = stack[top - 2].out + stack[top].out + 1;
-// stack[top].before = stack[top].before;
-// stack[top].out = stack[top].out;
+stack[ntop].val = 0;
+
+
+
+stack[ntop].val = stack[top - 1].val + 2;
+stack[ntop].val = stack[top - 1].val + 1;
+
+stack[ntop].val = 1;
+print(stack[top].val + 1);
+
+
+
+
+
+stack[ntop].val = stack[top - 3].val + stack[top].val + 1;
+stack[ntop].val = stack[top - 2].val + stack[top - 1].val + 1;
+
+stack[ntop].val = stack[top].val;
     \end{lstlisting}
-\end{multicols}
-\restoregeometry
+    \end{multicols}
+\end{figure}
+
 
 \subsection*{(2)}
 给出习题4.12(a)和(b)的翻译方案所对应的YACC语义代码。
@@ -172,20 +211,20 @@ stack[top - 2].out = stack[top - 2].out + stack[top].out + 1;
     breaklines,
     columns = fixed,
     escapeinside=``]
-Start   :           { $1.depth = 0; }
-         S
+Start   :P S
         ;
-S       :           { $2.depth = $$.depth + 1; }
-         '('L')'
+P       :           { $$ = 0; }
         ;
-S       :a          { printf("%d\n", $$.depth); }
+S       :'('Q L')'  { $$ = $0; }
         ;
-L       :           { $1.depth = $$.depth; }
-         L_1','     { $3.depth = $$.depth; }
-         S
+Q       :           { $$ = $-1 + 1; }
         ;
-L_1     :           { $1.depth = $$.depth; }
-         S
+S       :a          { $$ = $0; printf("%d\n", $$); }
+        ;
+L       :L','R S    { $$ = $0; }
+        |S          { $$ = $0; }
+        ;
+R       :           { $$ = $-2; }
         ;
 \end{lstlisting}
 \subparagraph{(b)}
@@ -201,23 +240,20 @@ L_1     :           { $1.depth = $$.depth; }
     breaklines,
     columns = fixed,
     escapeinside=``]
-Start   :           { $1.before = 0; }
-         S
+Start   :P S
         ;
-S       :           { $2.before = $$.before + 1; }
-         '('L')'    { $$.out = $2.out + 2; }
+P       :           { $$ = 0; }
         ;
-S       :a          {
-                        $$.out = 1;
-                        printf("%d\n", $$.before + 1);
-                    }
+S       :'('Q L')'  { $$ = $3 + 2; }
         ;
-L       :           { $1.before = $$.before; }
-         L_1','     { $3.before = $$.before + $1.out + 1; }
-         S          { $$.out = $1.out + $3.out + 1; }
+Q       :           { $$ = $-1 + 1; }
         ;
-L_1     :           { $1.before = $$.before; }
-         S          { $$.out = $1.out; }
+S       :a          { $$ = 1; printf("%d\n", $0 + 1); }
+        ;
+L       :L','R S    { $$ = $1 + $4 + 1; }
+        |S          { $$ = $1; }
+        ;
+R       :           { $$ = $-2 + $-1 + 1; }
         ;
 \end{lstlisting}
 \subsection*{(3)}
@@ -234,13 +270,11 @@ L_1     :           { $1.before = $$.before; }
 \begin{table}[H]
     \begin{tabular}{|l|l|}
     \hline
-    \multicolumn{1}{|c|}{产生式} & 语义规则 \\ \hline
+    \multicolumn{1}{|c|}{产生式} & \multicolumn{1}{c|}{语义规则} \\ \hline
     $E'\rightarrow \ E$ & $print(E.bool);$ \\ \hline
-    \multirow{2}{*}{$E \rightarrow \ E_1\ \texttt{'>'}\ E_2$} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}$E.left = E_1.left;\quad E.right = E_2.right;$\\ $E_1.bool = (E_1.right > E_2.left)\ ?\ \texttt{true}\ :\ \texttt{false}$\end{tabular}} \\
-     &  \\ \hline
-    \multirow{2}{*}{$E \rightarrow \ E_1\ \texttt{'<'}\ E_2$} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}$E.left = E_1.left;\quad E.right = E_2.right;$ \\ $E_1.bool = (E_1.right < E_2.left)\ ?\ \texttt{true}\ :\ \texttt{false}$\end{tabular}} \\
-     &  \\ \hline
-    $E \rightarrow \ \textbf{number}$ & $E.left = \textbf{number}.val;\quad E.right = \textbf{number}.val;\quad E.bool = \texttt{true};$ \\ \hline
+    $E \rightarrow \ E_1\ \texttt{'>'}\ E_2$ & \begin{tabular}[c]{@{}l@{}}$E.left = E_1.left;\ E.right = E_2.right;$\\ $E_1.bool =$ \\ $(E_1.right > E_2.left\ \&\&\ E_1.bool\ \&\&\ E_2.bool)\ ?\ \texttt{true}\ :\ \texttt{false}$\end{tabular} \\ \hline
+    $E \rightarrow \ E_1\ \texttt{'<'}\ E_2$ & \begin{tabular}[c]{@{}l@{}}$E.left = E_1.left;\ E.right = E_2.right;$ \\ $E_1.bool =$\\ $(E_1.right < E_2.left\ \&\&\ E_1.bool\ \&\&\ E_2.bool)\ ?\ \texttt{true}\ :\ \texttt{false}$\end{tabular} \\ \hline
+    $E \rightarrow \ \textbf{number}$ & $E.left = \textbf{number}.val;\ E.right = \textbf{number}.val;\ E.bool = \texttt{true};$ \\ \hline
     \end{tabular}
-\end{table}
+    \end{table}
 \end{document}
