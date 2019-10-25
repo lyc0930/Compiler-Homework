@@ -1,0 +1,525 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{geometry}
+\usepackage{mdframed}
+\usepackage{moreverb}
+\lstset
+{
+    basicstyle=\ttfamily,
+    keywordstyle=\bfseries\color{blue!70},
+    frame = single,
+    escapeinside=``,
+    breaklines = true,
+    breakatwhitespace = true,
+    breakautoindent = true,
+    texcl = true,
+    showstringspaces = false,
+    flexiblecolumns,
+    columns = fixed,
+    basewidth = 0.5em,
+}
+\lstdefinestyle{C}
+{
+    language = C,
+    basicstyle=\ttfamily,
+    keywordstyle=\bfseries\color{blue!70},
+}
+\lstdefinestyle{Assembler}
+{
+    language = [X86masm]Assembler,
+    basicstyle=\ttfamily,
+    keywordstyle=\bfseries\color{blue!70},
+}
+\mdfdefinestyle{Default}
+{
+    innertopmargin = 0pt,
+    innerbottommargin = 0pt,
+    innerleftmargin = 3pt,
+    innerrightmargin = 3pt,
+    linewidth = 0.5pt,
+}
+
+\title{Homework 6}
+\author{PB17000297 罗晏宸}
+\date{October 23 2019}
+\begin{document}
+\maketitle
+
+\section*{Exercise 1}
+针对如下C程序及其在i386 Linux下的汇编代码（片段）：
+\begin{figure}
+    \begin{multicols}{2}
+        \begin{figure}[H]
+            \centering
+            \begin{lstlisting}[
+                style = C,
+                xleftmargin = 27pt,
+            ]
+#include<stdio.h>
+union var{
+    char c[5];
+    int i;
+};
+int main(){
+    union var data;
+    char *c;
+    data.c[0] = '2';
+    data.c[1] = '0';
+    data.c[2] = '1';
+    data.c[3] = '6';
+    data.c[4] = '\0';
+    c = (char*)&data;
+    printf("%x %s\n", data.i, c);
+    return 0;
+}
+// \songti \upshape 第一题C程序
+        \end{lstlisting}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \begin{lstlisting}[
+                style = Assembler,
+                alsolanguage = C,
+                xrightmargin = 60pt
+            ]
+    .section .rodata
+.LC0:
+    .string "%x %s\n"
+    .text
+.globl main
+    .type   main, @function
+main:
+    `\underline{~~~~~~~~~~~~~~~~~~~~~~}`
+    movl    %esp, %ebp
+    subl    $40, %esp
+    andl    $-16, %esp
+    movl    $0, %eax
+    subl    %eax, %esp
+    movb    $50, -24(%ebp)
+    `\underline{~~~~~~~~~~~~~~~~~~~~~~}`
+    `\underline{~~~~~~~~~~~~~~~~~~~~~~}`
+    `\underline{~~~~~~~~~~~~~~~~~~~~~~}`
+    `\underline{~~~~~~~~~~~~~~~~~~~~~~}`
+    `\underline{~~~~~~~~~~~~~~~~~~~~~~}`
+    movl    %eax, -28(%ebp)
+    `\underline{~~~~~~~~~~~~~~~~~~~~~~}`
+    `\underline{~~~~~~~~~~~~~~~~~~~~~~}`
+    `\underline{~~~~~~~~~~~~~~~~~~~~~~}`
+    pushl   $.LC0
+    call    printf
+    addl    $16, %esp
+    `\underline{~~~~~~~~~~~~~~~~~~~~~~}`
+    leave
+    ret
+// \songti 第一题 汇编程序
+            \end{lstlisting}
+        \end{figure}
+    \end{multicols}
+\end{figure}
+\subsection*{(a)}
+上述C程序的输出是什么？
+\subsection*{(b)}
+补全10处划线部分的汇编代码。
+
+\paragraph{解}
+\subparagraph*{(a)}
+程序的输出结果为
+\begin{lstlisting}[style = C]
+36313032 2016
+\end{lstlisting}
+\subparagraph*{(b)}
+补全后的汇编代码如下
+\begin{figure}[H]
+    \centering
+    \begin{lstlisting}[
+        style = Assembler,
+        alsolanguage = C,
+    ]
+    .section .rodata
+.LC0:
+    .string "%x %s\n"
+    .text
+.globl main
+    .type   main, @function
+main:
+    `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{pushl~~~\%ebp}}`
+    movl    %esp, %ebp
+    subl    $40, %esp
+    andl    $-16, %esp
+    movl    $0, %eax
+    subl    %eax, %esp
+    movb    $50, -24(%ebp)
+    `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{movb~~~~\$48, -23(\%ebp)}}`
+    `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{movb~~~~\$49, -22(\%ebp)}}`
+    `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{movb~~~~\$54, -21(\%ebp)}}`
+    `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{movb~~~~\$0, -20(\%ebp)}}`
+    `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{leal~~~~-24(\%ebp), \%eax}}`
+    movl    %eax, -28(%ebp)
+    `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{movl~~~~-24(\%ebp), \%eax}}`
+    `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{movl~~~~-28(\%ebp), \%edx}}`
+    `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{movl~~~~\%edx, \%esp}}`
+    pushl   $.LC0
+    call    printf
+    addl    $16, %esp
+    `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{popl~~~~\%esp}}`
+    leave
+    ret
+    \end{lstlisting}
+\end{figure}
+
+\section*{Exercise 2}
+针对如下C程序及其汇编代码（片段）：
+\begin{figure}
+    \begin{multicols}{2}
+        \begin{figure}[H]
+            \centering
+            \begin{verbatimwrite}{Ex2.c}
+#define N 2
+// \upshape \ttfamily \#define N 11
+typedef struct POINT {
+    int x, y ;
+    char z[ N ];
+    struct POINT *next;
+} DOT;
+void f(DOT p)
+{
+    p.x = 100;
+    p.y = sizeof(p);
+    p.z[1] = 'A';
+    f(*(p.next));
+}
+// \songti \upshape 第二题C程序
+            \end{verbatimwrite}
+            \begin{mdframed}[
+                style = Default,
+                leftmargin = 74pt,
+            ]
+                \lstinputlisting[
+                    style = C,
+                    frame = {},
+                    aboveskip = 0pt,
+                ]{./Ex2.c}
+            \end{mdframed}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \begin{verbatimwrite}{Ex2_N=2.s}
+    .file "test1.c"
+    .text
+.globl f
+    .type   f,@function
+f:
+    pushl   %ebp
+    movl    %esp, %ebp
+    movl    $100, 8(%ebp)
+    movl    $16, 12(%ebp)
+    movb    $65, `\underline{~~~~~~~~}`
+    movl    `\underline{~~~~~~~}`, %eax
+    pushl   `\underline{~~~~~~~~~~~~~}`
+    pushl   `\underline{~~~~~~~~~~~~~}`
+    pushl   `\underline{~~~~~~~~~~~~~}`
+    pushl   `\underline{~~~~~~~~~~~~~}`
+    call    f
+    addl    $16, %esp
+    leave
+    ret
+// \songti \upshape 当N=2时，生成的汇编代码片段。
+            \end{verbatimwrite}
+            \begin{mdframed}[
+                style = Default,
+                leftmargin = 30pt,
+            ]
+                \lstinputlisting[
+                    style = Assembler,
+                    alsolanguage = C,
+                    frame = {},
+                    aboveskip = 0pt,
+                ]{./Ex2_N=2.s}
+            \end{mdframed}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \begin{verbatimwrite}{Ex2_N=11.s}
+    .file "test1.c"
+    .text
+.globl f
+    .type   f,@function
+f:
+    pushl   %ebp
+    movl    %esp, %ebp
+    pushl   %edi
+    pushl   %esi
+    movl    $100, 8(%ebp)
+    movl    `\underline{~~~}`, 12(%ebp)
+    movb    $65, `\underline{~~~~~~~}`
+    subl    $8, %esp
+    movl    `\underline{~~~~~~}`, %eax
+    subl    $24, %esp
+    movl    %esp, %edi
+    movl    %eax, %esi
+    cld
+    movl    `\underline{~~~~~~}`, %eax
+    movl    %eax, %ecx
+    rep
+    movsl
+    call    f
+    addl    $32, %esp
+    leal    -8(%ebp), %esp
+    popl    %esi
+    popl    %edi
+    leave
+    ret
+// \songti \upshape rep movsl为数据传送指令，即，由源地址esi开始的ecx个字的数据传送到由edi指示的目的地址。
+// \songti \upshape 当N=11时，生成的汇编代码片段
+            \end{verbatimwrite}
+            \begin{mdframed}[
+                style = Default,
+                rightmargin = 25pt,
+            ]
+                \lstinputlisting[
+                    style = Assembler,
+                    alsolanguage = C,
+                    frame = {},
+                    aboveskip = 0pt,
+                ]{./Ex2_N=11.s}
+            \end{mdframed}
+        \end{figure}
+    \end{multicols}
+\end{figure}
+\subsection*{(a)}
+补全划线处的汇编代码；
+\subsection*{(b)}
+从运行时环境看，\lstinline[style = Assembler]{addl $16, %esp}和\lstinline[style = Assembler]{leal -8(%ebp), %esp}这两条汇编指令的作用是什么？
+\subsection*{(c)}
+结合上述两种汇编代码，简述编译器在按值传递结构变量时的处理方式。
+
+\paragraph{解}
+\subparagraph*{(a)}
+补全后的汇编代码分别如下
+\begin{figure}[H]
+    \centering
+    \begin{multicols}{2}
+        \begin{figure}[H]
+            \centering
+            \begin{verbatimwrite}{Ex2_N=2_Filled.s}
+    .file "test1.c"
+    .text
+.globl f
+    .type   f,@function
+f:
+    pushl   %ebp
+    movl    %esp, %ebp
+    movl    $100, 8(%ebp)
+    movl    $16, 12(%ebp)
+    movb    $65, `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{17(\%ebp)}}`
+    movl    `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{20(\%ebp)}}`, %eax
+    pushl   `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{8(\%ebp)}}`
+    pushl   `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{12(\%ebp)}}`
+    pushl   `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{16(\%ebp)}}`
+    pushl   `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{17(\%ebp)}}`
+    call    f
+    addl    $16, %esp
+    leave
+    ret
+// \songti \upshape 当N=2时，补全后的汇编代码片段。
+            \end{verbatimwrite}
+            \begin{mdframed}[
+                style = Default,
+                leftmargin = 20pt,
+            ]
+                \lstinputlisting[
+                    style = Assembler,
+                    alsolanguage = C,
+                    frame = {},
+                    aboveskip = 0pt,
+                ]{./Ex2_N=2_Filled.s}
+            \end{mdframed}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \begin{verbatimwrite}{Ex2_N=11_Filled.s}
+    .file "test1.c"
+    .text
+.globl f
+    .type   f,@function
+f:
+    pushl   %ebp
+    movl    %esp, %ebp
+    pushl   %edi
+    pushl   %esi
+    movl    $100, 8(%ebp)
+    movl    `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{\$24}}`, 12(%ebp)
+    movb    $65, `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{17(\%ebp)}}`
+    subl    $8, %esp
+    movl    `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{\$6}}`, %eax
+    subl    $24, %esp
+    movl    %esp, %edi
+    movl    %eax, %esi
+    cld
+    movl    `\underline{\mdseries \ttfamily \color{red!20!green!60!blue}{\$34}}`, %eax
+    movl    %eax, %ecx
+    rep
+    movsl
+    call    f
+    addl    $32, %esp
+    leal    -8(%ebp), %esp
+    popl    %esi
+    popl    %edi
+    leave
+    ret
+// \songti \upshape 当N=11时，补全后的汇编代码片段
+            \end{verbatimwrite}
+            \begin{mdframed}[
+                style = Default,
+                rightmargin = 15pt,
+            ]
+                \lstinputlisting[
+                    style = Assembler,
+                    alsolanguage = C,
+                    frame = {},
+                    aboveskip = 0pt,
+                ]{./Ex2_N=11_Filled.s}
+            \end{mdframed}
+        \end{figure}
+    \end{multicols}
+\end{figure}
+\subparagraph*{(b)}
+\lstinline[style = Assembler]{addl $16, %esp}指令将栈顶指针恢复到参数压栈之前的位置，\lstinline[style = Assembler]{leal -8(%ebp), %esp}加载栈顶指针地址为\lstinline[style = Assembler]{%ebp}的值减去8
+\subparagraph{(c)}
+编译器在按值传递结构变量时，会以处理局部变量的方式，为结构体成员变量分配空间。在递归调用中，完成实参的值压栈并调用递归函数后，将恢复栈顶指针到参数压栈前的位置。
+
+\section*{Exercise 3}
+针对如下C程序及其汇编代码（片段）：
+\begin{figure}
+    \begin{multicols}{2}
+        \begin{figure}[H]
+            \centering
+            \begin{verbatimwrite}{Ex3.c}
+void g(int**);
+int main()
+{
+    int line[10], i;
+    int *p = line;
+    for (i = 0; i < 10; i++)
+    {
+        *p = i;
+        g(&p);
+    }
+    return 0;
+}
+void g(int**p)
+{
+    (**p)++;
+    (*p)++;
+}
+// \songti \upshape 第三题C程序
+        \end{verbatimwrite}
+        \begin{mdframed}[
+            style = Default,
+            leftmargin = 40pt,
+        ]
+            \lstinputlisting[
+                style = C,
+                frame = {},
+                aboveskip = 0pt,
+            ]{./Ex3.c}
+        \end{mdframed}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \begin{verbatimwrite}{Ex3_g.s}
+.globl g
+    .type   g,@function
+g:
+    pushl   %ebp
+    movl    %esp, %ebp
+    movl    `\underline{~\textcircled{4}~}`, %eax
+    movl    `\underline{~\textcircled{5}~}`, %eax
+    `\underline{~~~~~~~~~\textcircled{6}~~~~~~~}`
+    movl    `\underline{~\textcircled{7}~}`, %eax
+    `\underline{~~~~~~~~~\textcircled{8}~~~~~~~}`
+    leave
+    ret
+// \songti \upshape 第三题函数\texttt{g}的汇编代码片段
+            \end{verbatimwrite}
+            \begin{mdframed}[
+                style = Default,
+                leftmargin = 40pt,
+            ]
+                \lstinputlisting[
+                    style = Assembler,
+                    alsolanguage = C,
+                    frame = {},
+                    aboveskip = 0pt,
+                ]{./Ex3_g.s}
+            \end{mdframed}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \begin{verbatimwrite}{Ex3_main.s}
+    .file "p.c"
+    .text
+.globl main
+    .type   main,@function
+main:
+    pushl   %ebp
+    movl    %esp, %ebp
+    subl    $72, %esp
+    andl    $-16, %esp
+    movl    $0, %eax
+    subl    %eax, %esp
+    leal    -56(%ebp), %eax
+    movl    %eax, -64(%ebp)
+    movl    $0, -60(%ebp)
+.L2:
+    `\underline{~~~~~~~~\textcircled{1}~~~~~~~~}`
+    jle     .L5
+    jmp     .L3
+.L5:
+    movl    -64(%ebp), %edx
+    movl    -60(%ebp), %eax
+    movl    %eax, (%edx)
+    subl    $12, %esp
+    leal    -64(%ebp), %eax
+    pushl   %eax
+    call    g
+    `\underline{~~~~~~~~\textcircled{2}~~~~~~~~}`
+    leal    -60(%ebp), %eax
+    incl    (%eax)
+    `\underline{~~~~~~~~\textcircled{3}~~~~~~~~}`
+.L3:
+    movl    $0, %eax
+    leave
+    ret
+// \songti \upshape 第三题函数\texttt{main}的汇编代码片段
+            \end{verbatimwrite}
+            \begin{mdframed}[
+                style = Default,
+                rightmargin = 25pt,
+            ]
+                \lstinputlisting[
+                    style = Assembler,
+                    alsolanguage = C,
+                    frame = {},
+                    aboveskip = 0pt,
+                ]{./Ex3_main.s}
+            \end{mdframed}
+        \end{figure}
+    \end{multicols}
+\end{figure}
+\subsection*{(a)}
+补全划线处的汇编代码；
+\subsection*{(b)}
+从运行时环境看，\lstinline[style = Assembler]{addl $16, %esp}和\lstinline[style = Assembler]{leal -8(%ebp), %esp}这两条汇编指令的作用是什么？
+
+\end{document}
