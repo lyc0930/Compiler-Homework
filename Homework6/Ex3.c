@@ -16,4 +16,3 @@ void g(int**p)
     (*p)++;
 }
 // \songti \upshape 第三题C程序
-        

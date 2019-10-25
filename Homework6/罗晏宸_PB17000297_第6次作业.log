@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.9.21)  25 OCT 2019 14:47
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.9.21)  26 OCT 2019 01:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -740,88 +740,327 @@ Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
 \tab@position=\count314
 \tab@size=\count315
 \listing@line=\count316
-) (d:/Applications/TeXLive/2019/texmf-dist/tex/xelatex/xecjk/xeCJK-listings.sty
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks35
+\pgfutil@tempdima=\dimen262
+\pgfutil@tempdimb=\dimen263
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex)) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box93
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+)) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2019/08/03 v3.1.4b (3.1.4b)
+))
+Package: pgf 2019/08/03 v3.1.4b (3.1.4b)
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: xetex.def on input line 99.
+)
+\Gin@req@height=\dimen264
+\Gin@req@width=\dimen265
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2019/08/03 v3.1.4b (3.1.4b)
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks36
+\pgfkeys@temptoks=\toks37
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks38
+))
+\pgf@x=\dimen266
+\pgf@y=\dimen267
+\pgf@xa=\dimen268
+\pgf@ya=\dimen269
+\pgf@xb=\dimen270
+\pgf@yb=\dimen271
+\pgf@xc=\dimen272
+\pgf@yc=\dimen273
+\pgf@xd=\dimen274
+\pgf@yd=\dimen275
+\w@pgf@writea=\write3
+\r@pgf@reada=\read3
+\c@pgf@counta=\count317
+\c@pgf@countb=\count318
+\c@pgf@countc=\count319
+\c@pgf@countd=\count320
+\t@pgf@toka=\toks39
+\t@pgf@tokb=\toks40
+\t@pgf@tokc=\toks41
+\pgf@sys@id@count=\count321
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2019/08/03 v3.1.4b (3.1.4b)
+)
+Driver file for pgf: pgfsys-xetex.def
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-xetex.def
+File: pgfsys-xetex.def 2019/08/03 v3.1.4b (3.1.4b)
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvipdfmx.def
+File: pgfsys-dvipdfmx.def 2019/08/03 v3.1.4b (3.1.4b)
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2019/08/03 v3.1.4b (3.1.4b)
+)
+\pgfsys@objnum=\count322
+))) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfsyssoftpath@smallbuffer@items=\count323
+\pgfsyssoftpath@bigbuffer@items=\count324
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+)) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2019/08/03 v3.1.4b (3.1.4b)
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen276
+\pgfmath@count=\count325
+\pgfmath@box=\box94
+\pgfmath@toks=\toks42
+\pgfmath@stack@operand=\toks43
+\pgfmath@stack@operation=\toks44
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex))) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count326
+)) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@picminx=\dimen277
+\pgf@picmaxx=\dimen278
+\pgf@picminy=\dimen279
+\pgf@picmaxy=\dimen280
+\pgf@pathminx=\dimen281
+\pgf@pathmaxx=\dimen282
+\pgf@pathminy=\dimen283
+\pgf@pathmaxy=\dimen284
+\pgf@xx=\dimen285
+\pgf@xy=\dimen286
+\pgf@yx=\dimen287
+\pgf@yy=\dimen288
+\pgf@zx=\dimen289
+\pgf@zy=\dimen290
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@path@lastx=\dimen291
+\pgf@path@lasty=\dimen292
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@shorten@end@additional=\dimen293
+\pgf@shorten@start@additional=\dimen294
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfpic=\box95
+\pgf@hbox=\box96
+\pgf@layerbox@main=\box97
+\pgf@picture@serial@count=\count327
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgflinewidth=\dimen295
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@pt@x=\dimen296
+\pgf@pt@y=\dimen297
+\pgf@pt@temp=\dimen298
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfarrowsep=\dimen299
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@max=\dimen300
+\pgf@sys@shading@range@num=\count328
+\pgf@shadingcount=\count329
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfexternal@startupbox=\box98
+)) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+))) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfnodeparttextbox=\box99
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@nodesepstart=\dimen301
+\pgf@nodesepend=\dimen302
+) (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2019/08/03 v3.1.4b (3.1.4b)
+)) (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/pgf/math/pgfmath.sty (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2019/08/03 v3.1.4b (3.1.4b)
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen303
+\pgffor@skip=\dimen304
+\pgffor@stack=\toks45
+\pgffor@toks=\toks46
+)) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2019/08/03 v3.1.4b (3.1.4b)
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@plot@mark@count=\count330
+\pgfplotmarksize=\dimen305
+)
+\tikz@lastx=\dimen306
+\tikz@lasty=\dimen307
+\tikz@lastxsaved=\dimen308
+\tikz@lastysaved=\dimen309
+\tikz@lastmovetox=\dimen310
+\tikz@lastmovetoy=\dimen311
+\tikzleveldistance=\dimen312
+\tikzsiblingdistance=\dimen313
+\tikz@figbox=\box100
+\tikz@figbox@bg=\box101
+\tikz@tempbox=\box102
+\tikz@tempbox@bg=\box103
+\tikztreelevel=\count331
+\tikznumberofchildren=\count332
+\tikznumberofcurrentchild=\count333
+\tikz@fig@count=\count334
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfmatrixcurrentrow=\count335
+\pgfmatrixcurrentcolumn=\count336
+\pgf@matrix@numberofcolumns=\count337
+)
+\tikz@expandcount=\count338
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+))) (d:/Applications/TeXLive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+)
+\verbatim@out=\write4
+\openout4 = `Ex1.c'.
+
+\openout4 = `Ex1_Unfilled.s'.
+
+\openout4 = `Ex1_Filled.s'.
+
+\openout4 = `Ex2.c'.
+
+\openout4 = `Ex2_N=2.s'.
+
+\openout4 = `Ex2_N=11.s'.
+
+\openout4 = `Ex2_N=2_Filled.s'.
+
+\openout4 = `Ex2_N=11_Filled.s'.
+
+\openout4 = `Ex3.c'.
+
+\openout4 = `Ex3_g.s'.
+
+\openout4 = `Ex3_main.s'.
+
+\openout4 = `Ex3_g_Filled.s'.
+
+\openout4 = `Ex3_main_Filled.s'.
+
+\openout4 = `Ex4.c'.
+
+\openout4 = `Ex4_Unfilled.s'.
+
+\openout4 = `Ex4_Filled.s'.
+
+\openout4 = `Ex5.c'.
+
+\openout4 = `Ex5_Unfilled.s'.
+
+\openout4 = `Ex5_Filled.s'.
+
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/xelatex/xecjk/xeCJK-listings.sty
 Package: xeCJK-listings 2019/06/02 v3.7.4 xeCJK patch file for listings
-\l__xeCJK_listings_max_char_int=\count317
-\l__xeCJK_listings_flag_int=\count318
+\l__xeCJK_listings_max_char_int=\count339
+\l__xeCJK_listings_flag_int=\count340
 ) (./罗晏宸_PB17000297_第6次作业.aux)
 \openout1 = `罗晏宸_PB17000297_第6次作业.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 580.
+LaTeX Font Info:    ... okay on input line 580.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 580.
+LaTeX Font Info:    ... okay on input line 580.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 580.
+LaTeX Font Info:    ... okay on input line 580.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 580.
+LaTeX Font Info:    ... okay on input line 580.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 580.
+LaTeX Font Info:    ... okay on input line 580.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 580.
+LaTeX Font Info:    ... okay on input line 580.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 580.
+LaTeX Font Info:    ... okay on input line 580.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 580.
+LaTeX Font Info:    ... okay on input line 580.
  ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 55.
+LaTeX Info: Redefining \selectfont on input line 580.
 
 Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
 (fontspec)             this).
 
 \symlegacymaths=\mathgroup5
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 55.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 55.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 55.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 55.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 55.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 55.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 55.
-LaTeX Font Info:    Redeclaring math accent \check on input line 55.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 55.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 55.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 55.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 55.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 55.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 55.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 55.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 55.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 55.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 55.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 55.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 55.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 55.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 55.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 55.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 55.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 580.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 580.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 580.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 580.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 580.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 580.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 580.
+LaTeX Font Info:    Redeclaring math accent \check on input line 580.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 580.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 580.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 580.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 580.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 580.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 580.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 580.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 580.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 580.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 580.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 580.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 580.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 580.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 580.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 580.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 580.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 55.
+(Font)              `operators' in the math version `normal' on input line 580.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 55.
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 580.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 55.
+(Font)              `operators' in the math version `bold' on input line 580.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 55.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 580.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 55.
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 580.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 55.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 580.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/bx/n on input line 55.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/bx/n on input line 580.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 55.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 580.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 55.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 580.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/bx/n on input line 55.
+(Font)                  TU/lmr/m/n --> TU/lmr/bx/n on input line 580.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/bx/it on input line 55.
+(Font)                  OT1/cmr/bx/it --> TU/lmr/bx/it on input line 580.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 55.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 580.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 55.
-\c@lstlisting=\count319
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 580.
+\c@lstlisting=\count341
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -857,8 +1096,12 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box93
-(d:/Applications/TeXLive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+\AtBeginShipoutBox=\box104
+ABD: EveryShipout initializing macros
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 588.
+ (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 ) (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
@@ -875,7 +1118,7 @@ Package fontspec Info: Could not resolve font "FangSong/B" (it probably
 Package fontspec Info: Could not resolve font "FangSong/I" (it probably
 (fontspec)             doesn't exist).
 
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 67.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 588.
  (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -890,8 +1133,9 @@ Package fontspec Info: Font family 'FangSong(0)' created for font 'FangSong'
 (fontspec)             <->"FangSong/OT:script=hani;language=DFLT;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
+ (./Ex1.c
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.53937> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 68.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 1.
 
 Package fontspec Info: Could not resolve font "SimSun/BI" (it probably doesn't
 (fontspec)             exist).
@@ -915,96 +1159,103 @@ Package fontspec Info: Font family 'SimSun(1)' created for font 'SimSun' with
 (fontspec)             <->"SimSun/OT:script=hani;language=DFLT;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
+)
+Package mdframed Info: mdframed inside float 
+ mdframed uses option nobreak mdframed on input line 588.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 588.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 593.
  (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 ) (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/listings/lstlang2.sty
 File: lstlang2.sty 2019/09/10 1.8c listings language file
 ) (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/listings/lstlang3.sty
 File: lstlang3.sty 2019/09/10 1.8c listings language file
-)
+) (./Ex1_Unfilled.s
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <10.53937> not available
-(Font)              size <10.95> substituted on input line 102.
+(Font)              size <10.95> substituted on input line 8.
 
 
 LaTeX Font Warning: Font shape `TU/SimSun(1)/m/it' undefined
-(Font)              using `TU/SimSun(1)/m/n' instead on input line 124.
+(Font)              using `TU/SimSun(1)/m/n' instead on input line 30.
 
-[1
+)
+Package mdframed Info: mdframed inside float 
+ mdframed uses option nobreak mdframed on input line 593.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 593.
+ [1
 
-] [2]
-\verbatim@out=\write3
-\openout3 = `Ex2.c'.
-
+] (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2019/09/10 1.8c listings language file
+) [2]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 206.
+(mdframed)              on input line 618.
+ (./Ex1_Filled.s)
+Package mdframed Info: mdframed inside float 
+ mdframed uses option nobreak mdframed on input line 618.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 618.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 621.
  (./Ex2.c)
 Package mdframed Info: mdframed inside float 
- mdframed uses option nobreak mdframed on input line 212.
+ mdframed uses option nobreak mdframed on input line 621.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 212.
-\openout3 = `Ex2_N=2.s'.
-
+ mdframed uses option nobreak mdframed on input line 621.
+ [3]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 241.
+(mdframed)              on input line 623.
  (./Ex2_N=2.s)
 Package mdframed Info: mdframed inside float 
- mdframed uses option nobreak mdframed on input line 248.
+ mdframed uses option nobreak mdframed on input line 623.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 248.
-\openout3 = `Ex2_N=11.s'.
-
+ mdframed uses option nobreak mdframed on input line 623.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 288.
+(mdframed)              on input line 625.
  (./Ex2_N=11.s)
 Package mdframed Info: mdframed inside float 
- mdframed uses option nobreak mdframed on input line 295.
+ mdframed uses option nobreak mdframed on input line 625.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 295.
-
-
-LaTeX Warning: Float too large for page by 92.0777pt on input line 298.
-
-[3] [4]
-\openout3 = `Ex2_N=2_Filled.s'.
-
+ mdframed uses option nobreak mdframed on input line 625.
+ [4]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 339.
+(mdframed)              on input line 632.
  (./Ex2_N=2_Filled.s)
 Package mdframed Info: mdframed inside float 
- mdframed uses option nobreak mdframed on input line 346.
+ mdframed uses option nobreak mdframed on input line 632.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 346.
-\openout3 = `Ex2_N=11_Filled.s'.
-
+ mdframed uses option nobreak mdframed on input line 632.
+ [5]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 385.
+(mdframed)              on input line 634.
  (./Ex2_N=11_Filled.s)
 Package mdframed Info: mdframed inside float 
- mdframed uses option nobreak mdframed on input line 392.
+ mdframed uses option nobreak mdframed on input line 634.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 392.
- [5] [6]
-\openout3 = `Ex3.c'.
-
+ mdframed uses option nobreak mdframed on input line 634.
+ [6]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 430.
+(mdframed)              on input line 648.
  (./Ex3.c)
 Package mdframed Info: mdframed inside float 
- mdframed uses option nobreak mdframed on input line 436.
+ mdframed uses option nobreak mdframed on input line 648.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 436.
-\openout3 = `Ex3_g.s'.
-
+ mdframed uses option nobreak mdframed on input line 648.
+ [7]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 458.
+(mdframed)              on input line 650.
  (./Ex3_g.s
 LaTeX Font Info:    Try loading font information for OMS+lmtt on input line 6.
 LaTeX Font Info:    No file OMSlmtt.fd. on input line 6.
@@ -1015,24 +1266,138 @@ LaTeX Font Warning: Font shape `OMS/lmtt/m/n' undefined
 
 )
 Package mdframed Info: mdframed inside float 
- mdframed uses option nobreak mdframed on input line 465.
+ mdframed uses option nobreak mdframed on input line 650.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 465.
-\openout3 = `Ex3_main.s'.
-
+ mdframed uses option nobreak mdframed on input line 650.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 509.
+(mdframed)              on input line 652.
  (./Ex3_main.s)
 Package mdframed Info: mdframed inside float 
- mdframed uses option nobreak mdframed on input line 516.
+ mdframed uses option nobreak mdframed on input line 652.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 516.
+ mdframed uses option nobreak mdframed on input line 652.
+ [8]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 665.
+ (./Ex3_g_Filled.s)
+Package mdframed Info: mdframed inside float 
+ mdframed uses option nobreak mdframed on input line 665.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 665.
+ [9]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 667.
+ (./Ex3_main_Filled.s)
+Package mdframed Info: mdframed inside float 
+ mdframed uses option nobreak mdframed on input line 667.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 667.
+ [10] [11]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 695.
+ (./Ex4.c)
+Package mdframed Info: mdframed inside float 
+ mdframed uses option nobreak mdframed on input line 695.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 695.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 697.
+ (./Ex4_Unfilled.s)
+Package mdframed Info: mdframed inside float 
+ mdframed uses option nobreak mdframed on input line 697.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 697.
+ [12]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 709.
+ (./Ex4_Filled.s)
+Package mdframed Info: mdframed inside float 
+ mdframed uses option nobreak mdframed on input line 709.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 709.
+ [13]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 722.
+ (./Ex5.c)
+Package mdframed Info: mdframed inside float 
+ mdframed uses option nobreak mdframed on input line 722.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 722.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 724.
+ (./Ex5_Unfilled.s)
+Package mdframed Info: mdframed inside float 
+ mdframed uses option nobreak mdframed on input line 724.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 724.
+ [14]
+Overfull \vbox (16.09094pt too high) has occurred while \output is active []
+
+ [15]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 732.
+ (./Ex5_Filled.s)
+Package mdframed Info: mdframed inside float 
+ mdframed uses option nobreak mdframed on input line 732.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 732.
+ [16]
+Overfull \vbox (19.22302pt too high) has occurred while \output is active []
+
+ [17] (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2019/09/10 1.8c listings language file
+) [18]
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: xetex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(0.0pt, 522.14981pt, 92.14519pt)
+* v-part:(T,H,B)=(95.39737pt, 556.47656pt, 143.09605pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=522.14981pt
+* \textheight=556.47656pt
+* \oddsidemargin=-72.26999pt
+* \evensidemargin=-72.26999pt
+* \topmargin=-13.87262pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (53.0346pt too wide) in paragraph at lines 818--819
+ [][] 
+ []
 
 
-LaTeX Warning: Float too large for page by 51.07341pt on input line 519.
+LaTeX Warning: Float too large for page by 59.6918pt on input line 819.
 
-[7] [8] (./罗晏宸_PB17000297_第6次作业.aux)
+[19] (./罗晏宸_PB17000297_第6次作业.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.41063pt have occurred.
@@ -1042,12 +1407,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 21981 strings out of 492909
- 463700 string characters out of 6130813
- 884960 words of memory out of 5000000
- 25747 multiletter control sequences out of 15000+600000
- 560128 words of font info for 81 fonts, out of 8000000 for 9000
+ 32838 strings out of 492909
+ 705189 string characters out of 6130813
+ 980693 words of memory out of 5000000
+ 36339 multiletter control sequences out of 15000+600000
+ 557130 words of font info for 80 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 54i,15n,68p,840b,1746s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,11n,69p,840b,1783s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 罗晏宸_PB17000297_第6次作业.pdf (8 pages).
+Output written on 罗晏宸_PB17000297_第6次作业.pdf (19 pages).

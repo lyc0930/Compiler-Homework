@@ -29,4 +29,3 @@ f:
     ret
 // \songti \upshape rep movsl为数据传送指令，即，由源地址esi开始的ecx个字的数据传送到由edi指示的目的地址。
 // \songti \upshape 当N=11时，生成的汇编代码片段
-            

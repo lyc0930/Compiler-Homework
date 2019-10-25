@@ -13,4 +13,3 @@ void f(DOT p)
     f(*(p.next));
 }
 // \songti \upshape 第二题C程序
-            

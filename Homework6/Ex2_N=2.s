@@ -18,4 +18,3 @@ f:
     leave
     ret
 // \songti \upshape 当N=2时，生成的汇编代码片段。
-            

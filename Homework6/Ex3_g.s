@@ -11,4 +11,3 @@ g:
     leave
     ret
 // \songti \upshape 第三题函数\texttt{g}的汇编代码片段
-            

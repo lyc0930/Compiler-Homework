@@ -13,7 +13,7 @@ main:
     movl    %eax, -64(%ebp)
     movl    $0, -60(%ebp)
 .L2:
-    `\underline{~~~~~~~~\textcircled{1}~~~~~~~~}`
+  `\underline{\textcircled{1}\ttfamily \color{red!20!green!60!blue}{cmpl~~~~\$9, -60(\%ebp)}}`
     jle     .L5
     jmp     .L3
 .L5:
@@ -24,12 +24,12 @@ main:
     leal    -64(%ebp), %eax
     pushl   %eax
     call    g
-    `\underline{~~~~~~~~\textcircled{2}~~~~~~~~}`
+  `\underline{\textcircled{2}\ttfamily \color{red!20!green!60!blue}{movl~~~~\%eax, (\%ebp)}}`
     leal    -60(%ebp), %eax
     incl    (%eax)
-    `\underline{~~~~~~~~\textcircled{3}~~~~~~~~}`
+  `\underline{\textcircled{3}\ttfamily \color{red!20!green!60!blue}{jmpl~~~~.L2}}`
 .L3:
     movl    $0, %eax
     leave
     ret
-// \songti \upshape 第三题函数\texttt{main}的汇编代码片段
+// \songti \upshape 补全后第三题函数\texttt{main}的汇编代码片段
