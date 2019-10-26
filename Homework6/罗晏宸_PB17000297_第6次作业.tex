@@ -16,6 +16,7 @@
 \usepackage{ulem}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
+\usetikzlibrary[arrows]
 \lstset
 {
     basicstyle=\ttfamily,
@@ -779,42 +780,110 @@ end
 \newgeometry{left = 0em}
 \begin{figure}
     \centering
-\begin{tikzpicture}[node distance = 0em]
-    \tikzstyle{block} = [rectangle, draw=blue, thick, text centered, minimum height = 0em, minimum width = 10em];
-    \node [block, fill = blue!00]                               (returned_value_0)  {返回值};
-    \node [block, fill = blue!01, below = of returned_value_0]  (parameters_0)      {实在参数};
-    \node [block, fill = blue!02, below = of parameters_0]      (link_0)            {可选的访问链};
-    \node [block, fill = blue!03, below = of link_0]            (returned_address_0){返回地址};
-    \node [block, fill = blue!04, below = of returned_address_0](caller_bp_0)       {调用者bp};
-    \node [block, fill = blue!05, below = of caller_bp_0]       (local_data_0)      {局部变量};
-    \node [block, fill = blue!06, below = of local_data_0]      (temporaries_0)     {临时区};
-    \foreach \i/\j in {1/0, 2/1, 3/2, 4/3, 5/4, 6/5, 7/6, 8/7, 9/8, 10/9, 11/10, 12/11, 13/12, 14/13, 15/14, 16/15}
-    {
-        \ifnum \i = 5
-            \node [block, fill = blue!\i, right = of {returned_value_1}]     (returned_value_\i)  {返回值};
-        \else
-        \ifnum \i = 9
-            \node [block, fill = blue!\i, right = of {returned_value_5}]     (returned_value_\i)  {返回值};
-        \else
-        \ifnum \i = 13
-            \node [block, fill = blue!\i, right = of {returned_value_9}]     (returned_value_\i)  {返回值};
-        \else
-        \ifnum \i = 17
-            \node [block, fill = blue!\i, right = of {returned_value_13}]     (returned_value_\i)  {返回值};
-        \else
-            \node [block, fill = blue!\i, below = of {temporaries_\j}]     (returned_value_\i)  {返回值};
-        \fi
-        \fi
-        \fi
-        \fi
-    \node [block, fill = blue!1\i, below = of {returned_value_\i}]  (parameters_\i)      {实在参数};
-    \node [block, fill = blue!2\i, below = of {parameters_\i}]      (link_\i)            {可选的访问链};
-    \node [block, fill = blue!3\i, below = of {link_\i}]            (returned_address_\i){返回地址};
-    \node [block, fill = blue!4\i, below = of {returned_address_\i}](caller_bp_\i)       {调用者bp};
-    \draw [->, thick] (caller_bp_\i) to [out = 180, in = 180] (caller_bp_\j);
-    \node [block, fill = blue!5\i, below = of {caller_bp_\i}]       (local_data_\i)      {局部变量};
-    \node [block, fill = blue!6\i, below = of {local_data_\i}]      (temporaries_\i)     {临时区};
-    }
-\end{tikzpicture}
+    \begin{tikzpicture}[node distance = 0em]
+        \tikzstyle{block} = [rectangle, draw=black, text centered, minimum height = 1.6em, minimum width = 9em];
+        \node [block, fill = green!00]                               (returned_value_0)  {返回值};
+        \node [block, fill = green!21, below = of returned_value_0]  (returned_address_0){返回地址};
+        \node [block, fill = green!28, below = of returned_address_0](caller_bp_0)       {调用者bp};
+        \node [block, fill = blue!42, below = of caller_bp_0]       (temporaries_0_1)   {\texttt{f(level, arg())}};
+        \node [block, fill = black!48, below = of temporaries_0_1]   (temporaries_0)     {\texttt{dummy()}};
+        \node [block, fill = blue!00, below = of {temporaries_0}]     (returned_value_1)  {返回值};
+        \node [block, fill = blue!07, below = of {returned_value_1}]  (parameters_1_0)    {\texttt{level = 17}};
+        \node [block, fill = blue!07, below = of {parameters_1_0}]    (parameters_1)      {\texttt{arg = dummy}};
+        \node [block, fill = blue!14, below = of {parameters_1}]      (link_1)            {\textsc{Point to} \texttt{dummy}};
+
+        \node [block, fill = blue!21, below = of {link_1}]            (returned_address_1){返回地址};
+        \node [block, fill = blue!28, below = of {returned_address_1}](caller_bp_1)       {调用者bp};
+
+        \node [block, fill = yellow!40, below = of {caller_bp_1}]      (local_1)     {\texttt{local()}};
+        \foreach \i/\j/\c/\level in {2/1/2/16, 3/2/2/15, 4/3/2/14, 5/4/4/13, 6/5/4/12, 7/6/4/11, 8/7/4/10, 9/8/6/9, 10/9/6/8, 11/10/6/7, 12/11/6/6, 13/12/8/5, 14/13/8/4, 15/14/8/3, 16/15/8/2, 17/16/8/1}
+        {
+            \ifnum \i = 4
+                \node [block, fill = blue!00, right = of {returned_value_1}]     (returned_value_\i)  {返回值};
+            \else
+            \ifnum \i = 7
+                \node [block, fill = blue!00, right = of {returned_value_4}]     (returned_value_\i)  {返回值};
+            \else
+            \ifnum \i = 10
+                \node [block, fill = blue!00, right = of {returned_value_7}]     (returned_value_\i)  {返回值};
+            \else
+            \ifnum \i = 13
+                \node [block, fill = blue!00, right = of {returned_value_10}]     (returned_value_\i)  {返回值};
+            \else
+            \ifnum \i = 16
+                \node [block, fill = blue!00, right = of {returned_value_13}]     (returned_value_\i)  {返回值};
+            \else
+                \node [block, fill = blue!00, below = of {local_\j}]     (returned_value_\i)  {返回值};
+            \fi
+            \fi
+            \fi
+            \fi
+            \fi
+            \node [block, fill = blue!07, below = of {returned_value_\i}]  (parameters_\i_0)    {\texttt{level = \level}};
+            \ifnum \i > 8
+                \node [block, fill = blue!07, below = of {parameters_\i_0}]    (parameters_\i)      {\texttt{arg = arg}};
+            \else
+                \node [block, fill = blue!07, below = of {parameters_\i_0}]    (parameters_\i)      {\texttt{arg = local}};
+            \fi
+            \node [block, fill = blue!14, below = of {parameters_\i}]      (link_\i)            {\textsc{Point to} \texttt{local}};
+
+            \node [block, fill = blue!21, below = of {link_\i}]            (returned_address_\i){返回地址};
+            \node [block, fill = blue!28, below = of {returned_address_\i}](caller_bp_\i)       {调用者bp};
+
+            \node [block, fill = yellow!40, below = of {caller_bp_\i}]      (local_\i)     {\texttt{local()}};
+        }
+        \node [block, fill = yellow!00, below = of {local_17}]     (returned_value)  {返回值 = 11};
+        \node [block, fill = yellow!14, below = of {returned_value}]            (returned_address){返回地址};
+        \node [block, fill = yellow!28, below = of {returned_address}](caller_bp)       {调用者bp};
+
+
+        \draw [-triangle 60] (link_1) to [out = 150, in = -150] (temporaries_0);
+        \draw [-open triangle 45, thick, green!60!black] (caller_bp_1) to [out = 150, in = -150] (caller_bp_0);
+        \draw [o-stealth, thick, red!60!black] (returned_value_1) to [out = 30, in = -30] (returned_value_0);
+        \foreach \i/\j/\c/\level in {2/1/2/16, 3/2/2/15, 4/3/2/14, 5/4/4/13, 6/5/4/12, 7/6/4/11, 8/7/4/10, 9/8/6/9, 10/9/6/8, 11/10/6/7, 12/11/6/6, 13/12/8/5, 14/13/8/4, 15/14/8/3, 16/15/8/2, 17/16/8/1}
+        {
+            \ifnum \i > 8
+                \draw [-triangle 60, thick] (link_\i) to [] (local_7);
+                \ifnum \i = 10
+                    \draw [-open triangle 45, thick, green!60!black] (caller_bp_\i) to [out = -135, in = 45] (caller_bp_\j);
+                    \draw [o-stealth, thick, red!60!black] (returned_value_\i) to [out = -90, in = 90] (returned_value_\j);
+                \else
+                \ifnum \i = 13
+                    \draw [-open triangle 45, thick, green!60!black] (caller_bp_\i) to [out = -135, in = 45] (caller_bp_\j);
+                    \draw [o-stealth, thick, red!60!black] (returned_value_\i) to [out = -90, in = 90] (returned_value_\j);
+                \else
+                \ifnum \i = 16
+                    \draw [-open triangle 45, thick, green!60!black] (caller_bp_\i) to [out = -135, in = 45] (caller_bp_\j);
+                    \draw [o-stealth, thick, red!60!black] (returned_value_\i) to [out = -90, in = 90] (returned_value_\j);
+                \else
+                    \draw [-open triangle 45, thick, green!60!black] (caller_bp_\i) to [out = 150, in = -150] (caller_bp_\j);
+                    \draw [o-stealth, thick, red!60!black] (returned_value_\i) to [out = 30, in = -30] (returned_value_\j);
+                \fi
+                \fi
+                \fi
+            \else
+            \ifnum \i = 4
+                \draw [-triangle 60] (link_\i) to [out = -90, in = 90] (local_\j);
+                \draw [-open triangle 45, thick, green!60!black] (caller_bp_\i) to [out = -135, in = 45] (caller_bp_\j);
+                \draw [o-stealth, thick, red!60!black] (returned_value_\i) to [out = -90, in = 90] (returned_value_\j);
+            \else
+            \ifnum \i = 7
+                \draw [-triangle 60] (link_\i) to [out = -90, in = 90] (local_\j);
+                \draw [-open triangle 45, thick, green!60!black] (caller_bp_\i) to [out = -135, in = 45] (caller_bp_\j);
+                \draw [o-stealth, thick, red!60!black] (returned_value_\i) to [out = -90, in = 90] (returned_value_\j);
+            \else
+                \draw [-triangle 60] (link_\i) to [out = 150, in = -150] (local_\j);
+                \draw [-open triangle 45, thick, green!60!black] (caller_bp_\i) to [out = 150, in = -150] (caller_bp_\j);
+                \draw [o-stealth, thick, red!60!black] (returned_value_\i) to [out = 30, in = -30] (returned_value_\j);
+
+            \fi
+            \fi
+            \fi
+        }
+        \draw [-open triangle 45, thick, green!60!black] (caller_bp) to [out = 0, in = 0] (caller_bp_17);
+        \draw [o-stealth, thick, red!60!black] (returned_value) to [out = 30, in = -30] (returned_value_17);
+    \end{tikzpicture}
+    \caption{栈上包含19个活动记录表时的图示}
 \end{figure}
 \end{document}
+
