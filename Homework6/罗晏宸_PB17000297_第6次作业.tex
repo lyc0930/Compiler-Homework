@@ -585,14 +585,14 @@ main:
 \section*{Exercise 1}
 针对如下C程序及其在i386 Linux下的汇编代码（片段）：
 
-% \begin{multicols}{2}
+\begin{multicols}{2}
 \CodeBlock{C}{./Ex1.c}
 \subparagraph*{(a)}
 上述C程序的输出是什么？
 \subparagraph*{(b)}
 补全10处划线部分的汇编代码。
 \CodeBlock{Assembler}{./Ex1_Unfilled.s}
-% \end{multicols}
+\end{multicols}
 
 \paragraph{解}
 \subparagraph*{(a)}
@@ -603,9 +603,15 @@ main:
 ]
 36313032 2016
 \end{lstlisting}
+\subparagraph*{(b)}
+补全后的汇编代码如下
+\CodeBlock{Assembler}{./Ex1_Filled.s}
+
+\newpage
 
 \section*{Exercise 2}
 针对如下C程序及其汇编代码（片段）：
+% \begin{multicols}{2}
 \subparagraph*{(a)}
 补全划线处的汇编代码；
 \subparagraph*{(b)}
@@ -613,28 +619,24 @@ main:
 \subparagraph*{(c)}
 结合上述两种汇编代码，简述编译器在按值传递结构变量时的处理方式。
 
-\subparagraph*{(b)}
-补全后的汇编代码如下
-
-\CodeBlock{Assembler}{./Ex1_Filled.s}
-
-    % \begin{multicols}{2}
+\begin{multicols}{2}
 \CodeBlock{C}{./Ex2.c}
 
 \CodeBlock{Assembler}{./Ex2_N=2.s}
 
 \CodeBlock{Assembler}{./Ex2_N=11.s}
+\end{multicols}
+
+\vspace{5em}
 
 \paragraph{解}
 \subparagraph*{(a)}
 补全后的汇编代码分别如下
 
-    % \begin{multicols}{2}
+\begin{multicols}{2}
 \CodeBlock{Assembler}{./Ex2_N=2_Filled.s}
-
 \CodeBlock{Assembler}{./Ex2_N=11_Filled.s}
-    % \end{multicols}
-
+\end{multicols}
 \subparagraph*{(b)}
 \lstinline[style = Assembler]{addl $16, %esp}指令将栈顶指针恢复到参数压栈之前的位置，\lstinline[style = Assembler]{leal -8(%ebp), %esp}加载栈顶指针地址为\lstinline[style = Assembler]{%ebp}的值减去8
 \subparagraph{(c)}
@@ -642,16 +644,18 @@ main:
 
 \FloatBarrier
 
+\newpage
+
 \section*{Exercise 3}
 针对如下C程序及其汇编代码（片段）：
 
-    % \begin{multicols}{2}
+\begin{multicols}{2}
 \CodeBlock{C}{./Ex3.c}
 
 \CodeBlock{Assembler}{./Ex3_g.s}
 
 \CodeBlock{Assembler}{./Ex3_main.s}
-    % \end{multicols}
+\end{multicols}
 
 \subparagraph*{(a)}
 补全下划线处的空白汇编代码;
@@ -662,12 +666,8 @@ main:
 \subparagraph*{(a)}
 补全后的汇编代码分别如下
 
-    % \begin{multicols}{2}
+\begin{multicols}{2}
 \CodeBlock{Assembler}{./Ex3_g_Filled.s}
-
-\CodeBlock{Assembler}{./Ex3_main_Filled.s}
-    % \end{multicols}
-
 \subparagraph*{(b)}
 \texttt{main}函数中\texttt{for}循环结束时，数组\texttt{line}各元素值如下
 \begin{figure}[H]
@@ -687,16 +687,20 @@ line[8] = 9
 line[9] = 10
 \end{lstlisting}
 \end{figure}
+\CodeBlock{Assembler}{./Ex3_main_Filled.s}
+\end{multicols}
+
+
 
 
 \section*{Exercise 4}
 针对如下C程序及其汇编代码（片段）：
 
-    % \begin{multicols}{2}
+\begin{multicols}{2}
 \CodeBlock{C}{./Ex4.c}
 
 \CodeBlock{Assembler}{./Ex4_Unfilled.s}
-    % \end{multicols}
+\end{multicols}
 
 \subparagraph*{(a)}
 补全下划线处的空白汇编代码；
@@ -712,18 +716,22 @@ line[9] = 10
 \subparagraph*{(b)}
 对于过程中出现的作用域不同的局部变量，编译器按出现次序为其在堆栈中分配空间。
 
+\newpage
+
+\begin{multicols}{2}
 \section*{Exercise 5}
 仔细阅读所给C程序及其汇编代码片段。
+
 \subparagraph*{(a)}
 指出\uwave{波浪线}处的汇编代码的作用；
 \subparagraph*{(b)}
 补全下划线处的空白汇编代码。
 
-    % \begin{multicols}{2}
+% \begin{multicols}{2}
 \CodeBlock{C}{./Ex5.c}
 
 \CodeBlock{Assembler}{./Ex5_Unfilled.s}
-    % \end{multicols}
+\end{multicols}
 
 \paragraph{解}
 \subparagraph*{(a)}
