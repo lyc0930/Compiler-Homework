@@ -1,0 +1,218 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{ulem}
+\usepackage{multicol}
+\usepackage{geometry}
+
+\lstset
+{
+    basicstyle = \ttfamily,
+    keywordstyle = \bfseries\color{blue!70},
+    commentstyle = \songti \upshape,
+    escapeinside=``,
+    breaklines = true,
+    breakatwhitespace = true,
+    breakautoindent = true,
+    texcl = true,
+    showstringspaces = false,
+    basewidth = 0.5em,
+    flexiblecolumns,
+    columns = fixed,
+    frame = {},
+}
+\lstdefinestyle{C}
+{
+    language = C,
+}
+\lstdefinestyle{Assembler}
+{
+    language = [X86masm]Assembler,
+    alsolanguage = C,
+}
+
+\title{Homework 8}
+\author{PB17000297 罗晏宸}
+\date{November 6 2019}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Exercise 1}
+针对以下C程序及其汇编代码：\uline{补全下划线部分的C语句或汇编代码}
+
+\begin{figure}[H]
+    \centering
+    \begin{lstlisting}[style = C]
+int test(int i, int j)
+{
+    int score;
+    if(`\uline{~~~~~~~~~~~~~~~}`)
+        score = 100;
+    else
+        score = 60;
+    return score;
+}// C程序
+    \end{lstlisting}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{lstlisting}[style = Assembler, lineskip = 0.2em]
+.text
+.globl  test
+    .type   test, @function
+test:
+    pushl   %ebp
+    movl    %esp, %ebp
+    `\uline{~~~~~~~~~~~~~~~~~~}`
+    movl    8(%ebp), %eax
+    cmpl    12(%ebp), %eax
+    jle     .L4
+    cmpl    $0, 12(%ebp)
+    je      .L4
+    cmpl    $10, 12(%ebp)
+    jle     .L4
+    cmpl    $0, 8(%ebp)
+    je      .L4
+    cmpl    $20, 8(%ebp)
+    jg      .L3
+.L4:
+    cmpl    $100, 8(%ebp)
+    jg      .L3
+    cmpl    $99, 12(%ebp)
+    jle     .L2
+    cmpl    $40, 8(%ebp)
+    jg      .L2
+    cmpl    $20, 12(%ebp)
+    jle     .L3
+    cmpl    $-10, 8(%ebp)
+    jge     .L3
+    jmp     .L2
+.L3:
+    movl    $100, -4(%ebp)
+    jmp     .L5
+.L2:
+    movl    $60, -4(%ebp)
+.L5:
+    `\uline{~~~~~~~~~~~~~}`
+    leave
+    ret
+    \end{lstlisting}
+\end{figure}
+
+\newgeometry{left = 10em, right = 10em}
+
+\begin{multicols}{2}
+    \paragraph{解}
+    补全后的代码如下
+    \begin{lstlisting}[style = C]
+int test(int i, int j)
+{
+    int score;
+    if(`\color{red!20!green!60!blue}{\uline{i > j \&\& j != 0 \&\& j > 10 \&\& i != 0 \&\& i > 20 ||    i > 100 || (j >= 100 \&\&    i <= 40) \&\& (j <= 20 ||   i >= -10)}}`)
+        score = 100;
+    else
+        score = 60;
+    return score;
+}// C程序
+    \end{lstlisting}
+
+
+    \begin{figure}[H]
+        \centering
+        \begin{lstlisting}[style = Assembler, lineskip = 0.2em]
+.text
+.globl  test
+    .type   test, @function
+test:
+    pushl   %ebp
+    movl    %esp, %ebp
+    `\underline{\color{red!20!green!60!blue}{subl~~~~\$16, \%esp}}`
+    movl    8(%ebp), %eax
+    cmpl    12(%ebp), %eax
+    jle     .L4
+    cmpl    $0, 12(%ebp)
+    je      .L4
+    cmpl    $10, 12(%ebp)
+    jle     .L4
+    cmpl    $0, 8(%ebp)
+    je      .L4
+    cmpl    $20, 8(%ebp)
+    jg      .L3
+.L4:
+    cmpl    $100, 8(%ebp)
+    jg      .L3
+    cmpl    $99, 12(%ebp)
+    jle     .L2
+    cmpl    $40, 8(%ebp)
+    jg      .L2
+    cmpl    $20, 12(%ebp)
+    jle     .L3
+    cmpl    $-10, 8(%ebp)
+    jge     .L3
+    jmp     .L2
+.L3:
+    movl    $100, -4(%ebp)
+    jmp     .L5
+.L2:
+    movl    $60, -4(%ebp)
+.L5:
+    `\underline{\color{red!20!green!60!blue}{movl~~~~-4(\%ebp), \%eax}}`
+    leave
+    ret
+        \end{lstlisting}
+    \end{figure}
+\end{multicols}
+
+\restoregeometry
+\section*{Exercise 2}
+给出生成如下C风格\lstinline{for}语句中间代码的翻译方案；假定代码生成的顺序不变。
+
+\begin{align*}
+    S \rightarrow \texttt{for(}E_1\texttt{; }E_2\texttt{; }E_3\texttt{)}\ S_1
+\end{align*}
+
+\paragraph{解}
+首先给出中间代码的结构
+\begin{figure}[H]
+    \centering
+\begin{lstlisting}[language = Pascal, alsolanguage = C]
+    `$E_1$`
+L1: if `$E_2$` goto L3
+L2: `$E_3$`
+    goto L1
+L3: `$S_1$`
+    goto L2
+\end{lstlisting}
+\end{figure}
+据此给出一个翻译方案如下
+\begin{align*}
+    S \rightarrow\  &\texttt{for(}E_1\texttt{; }M_1\ E_2\texttt{; }M_2\ E_3\texttt{)}\ N\ S_1 \\
+                    &\texttt{\{} \\
+                    &\qquad \texttt{emit('goto', }M_2\texttt{.next);} \\
+                    &\qquad \texttt{backpatch(}E_2\texttt{.truelist, }N\texttt{.next);} \\
+                    &\qquad \texttt{backpatch(}S_1\texttt{.nextlist, }M_2\texttt{.next);} \\
+                    &\qquad \texttt{backpatch(}N\texttt{.nextlist, }M_1\texttt{.next);} \\
+                    &\qquad S\texttt{.nextlist = }E_2\texttt{.falselist;} \\
+                    &\texttt{\}}\\
+    M \rightarrow\  &\varepsilon \\ &\texttt{\{ }M\texttt{.next = nextstmt; \}}\\
+    N \rightarrow\  &\varepsilon \\
+                    &\texttt{\{} \\
+                    &\qquad N\texttt{.nextlist = makelist(nextstmt);} \\
+                    &\qquad \texttt{emit('goto');} \\
+                    &\qquad N\texttt{.next = nextstmt;} \\
+                    &\texttt{\}}\\
+\end{align*}
+\end{document}
+
