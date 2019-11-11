@@ -144,6 +144,7 @@ test:
         \draw [-triangle 60] (B9) to [out = 180, in = 180] (B14);
         \draw [-triangle 60] (B10) to [out = 0, in = 0] (B13);
         \draw [-triangle 60] (B11) to [out = 0, in = 0] (B13);
+        \draw [-triangle 60] (B12) to [out = 180, in = 180] (B14);
         \draw [-triangle 60] (B13) to [out = 0, in = 0] (B15);
     \end{tikzpicture}
     \caption{Homework8 (1)代码对应流图}
@@ -154,6 +155,7 @@ test:
 \section*{Exercise 2}
 给出Homework1 (2)中C程序相应的三地址中间代码，并构建流图。
 
+\begin{multicols}{2}
 \paragraph{解}
 由以下C语言代码
 
@@ -173,6 +175,98 @@ int main()
     }
 }
 \end{lstlisting}
+
+首先给出三地址中间代码结构
+\begin{figure}[H]
+    \centering
+    \begin{lstlisting}[language = Pascal, alsolanguage = C]
+    j = 0
+    i = 0
+`$L_1$`: if i < 10 goto `$L_2$`
+    goto `$L_\text{next}$`
+`$L_2$`: t = i
+    goto test
+`$L_3$`: goto `$L_\text{next}$`
+`$L_4$`: goto `$L_5$`
+test:
+    if t == 0 goto `$L_3$`
+    if t == 2 goto `$L_3$`
+    if t == 3 goto `$L_4$`
+    if t == 5 goto `$L_4$`
+    j = i
+    p = i * 2
+    j = j + p
+`$L_5$`: i = i + 1
+    goto `$L_1$`
+`$L_\text{next}$`:
+    \end{lstlisting}
+\end{figure}
+
+据此构建流图
+\end{multicols}
+
+\begin{figure}[H]
+    \begin{tikzpicture}[node distance = 1.5em]
+        \tikzstyle{block} = [rectangle, draw=black, text ragged, minimum height = 1.6em, minimum width = 10em];
+        \node [block]  (B1)
+        {
+            \begin{tabular}{l}
+                \texttt{j = 0} \\
+                \texttt{i = 0}
+            \end{tabular}
+        };
+        \node [block, below = of B1]  (B2)  {\texttt{if i < 0 goto }$B_4$};
+        \node [block, below = of B2]  (B3)  {\texttt{goto }$B_{13}$};
+        \node [block, below = of B3]  (B4)
+        {
+            \begin{tabular}{l}
+                \texttt{t = i} \\
+                \texttt{goto }$B_{7}$
+            \end{tabular}
+        };
+        \node [block, left = of B11]  (B5)  {\texttt{goto }$B_{13}$};
+        \node [block, right = of B11]  (B6)  {\texttt{goto }$B_{12}$};
+        \node [block, below = of B4]  (B7)  {\texttt{if t == 0 goto }$B_5$};
+        \node [block, below = of B7]  (B8)  {\texttt{if t == 2 goto }$B_5$};
+        \node [block, below = of B8]  (B9)  {\texttt{if t == 3 goto }$B_6$};
+        \node [block, below = of B9]  (B10)  {\texttt{if t == 5 goto }$B_6$};
+        \node [block, below = of B10]  (B11)
+        {
+            \begin{tabular}{l}
+                \texttt{j = i} \\
+                \texttt{p = i * 2} \\
+                \texttt{j = j + p}
+            \end{tabular}
+        };
+        \node [block, below = of B11]  (B12)
+        {
+            \begin{tabular}{l}
+                \texttt{i = i + 1} \\
+                \texttt{goto }$B_{2}$
+            \end{tabular}
+        };
+        \node [block, below = of B12]  (B13)  {};
+
+        \foreach \i in {1, ...,4, 6, 7, ..., 13}
+            \node [right = of B\i] (A\i) {$B_{\i}$};
+        \node [left = of B5] (A5) {$B_{5}$};
+        \foreach \i/\j in {1/2, 2/3, 7/8, 8/9, 9/10, 10/11, 11/12}
+            \draw [-triangle 60] (B\i) to [] (B\j);
+
+        \draw [-triangle 60] (B2) to [out = 180, in = 180] (B4);
+        \draw [-triangle 60] (B3) to [out = 180, in = 180] (B13);
+        \draw [-triangle 60] (B4) to [out = -90, in = 90] (B7);
+        \draw [-triangle 60] (B5) to [out = -90, in = 180] (B13);
+        \draw [-triangle 60] (B6) to [out = -90, in = 0] (B12);
+        \draw [-triangle 60] (B7) to [out = 180, in = 90] (B5);
+        \draw [-triangle 60] (B8) to [out = 180, in = 90] (B5);
+        \draw [-triangle 60] (B9) to [out = 0, in = 90] (B6);
+        \draw [-triangle 60] (B10) to [out = 0, in = 90] (B6);
+        \draw [-triangle 60] (B12) to [out = 0, in = 0] (B2);
+        % \draw [-triangle 60] (B13) to [out = 0, in = 0] (B15);
+    \end{tikzpicture}
+    \caption{Homework1 (2)代码对应流图}
+\end{figure}
 
 \end{document}
 

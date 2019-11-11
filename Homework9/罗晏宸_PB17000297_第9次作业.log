@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.9.21)  11 NOV 2019 09:56
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.9.21)  11 NOV 2019 10:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1010,19 +1010,28 @@ LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <10.53937> not available
 
 [1
 
-] [2] [3] (./罗晏宸_PB17000297_第9次作业.aux)
+] [2] (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2019/09/10 1.8c listings language file
+)
+Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (11.10292pt too wide) in paragraph at lines 267--268
+[][] 
+ []
+
+[3] [4] (./罗晏宸_PB17000297_第9次作业.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.41063pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 32444 strings out of 492909
- 718549 string characters out of 6130813
- 1052037 words of memory out of 5000000
- 36023 multiletter control sequences out of 15000+600000
- 556811 words of font info for 79 fonts, out of 8000000 for 9000
+ 32514 strings out of 492909
+ 719577 string characters out of 6130813
+ 1054801 words of memory out of 5000000
+ 36090 multiletter control sequences out of 15000+600000
+ 557453 words of font info for 81 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  55i,12n,68p,436b,1614s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 罗晏宸_PB17000297_第9次作业.pdf (3 pages).
+Output written on 罗晏宸_PB17000297_第9次作业.pdf (4 pages).
