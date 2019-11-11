@@ -41,3 +41,25 @@ Homework assignments of **Compiler Principles and Technology**
     - 属性栈代码
     - Yacc语义代码
 - 语法指导定义
+
+## [Homework 6](https://github.com/lyc0930/Compiler-Homework/tree/master/Homework6)
+10.23
+- 汇编代码
+- 运行时环境
+    - 存储分配策略
+    - 活动记录
+
+## [Homework 7](https://github.com/lyc0930/Compiler-Homework/tree/master/Homework7)
+10.15
+- PL/0编译器
+
+## [Homework 8](https://github.com/lyc0930/Compiler-Homework/tree/master/Homework8)
+10.15
+- 汇编代码
+- 中间代码
+
+## [Homework 9](https://github.com/lyc0930/Compiler-Homework/tree/master/Homework9)
+10.15
+- 汇编代码
+- 基本块划分
+- 流图
