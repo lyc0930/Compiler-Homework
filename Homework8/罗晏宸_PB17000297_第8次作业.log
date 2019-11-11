@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.9.21)  9 NOV 2019 20:21
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.9.21)  11 NOV 2019 10:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -777,48 +777,18 @@ File: lstlang1.sty 2019/09/10 1.8c listings language file
 File: lstlang2.sty 2019/09/10 1.8c listings language file
 ) (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/listings/lstlang3.sty
 File: lstlang3.sty 2019/09/10 1.8c listings language file
-) [1
+)
+Overfull \vbox (10.39758pt too high) has occurred while \output is active []
+
+
+Overfull \vbox (6.21791pt too high) has occurred while \output is active []
+
+ [1
 
 ]
-Overfull \vbox (14.27448pt too high) has occurred while \output is active []
-
- [2]
-*geometry* verbose mode - [ newgeometry ] result:
-* driver: xetex
-* paper: <default>
-* layout: <same size as paper>
-* layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: 
-* h-part:(L,W,R)=(105.39368pt, 403.50764pt, 105.39368pt)
-* v-part:(T,H,B)=(95.39737pt, 556.47656pt, 143.09605pt)
-* \paperwidth=614.295pt
-* \paperheight=794.96999pt
-* \textwidth=403.50764pt
-* \textheight=556.47656pt
-* \oddsidemargin=33.12369pt
-* \evensidemargin=33.12369pt
-* \topmargin=-13.87262pt
-* \headheight=12.0pt
-* \headsep=25.0pt
-* \topskip=10.0pt
-* \footskip=30.0pt
-* \marginparwidth=65.0pt
-* \marginparsep=11.0pt
-* \columnsep=10.0pt
-* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
-* \hoffset=0.0pt
-* \voffset=0.0pt
-* \mag=1000
-* \@twocolumnfalse
-* \@twosidefalse
-* \@mparswitchfalse
-* \@reversemarginfalse
-* (1in=72.27pt=25.4mm, 1cm=28.453pt)
-
-
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <10.53937> not available
-(Font)              size <10.95> substituted on input line 141.
+(Font)              size <10.95> substituted on input line 138.
 
 
 Overfull \vbox (16.74228pt too high) has occurred while \output is active []
@@ -829,13 +799,14 @@ Overfull \vbox (16.74228pt too high) has occurred while \output is active []
 
 Overfull \vbox (16.74228pt too high) has occurred while \output is active []
 
- [3
-
-] (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+ [2] (d:/Applications/TeXLive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
-) [4
+)
+Overfull \hbox (20.57521pt too wide) detected at line 213
+[]
+ []
 
-] [5] (./罗晏宸_PB17000297_第8次作业.aux)
+[3] (./罗晏宸_PB17000297_第8次作业.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.41063pt have occurred.
@@ -844,10 +815,10 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  19800 strings out of 492909
  425890 string characters out of 6130813
- 809595 words of memory out of 5000000
+ 809739 words of memory out of 5000000
  23649 multiletter control sequences out of 15000+600000
  563426 words of font info for 83 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 54i,10n,70p,380b,1574s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 54i,10n,70p,380b,1538s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 罗晏宸_PB17000297_第8次作业.pdf (5 pages).
+Output written on 罗晏宸_PB17000297_第8次作业.pdf (3 pages).

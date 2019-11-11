@@ -51,8 +51,8 @@
 \section*{Exercise 1}
 针对以下C程序及其汇编代码：\uline{补全下划线部分的C语句或汇编代码}
 
-\begin{figure}[H]
-    \centering
+\begin{multicols}{2}
+
     \begin{lstlisting}[style = C]
 int test(int i, int j)
 {
@@ -64,11 +64,8 @@ int test(int i, int j)
     return score;
 }// C程序
     \end{lstlisting}
-\end{figure}
 
-\begin{figure}[H]
-    \centering
-    \begin{lstlisting}[style = Assembler, lineskip = 0.2em]
+    \begin{lstlisting}[style = Assembler, lineskip = 0.15em]
 .text
 .globl  test
     .type   test, @function
@@ -109,9 +106,9 @@ test:
     leave
     ret
     \end{lstlisting}
-\end{figure}
+\end{multicols}
 
-\newgeometry{left = 10em, right = 10em}
+% \newgeometry{left = 10em, right = 10em}
 
 \begin{multicols}{2}
     \paragraph{解}
@@ -120,7 +117,7 @@ test:
 int test(int i, int j)
 {
     int score;
-    if(`\color{red!20!green!60!blue}{\uline{i > j \&\& j != 0 \&\& j > 10 \&\& i != 0 \&\& i > 20 ||    i > 100 || (j >= 100 \&\&    i <= 40) \&\& (j <= 20 ||   i >= -10)}}`)
+    if(`\color{red!20!green!60!blue}{\uline{i > j \&\& j != 0 \&\& j > 10 \&\& \\ i != 0 \&\& i > 20 || i > 100 || \\ (j >= 100 \&\& i <= 40) \&\& \\ (j <= 20 || i >= -10)}}`)
         score = 100;
     else
         score = 60;
@@ -175,7 +172,8 @@ test:
     \end{figure}
 \end{multicols}
 
-\restoregeometry
+% \restoregeometry
+
 \section*{Exercise 2}
 给出生成如下C风格\lstinline{for}语句中间代码的翻译方案；假定代码生成的顺序不变。
 
@@ -183,10 +181,9 @@ test:
     S \rightarrow \texttt{for(}E_1\texttt{; }E_2\texttt{; }E_3\texttt{)}\ S_1
 \end{align*}
 
+\begin{multicols}{2}
 \paragraph{解}
 首先给出中间代码的结构
-\begin{figure}[H]
-    \centering
 \begin{lstlisting}[language = Pascal, alsolanguage = C]
     `$E_1$`
 L1: if `$E_2$` goto L3
@@ -195,7 +192,7 @@ L2: `$E_3$`
 L3: `$S_1$`
     goto L2
 \end{lstlisting}
-\end{figure}
+
 据此给出一个翻译方案如下
 \begin{align*}
     S \rightarrow\  &\texttt{for(}E_1\texttt{; }M_1\ E_2\texttt{; }M_2\ E_3\texttt{)}\ N\ S_1 \\
@@ -214,5 +211,6 @@ L3: `$S_1$`
                     &\qquad N\texttt{.next = nextstmt;} \\
                     &\texttt{\}}\\
 \end{align*}
+\end{multicols}
 \end{document}
 
