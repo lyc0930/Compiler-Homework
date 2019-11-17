@@ -1,0 +1,138 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{ulem}
+\usepackage{multicol}
+\usepackage{geometry}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary[arrows, shapes, chains]
+
+\lstset
+{
+    basicstyle = \ttfamily,
+    keywordstyle = \bfseries\color{blue!70},
+    commentstyle = \songti \upshape,
+    escapeinside=``,
+    breaklines = true,
+    breakatwhitespace = true,
+    breakautoindent = true,
+    texcl = true,
+    showstringspaces = false,
+    basewidth = 0.5em,
+    flexiblecolumns,
+    columns = fixed,
+    frame = {},
+}
+\lstdefinestyle{C}
+{
+    language = C,
+}
+\lstdefinestyle{Assembler}
+{
+    language = [X86masm]Assembler,
+    alsolanguage = C,
+}
+
+\title{Homework 10}
+\author{PB17000297 罗晏宸}
+\date{November 11 2019}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Exercise 1}
+针对以下C程序片段，直接在源程序上进行循环优化（循环不变计算外提，强度消弱与复写传播优化等）
+
+\begin{lstlisting}[style = C]
+int a[100][100], b[100][100], c[100][100];
+int i, j, k; // int : 4 bytes
+for(i = 0; i < 100; i++)
+    for(j = 0; j < 100; j++)
+          for(k = 0; k < 100;k ++)
+             c[i][j] = c[i][j] + a[i][k] * b[k][j];
+\end{lstlisting}
+
+\paragraph{解}
+循环不变计算外提后的代码如下
+\begin{lstlisting}[style = C]
+int a[100][100], b[100][100], c[100][100];
+int i, j, k; // int : 4 bytes
+for(i = 0; i < 100; i++)
+{
+    t3 = c + i * 400;
+    t2 = a + i * 400;
+    for(j = 0; j < 100; j++)
+    {
+        t1 = t3 + j * 4;
+        for(k = 0; k < 100; k++)
+            *t1 = *t1 + t2[k] * b[k][j];
+    }
+}
+\end{lstlisting}
+再进行强度削弱，注意到\lstinline{t2[k] = *(t2 + k * 4)}、\lstinline{b[k][j] = *(b + k * 400 + j * 4)}，有
+\begin{lstlisting}[style = C]
+int a[100][100], b[100][100], c[100][100];
+int i, j, k; // int : 4 bytes
+t4 = c;
+t5 = a;
+for(i = 0; i < 100; i++)
+{
+    t3 = t4;
+    t2 = t5;
+    t6 = t3;
+    for(j = 0; j < 100; j++)
+    {
+        t1 = t6;
+        t7 = t2;
+        t8 = b + j * 4;
+        for(k = 0; k < 100; k++)
+        {
+            *t1 = *t1 + *t7 * *t8;
+            t7 += 4;
+            t8 += 400;
+        }
+        t6 += 4;
+    }
+    t4 += 400;
+    t5 += 400;
+}
+\end{lstlisting}
+应用复写传播，可以删除\lstinline{t2}和\lstinline{t3}，得到优化后的最终代码
+\begin{lstlisting}[style = C]
+int a[100][100], b[100][100], c[100][100];
+int i, j, k; // int : 4 bytes
+t4 = c;
+t5 = a;
+for(i = 0; i < 100; i++)
+{
+    t6 = t4;
+    for(j = 0; j < 100; j++)
+    {
+        t1 = t6;
+        t7 = t5;
+        t8 = b + j * 4;
+        for(k = 0; k < 100; k++)
+        {
+            *t1 = *t1 + *t7 * *t8;
+            t7 += 4;
+            t8 += 400;
+        }
+        t6 += 4;
+    }
+    t4 += 400;
+    t5 += 400;
+}
+\end{lstlisting}
+\end{document}
+

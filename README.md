@@ -54,12 +54,27 @@ Homework assignments of **Compiler Principles and Technology**
 - PL/0编译器
 
 ## [Homework 8](https://github.com/lyc0930/Compiler-Homework/tree/master/Homework8)
-11.6
+11.4
 - 汇编代码
 - 中间代码
 
 ## [Homework 9](https://github.com/lyc0930/Compiler-Homework/tree/master/Homework9)
-11.10
+11.6
 - 汇编代码
 - 基本块划分
 - 流图
+
+## [Homework 10](https://github.com/lyc0930/Compiler-Homework/tree/master/Homework10)
+11.11
+- 循环优化
+    - 循环不变计算外提
+    - 强度削弱
+    - 复写传播优化
+
+## [Homework 11](https://github.com/lyc0930/Compiler-Homework/tree/master/Homework11)
+11.13
+- 到达-定值数据流方程
+- ud链
+- 三地址代码
+- 流图
+- 自然循环
