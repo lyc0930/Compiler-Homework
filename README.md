@@ -78,3 +78,7 @@ Homework assignments of **Compiler Principles and Technology**
 - 三地址代码
 - 流图
 - 自然循环
+
+## [Homework 12](https://github.com/lyc0930/Compiler-Homework/tree/master/Homework12)
+11.18
+- 活跃变量数据流方程
