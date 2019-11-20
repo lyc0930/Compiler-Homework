@@ -122,7 +122,7 @@
     \hline
     基本块 & $\textit{use}$ & $\textit{def}$ \\ \hline
     $B_1$ & $\textit{use}_1 = \{\}$ & $\textit{def}_1 = \{\texttt{D},\texttt{G}\}$ \\ \hline
-    $B_2$ & $\textit{use}_2 = \{\texttt{D}\}$ & $\textit{def}_2 = \{\texttt{B},\texttt{C}\}$ \\ \hline
+    $B_2$ & $\textit{use}_2 = \{\texttt{D}\}$ & $\textit{def}_2 = \{\texttt{A},\texttt{B},\texttt{C}\}$ \\ \hline
     $B_3$ & $\textit{use}_3 = \{\texttt{A},\texttt{B},\texttt{C},\texttt{G}\}$ & $\textit{def}_3 = \{\texttt{F}\}$ \\ \hline
     $B_4$ & $\textit{use}_4 = \{\texttt{A},\texttt{B},\texttt{C}\}$ & $\textit{def}_4 = \{\texttt{F}\}$ \\ \hline
     $B_5$ & $\textit{use}_5 = \{\texttt{B},\texttt{C},\texttt{D}\}$ & $\textit{def}_5 = \{\texttt{G}\}$ \\ \hline
@@ -142,23 +142,36 @@
     & \text{OUT}[B_3] &&= \text{OUT}[B_3] \cup \text{IN}[B_5]    &&= \{  \} \cup \{\texttt{B},\texttt{C},\texttt{D}\} &&= \{\texttt{B},\texttt{C},\texttt{D}\} \\
     & \text{IN}[B_3]  &&= \textit{use}_3 \cup ( \text{OUT}[B_3] - \textit{def}_3 ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{G}\} \cup ( \{\texttt{B},\texttt{C},\texttt{D}\} - \{\texttt{F}\} ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \\
     & \text{OUT}[B_2] &&= \text{OUT}[B_2] \cup \text{IN}[B_3] \cup \text{IN}[B_4]    &&= \{  \} \cup \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \cup \{\texttt{A},\texttt{B},\texttt{C},\texttt{D}\} &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \\
-    & \text{IN}[B_2]  &&= \textit{use}_2 \cup ( \text{OUT}[B_2] - \textit{def}_2 ) &&= \{\texttt{D}\} \cup ( \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} - \{\texttt{B},\texttt{C}\} ) &&= \{\texttt{A},\texttt{D},\texttt{G}\} \\
-    & \text{OUT}[B_1] &&= \text{OUT}[B_1] \cup \text{IN}[B_2]    &&= \{  \} \cup \{\texttt{A},\texttt{D},\texttt{G}\} &&= \{\texttt{A},\texttt{D},\texttt{G}\} \\
-    & \text{IN}[B_1]  &&= \textit{use}_1 \cup ( \text{OUT}[B_1] - \textit{def}_1 ) &&= \{  \} \cup ( \{\texttt{A},\texttt{D},\texttt{G}\} - \{\texttt{D},\texttt{G}\} ) &&= \{ \texttt{A} \}
+    & \text{IN}[B_2]  &&= \textit{use}_2 \cup ( \text{OUT}[B_2] - \textit{def}_2 ) &&= \{\texttt{D}\} \cup ( \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} - \{\texttt{A},\texttt{B},\texttt{C}\} ) &&= \{\texttt{D},\texttt{G}\} \\
+    & \text{OUT}[B_1] &&= \text{OUT}[B_1] \cup \text{IN}[B_2]    &&= \{  \} \cup \{\texttt{A},\texttt{D},\texttt{G}\} &&= \{\texttt{D},\texttt{G}\} \\
+    & \text{IN}[B_1]  &&= \textit{use}_1 \cup ( \text{OUT}[B_1] - \textit{def}_1 ) &&= \{  \} \cup ( \{\texttt{D},\texttt{G}\} - \{\texttt{D},\texttt{G}\} ) &&= \{  \}
 \end{align*}
 第二次迭代
 \begin{align*}
-    & \text{OUT}[B_5] &&= \text{OUT}[B_5] \cup \text{IN}[B_2]    &&= \{  \} \cup \{\texttt{A},\texttt{D},\texttt{G}\} &&= \{\texttt{A},\texttt{D},\texttt{G}\} \\
-    & \text{IN}[B_5]  &&= \textit{use}_5 \cup ( \text{OUT}[B_5] - \textit{def}_5 ) &&= \{\texttt{B},\texttt{C},\texttt{D}\} \cup ( \{\texttt{A},\texttt{D},\texttt{G}\} - \{\texttt{G}\} ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D}\} \\
-    & \text{OUT}[B_4] &&= \text{OUT}[B_4] \cup \text{IN}[B_5]    &&= \{\texttt{B},\texttt{C},\texttt{D}\} \cup \{\texttt{A},\texttt{B},\texttt{C},\texttt{D}\} &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D}\} \\
-    & \text{IN}[B_4]  &&= \textit{use}_4 \cup ( \text{OUT}[B_4] - \textit{def}_4 ) &&= \{\texttt{A},\texttt{B},\texttt{C}\} \cup ( \{\texttt{A},\texttt{B},\texttt{C},\texttt{D}\} - \{\texttt{F}\} ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D}\} \\
-    & \text{OUT}[B_3] &&= \text{OUT}[B_3] \cup \text{IN}[B_5]    &&= \{\texttt{B},\texttt{C},\texttt{D}\} \cup \{\texttt{A},\texttt{B},\texttt{C},\texttt{D}\} &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D}\} \\
-    & \text{IN}[B_3]  &&= \textit{use}_3 \cup ( \text{OUT}[B_3] - \textit{def}_3 ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{G}\} \cup ( \{\texttt{A},\texttt{B},\texttt{C},\texttt{D}\} - \{\texttt{F}\} ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \\
+    & \text{OUT}[B_5] &&= \text{OUT}[B_5] \cup \text{IN}[B_2]    &&= \{  \} \cup \{\texttt{D},\texttt{G}\} &&= \{\texttt{D},\texttt{G}\} \\
+    & \text{IN}[B_5]  &&= \textit{use}_5 \cup ( \text{OUT}[B_5] - \textit{def}_5 ) &&= \{\texttt{B},\texttt{C},\texttt{D}\} \cup ( \{\texttt{D},\texttt{G}\} - \{\texttt{G}\} ) &&= \{\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{OUT}[B_4] &&= \text{OUT}[B_4] \cup \text{IN}[B_5]    &&= \{\texttt{B},\texttt{C},\texttt{D}\} \cup \{\texttt{B},\texttt{C},\texttt{D}\} &&= \{\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{IN}[B_4]  &&= \textit{use}_4 \cup ( \text{OUT}[B_4] - \textit{def}_4 ) &&= \{\texttt{A},\texttt{B},\texttt{C}\} \cup ( \{\texttt{B},\texttt{C},\texttt{D}\} - \{\texttt{F}\} ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{OUT}[B_3] &&= \text{OUT}[B_3] \cup \text{IN}[B_5]    &&= \{\texttt{B},\texttt{C},\texttt{D}\} \cup \{\texttt{B},\texttt{C},\texttt{D}\} &&= \{\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{IN}[B_3]  &&= \textit{use}_3 \cup ( \text{OUT}[B_3] - \textit{def}_3 ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{G}\} \cup ( \{\texttt{B},\texttt{C},\texttt{D}\} - \{\texttt{F}\} ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \\
     & \text{OUT}[B_2] &&= \text{OUT}[B_2] \cup \text{IN}[B_3] \cup \text{IN}[B_4]    &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \cup \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \cup \{\texttt{A},\texttt{B},\texttt{C},\texttt{D}\} &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \\
-    & \text{IN}[B_2]  &&= \textit{use}_2 \cup ( \text{OUT}[B_2] - \textit{def}_2 ) &&= \{\texttt{D}\} \cup ( \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} - \{\texttt{B},\texttt{C}\} ) &&= \{\texttt{A},\texttt{D},\texttt{G}\} \\
-    & \text{OUT}[B_1] &&= \text{OUT}[B_1] \cup \text{IN}[B_2]    &&= \{\texttt{A},\texttt{D},\texttt{G}\} \cup \{\texttt{A},\texttt{D},\texttt{G}\} &&= \{\texttt{A},\texttt{D},\texttt{G}\} \\
-    & \text{IN}[B_1]  &&= \textit{use}_1 \cup ( \text{OUT}[B_1] - \textit{def}_1 ) &&= \{  \} \cup ( \{\texttt{A},\texttt{D},\texttt{G}\} - \{\texttt{D},\texttt{G}\} ) &&= \{ \texttt{A} \}
+    & \text{IN}[B_2]  &&= \textit{use}_2 \cup ( \text{OUT}[B_2] - \textit{def}_2 ) &&= \{\texttt{D}\} \cup ( \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} - \{\texttt{A},\texttt{B},\texttt{C}\} ) &&= \{\texttt{D},\texttt{G}\} \\
+    & \text{OUT}[B_1] &&= \text{OUT}[B_1] \cup \text{IN}[B_2]    &&= \{\texttt{D},\texttt{G}\} \cup \{\texttt{D},\texttt{G}\} &&= \{\texttt{D},\texttt{G}\} \\
+    & \text{IN}[B_1]  &&= \textit{use}_1 \cup ( \text{OUT}[B_1] - \textit{def}_1 ) &&= \{  \} \cup ( \{\texttt{D},\texttt{G}\} - \{\texttt{D},\texttt{G}\} ) &&= \{  \}
 \end{align*}
-计算结果不再改变，迭代终止。
+第三次迭代
+\begin{align*}
+    & \text{OUT}[B_5] &&= \text{OUT}[B_5] \cup \text{IN}[B_2]    &&= \{\texttt{D},\texttt{G}\} \cup \{\texttt{D},\texttt{G}\} &&= \{\texttt{D},\texttt{G}\} \\
+    & \text{IN}[B_5]  &&= \textit{use}_5 \cup ( \text{OUT}[B_5] - \textit{def}_5 ) &&= \{\texttt{B},\texttt{C},\texttt{D}\} \cup ( \{\texttt{D},\texttt{G}\} - \{\texttt{G}\} ) &&= \{\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{OUT}[B_4] &&= \text{OUT}[B_4] \cup \text{IN}[B_5]    &&= \{\texttt{B},\texttt{C},\texttt{D}\} \cup \{\texttt{B},\texttt{C},\texttt{D}\} &&= \{\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{IN}[B_4]  &&= \textit{use}_4 \cup ( \text{OUT}[B_4] - \textit{def}_4 ) &&= \{\texttt{A},\texttt{B},\texttt{C}\} \cup ( \{\texttt{B},\texttt{C},\texttt{D}\} - \{\texttt{F}\} ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{OUT}[B_3] &&= \text{OUT}[B_3] \cup \text{IN}[B_5]    &&= \{\texttt{B},\texttt{C},\texttt{D}\} \cup \{\texttt{B},\texttt{C},\texttt{D}\} &&= \{\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{IN}[B_3]  &&= \textit{use}_3 \cup ( \text{OUT}[B_3] - \textit{def}_3 ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{G}\} \cup ( \{\texttt{B},\texttt{C},\texttt{D}\} - \{\texttt{F}\} ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \\
+    & \text{OUT}[B_2] &&= \text{OUT}[B_2] \cup \text{IN}[B_3] \cup \text{IN}[B_4]    &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \cup \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \cup \{\texttt{A},\texttt{B},\texttt{C},\texttt{D}\} &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \\
+    & \text{IN}[B_2]  &&= \textit{use}_2 \cup ( \text{OUT}[B_2] - \textit{def}_2 ) &&= \{\texttt{D}\} \cup ( \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} - \{\texttt{A},\texttt{B},\texttt{C}\} ) &&= \{\texttt{D},\texttt{G}\} \\
+    & \text{OUT}[B_1] &&= \text{OUT}[B_1] \cup \text{IN}[B_2]    &&= \{\texttt{D},\texttt{G}\} \cup \{\texttt{D},\texttt{G}\} &&= \{\texttt{D},\texttt{G}\} \\
+    & \text{IN}[B_1]  &&= \textit{use}_1 \cup ( \text{OUT}[B_1] - \textit{def}_1 ) &&= \{  \} \cup ( \{\texttt{D},\texttt{G}\} - \{\texttt{D},\texttt{G}\} ) &&= \{  \}
+\end{align*}
+不再有IN值发生改变，迭代终止。
 \end{document}
 
