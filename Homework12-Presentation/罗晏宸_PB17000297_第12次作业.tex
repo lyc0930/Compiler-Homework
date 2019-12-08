@@ -1,0 +1,167 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{clrscode3e}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary[arrows, shapes, chains]
+\hypersetup{
+	colorlinks=true,
+	urlcolor=black,
+}
+
+\begin{document}
+
+\section*{Exercise 1}
+针对\href{http://staff.ustc.edu.cn/~qlzheng/compiler/lec10_2.ppt}{第十二讲 代码优化（2）}P55上流图，计算活跃变量数据流方程。
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[node distance = 1.5em]
+        \tikzstyle{block} = [rectangle, draw=black, text ragged, minimum height = 1.6em, minimum width = 10em];
+        \node [block]   (B0) {ENTRY};
+        \node [block, below = of B0]   (B1)
+        {
+            \begin{tabular}{l}
+                (1) \texttt{{\color{green!80!black}D} = 3} \\
+                (2) \texttt{{\color{green!80!black}G} = 1}
+            \end{tabular}
+        };
+        \node [block, below = of B1]  (B2)
+        {
+            \begin{tabular}{l}
+                (3) \texttt{{\color{green!80!black}B} = {\color{blue}D} + {\color{blue}D}} \\
+                (4) \texttt{{\color{green!80!black}C} = {\color{blue}D} * {\color{blue}D}} \\
+                (5) \texttt{{\color{green!80!black}A} = B + C}
+            \end{tabular}
+        };
+        \node [block, below = 6.4em of B2]  (B5)
+        {
+            \begin{tabular}{l}
+                (10) \texttt{{\color{green!80!black}G} = {\color{blue}B} + {\color{blue}C}} \\
+                (11) \texttt{D = {\color{blue}D} * {\color{blue}D}}
+            \end{tabular}
+        };
+        \draw [-triangle 60] (B5) to [out = 180, in = 180] (B2);
+        \node [block, below left = of B2]  (B3)
+        {
+            \begin{tabular}{l}
+                (6) \texttt{B = {\color{blue}B} + {\color{blue}C}} \\
+                (7) \texttt{{\color{green!80!black}F} = {\color{blue}A} + {\color{blue}G}}
+            \end{tabular}
+        };
+        \node [block, below right = of B2]  (B4)
+        {
+            \begin{tabular}{l}
+                (8) \texttt{C = {\color{blue}B} + {\color{blue}C}} \\
+                (9) \texttt{{\color{green!80!black}F} = {\color{blue}A} * {\color{blue}A}}
+            \end{tabular}
+        };
+
+        \node [block, below = of B5]  (B6) {EXIT};
+
+        \foreach \i in {1, ..., 5}
+            \node [right = 0.1em of B\i] (A\i) {$B_{\i}$};
+
+        \foreach \i/\j in {0/1, 1/2, 2/3, 2/4, 3/5, 4/5, 5/6}
+            \draw [-triangle 60] (B\i) to [] (B\j);
+
+
+
+    \end{tikzpicture}
+    \caption{第十二讲 代码优化（2）P55上流图}
+\end{figure}
+
+\paragraph{解}
+首先给出每个基本块的$\textit{\color{blue}use}$和$\textit{\color{green!80!black}def}$集合
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    基本块 & $\textit{\color{blue}use}$ & $\textit{\color{green!80!black}def}$ \\ \hline
+    $B_1$ & $\textit{use}_1 = \{\}$ & $\textit{def}_1 = \{\texttt{\color{green!80!black}D},\texttt{\color{green!80!black}G}\}$ \\ \hline
+    $B_2$ & $\textit{use}_2 = \{\texttt{\color{blue}D}\}$ & $\textit{def}_2 = \{\texttt{\color{green!80!black}A},\texttt{\color{green!80!black}B},\texttt{\color{green!80!black}C}\}$ \\ \hline
+    $B_3$ & $\textit{use}_3 = \{\texttt{\color{blue}A},\texttt{\color{blue}B},\texttt{\color{blue}C},\texttt{\color{blue}G}\}$ & $\textit{def}_3 = \{\texttt{\color{green!80!black}F}\}$ \\ \hline
+    $B_4$ & $\textit{use}_4 = \{\texttt{\color{blue}A},\texttt{\color{blue}B},\texttt{\color{blue}C}\}$ & $\textit{def}_4 = \{\texttt{\color{green!80!black}F}\}$ \\ \hline
+    $B_5$ & $\textit{use}_5 = \{\texttt{\color{blue}B},\texttt{\color{blue}C},\texttt{\color{blue}D}\}$ & $\textit{def}_5 = \{\texttt{\color{green!80!black}G}\}$ \\ \hline
+    \end{tabular}
+\end{table}
+初始值
+\begin{align*}
+   & \text{IN}[B_1] = \text{IN}[B_2] = \text{IN}[B_3] = \text{IN}[B_4] = \text{IN}[B_5] = \varnothing \\
+   & \text{OUT}[B_5] = \varnothing
+\end{align*}
+第一次迭代
+\begin{align*}
+    & \text{OUT}[B_5] &&= \text{OUT}[B_5] \cup \text{IN}[B_2]    &&= \{  \} \cup \{  \} &&= \{  \} \\
+    & \text{IN}[B_5]  &&= \textit{use}_5 \cup ( \text{OUT}[B_5] - \textit{def}_5 ) &&= \{\texttt{B},\texttt{C},\texttt{D}\} \cup ( \{  \} - \{\texttt{G}\} ) &&= \{\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{OUT}[B_4] &&= \text{OUT}[B_4] \cup \text{IN}[B_5]    &&= \{  \} \cup \{\texttt{B},\texttt{C},\texttt{D}\} &&= \{\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{IN}[B_4]  &&= \textit{use}_4 \cup ( \text{OUT}[B_4] - \textit{def}_4 ) &&= \{\texttt{A},\texttt{B},\texttt{C}\} \cup ( \{\texttt{B},\texttt{C},\texttt{D}\} - \{\texttt{F}\} ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{OUT}[B_3] &&= \text{OUT}[B_3] \cup \text{IN}[B_5]    &&= \{  \} \cup \{\texttt{B},\texttt{C},\texttt{D}\} &&= \{\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{IN}[B_3]  &&= \textit{use}_3 \cup ( \text{OUT}[B_3] - \textit{def}_3 ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{G}\} \cup ( \{\texttt{B},\texttt{C},\texttt{D}\} - \{\texttt{F}\} ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \\
+    & \text{OUT}[B_2] &&= \text{OUT}[B_2] \cup \text{IN}[B_3] \cup \text{IN}[B_4]    &&= \{  \} \cup \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \cup \{\texttt{A},\texttt{B},\texttt{C},\texttt{D}\} &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \\
+    & \text{IN}[B_2]  &&= \textit{use}_2 \cup ( \text{OUT}[B_2] - \textit{def}_2 ) &&= \{\texttt{D}\} \cup ( \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} - \{\texttt{A},\texttt{B},\texttt{C}\} ) &&= \{\texttt{D},\texttt{G}\} \\
+    & \text{OUT}[B_1] &&= \text{OUT}[B_1] \cup \text{IN}[B_2]    &&= \{  \} \cup \{\texttt{A},\texttt{D},\texttt{G}\} &&= \{\texttt{D},\texttt{G}\} \\
+    & \text{IN}[B_1]  &&= \textit{use}_1 \cup ( \text{OUT}[B_1] - \textit{def}_1 ) &&= \{  \} \cup ( \{\texttt{D},\texttt{G}\} - \{\texttt{D},\texttt{G}\} ) &&= \{  \}
+\end{align*}
+第二次迭代
+\begin{align*}
+    & \text{OUT}[B_5] &&= \text{OUT}[B_5] \cup \text{IN}[B_2]    &&= \{  \} \cup \{\texttt{D},\texttt{G}\} &&= \{\texttt{D},\texttt{G}\} \\
+    & \text{IN}[B_5]  &&= \textit{use}_5 \cup ( \text{OUT}[B_5] - \textit{def}_5 ) &&= \{\texttt{B},\texttt{C},\texttt{D}\} \cup ( \{\texttt{D},\texttt{G}\} - \{\texttt{G}\} ) &&= \{\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{OUT}[B_4] &&= \text{OUT}[B_4] \cup \text{IN}[B_5]    &&= \{\texttt{B},\texttt{C},\texttt{D}\} \cup \{\texttt{B},\texttt{C},\texttt{D}\} &&= \{\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{IN}[B_4]  &&= \textit{use}_4 \cup ( \text{OUT}[B_4] - \textit{def}_4 ) &&= \{\texttt{A},\texttt{B},\texttt{C}\} \cup ( \{\texttt{B},\texttt{C},\texttt{D}\} - \{\texttt{F}\} ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{OUT}[B_3] &&= \text{OUT}[B_3] \cup \text{IN}[B_5]    &&= \{\texttt{B},\texttt{C},\texttt{D}\} \cup \{\texttt{B},\texttt{C},\texttt{D}\} &&= \{\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{IN}[B_3]  &&= \textit{use}_3 \cup ( \text{OUT}[B_3] - \textit{def}_3 ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{G}\} \cup ( \{\texttt{B},\texttt{C},\texttt{D}\} - \{\texttt{F}\} ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \\
+    & \text{OUT}[B_2] &&= \text{OUT}[B_2] \cup \text{IN}[B_3] \cup \text{IN}[B_4]    &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \cup \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \cup \{\texttt{A},\texttt{B},\texttt{C},\texttt{D}\} &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \\
+    & \text{IN}[B_2]  &&= \textit{use}_2 \cup ( \text{OUT}[B_2] - \textit{def}_2 ) &&= \{\texttt{D}\} \cup ( \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} - \{\texttt{A},\texttt{B},\texttt{C}\} ) &&= \{\texttt{D},\texttt{G}\} \\
+    & \text{OUT}[B_1] &&= \text{OUT}[B_1] \cup \text{IN}[B_2]    &&= \{\texttt{D},\texttt{G}\} \cup \{\texttt{D},\texttt{G}\} &&= \{\texttt{D},\texttt{G}\} \\
+    & \text{IN}[B_1]  &&= \textit{use}_1 \cup ( \text{OUT}[B_1] - \textit{def}_1 ) &&= \{  \} \cup ( \{\texttt{D},\texttt{G}\} - \{\texttt{D},\texttt{G}\} ) &&= \{  \}
+\end{align*}
+第三次迭代
+\begin{align*}
+    & \text{OUT}[B_5] &&= \text{OUT}[B_5] \cup \text{IN}[B_2]    &&= \{\texttt{D},\texttt{G}\} \cup \{\texttt{D},\texttt{G}\} &&= \{\texttt{D},\texttt{G}\} \\
+    & \text{IN}[B_5]  &&= \textit{use}_5 \cup ( \text{OUT}[B_5] - \textit{def}_5 ) &&= \{\texttt{B},\texttt{C},\texttt{D}\} \cup ( \{\texttt{D},\texttt{G}\} - \{\texttt{G}\} ) &&= \{\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{OUT}[B_4] &&= \text{OUT}[B_4] \cup \text{IN}[B_5]    &&= \{\texttt{B},\texttt{C},\texttt{D}\} \cup \{\texttt{B},\texttt{C},\texttt{D}\} &&= \{\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{IN}[B_4]  &&= \textit{use}_4 \cup ( \text{OUT}[B_4] - \textit{def}_4 ) &&= \{\texttt{A},\texttt{B},\texttt{C}\} \cup ( \{\texttt{B},\texttt{C},\texttt{D}\} - \{\texttt{F}\} ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{OUT}[B_3] &&= \text{OUT}[B_3] \cup \text{IN}[B_5]    &&= \{\texttt{B},\texttt{C},\texttt{D}\} \cup \{\texttt{B},\texttt{C},\texttt{D}\} &&= \{\texttt{B},\texttt{C},\texttt{D}\} \\
+    & \text{IN}[B_3]  &&= \textit{use}_3 \cup ( \text{OUT}[B_3] - \textit{def}_3 ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{G}\} \cup ( \{\texttt{B},\texttt{C},\texttt{D}\} - \{\texttt{F}\} ) &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \\
+    & \text{OUT}[B_2] &&= \text{OUT}[B_2] \cup \text{IN}[B_3] \cup \text{IN}[B_4]    &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \cup \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \cup \{\texttt{A},\texttt{B},\texttt{C},\texttt{D}\} &&= \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} \\
+    & \text{IN}[B_2]  &&= \textit{use}_2 \cup ( \text{OUT}[B_2] - \textit{def}_2 ) &&= \{\texttt{D}\} \cup ( \{\texttt{A},\texttt{B},\texttt{C},\texttt{D},\texttt{G}\} - \{\texttt{A},\texttt{B},\texttt{C}\} ) &&= \{\texttt{D},\texttt{G}\} \\
+    & \text{OUT}[B_1] &&= \text{OUT}[B_1] \cup \text{IN}[B_2]    &&= \{\texttt{D},\texttt{G}\} \cup \{\texttt{D},\texttt{G}\} &&= \{\texttt{D},\texttt{G}\} \\
+    & \text{IN}[B_1]  &&= \textit{use}_1 \cup ( \text{OUT}[B_1] - \textit{def}_1 ) &&= \{  \} \cup ( \{\texttt{D},\texttt{G}\} - \{\texttt{D},\texttt{G}\} ) &&= \{  \}
+\end{align*}
+不再有IN值发生改变，迭代终止。
+
+\begin{align*}
+    \text{IN}[\text{EXIT}] &= \varnothing \\
+    \text{OUT}[B] &= \bigcup_{S\text{是}B\text{的一个后继}}{\text{IN}[S]} \\
+    \text{IN}[B] &= \textit{use}_B \cup (\text{OUT}[B] - \textit{def}_B)
+\end{align*}
+
+\begin{codebox}
+	\li $\text{IN}[\text{EXIT}] \gets \varnothing$
+	\li \For $\text{基本块}B \ne \text{EXIT}$
+		\Do
+	\li 	$\text{IN}[B] \gets \varnothing$
+        \End
+    \li \While 某个IN值发生了改变
+        \Do
+    \li     \For $\text{基本块}B \ne \text{EXIT}$
+            \Do
+    \li         $\text{OUT}[B] \gets \bigcup_{S\text{是}B\text{的一个后继}}{\text{IN}[S]}$
+    \li         $\text{IN}[B] \gets \textit{use}_B \cup (\text{OUT}[B] - \textit{def}_B)$
+            \End
+        \End
+\end{codebox}
+
+\end{document}
+
